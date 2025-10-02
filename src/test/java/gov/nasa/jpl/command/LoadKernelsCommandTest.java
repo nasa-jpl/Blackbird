@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 
 public class LoadKernelsCommandTest extends BaseTest {
-    private File kfolder = new File("kernels/");
+    private File kfolder = new File("src/test/resources/gov/nasa/jpl/kernels/");
 
     @Before
     public void executedBeforeEach() {
         LoadKernelsCommand loadKernelsCommand = new LoadKernelsCommand("");
-        LoadKernelsCommand loadKernelsCommand2 = new LoadKernelsCommand("src/test/resources/naif0012.tls");
+        LoadKernelsCommand loadKernelsCommand2 = new LoadKernelsCommand("src/test/resources/gov/nasa/jpl/kernels/naif0012.tls");
         try {
             loadKernelsCommand.unExecute();
             loadKernelsCommand2.unExecute();
@@ -77,7 +77,7 @@ public class LoadKernelsCommandTest extends BaseTest {
             spiceError.printStackTrace();
         }
 
-        assertEquals(5, kernels.size());
+        assertEquals(6, kernels.size());
     }
 
    @Test
@@ -85,7 +85,7 @@ public class LoadKernelsCommandTest extends BaseTest {
         ArrayList<String> kernels = null;
         Boolean moveActTestStatus1 = CommandController.issueCommand(
                 "LOAD_KERNELS",
-                kfolder.getAbsolutePath()+"/e41.mk"
+                kfolder.getAbsolutePath()+"/test_mk.mk"
         );
 
         try {
@@ -103,7 +103,7 @@ public class LoadKernelsCommandTest extends BaseTest {
         LoadKernelsCommand loadKernelsCommand = new LoadKernelsCommand("");
         try {
             loadKernelsCommand.execute();
-            assertEquals(5, Spice.getLoadedKernelsInfo().size());
+            assertEquals(6, Spice.getLoadedKernelsInfo().size());
 
             loadKernelsCommand.unExecute();
             assertEquals(0, Spice.getLoadedKernelsInfo().size());

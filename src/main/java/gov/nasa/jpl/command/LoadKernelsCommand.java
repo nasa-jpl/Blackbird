@@ -14,7 +14,7 @@ public class LoadKernelsCommand implements Command {
     Loads all available kernels in the kernels folder
      */
     public void loadKernelsFromConventionFolder() {
-        File kfolder = new File("kernels/");
+        File kfolder = new File("src/test/resources/gov/nasa/jpl/kernels/");
         File[] listOfFiles = kfolder.listFiles();
 
         for (int i = 0; i < listOfFiles.length; i++) {
