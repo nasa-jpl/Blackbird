@@ -1,2 +1,11 @@
 # Blackbird
-Blackbird: The original object-oriented, debuggable activity simulation and sequence generation framework 
+
+Blackbird is an object-oriented discrete event simulator intended as a multi-mission spacecraft simulation framework that enables engineers to write code in a standard language that is executed directly by an industry-standard interpreter. The framework provides basic classes that engineers can extend; those base classes contain minimalistic machinery that governs the order in which activity instances are governed, how information appears in output files, the ways one can interact with the model, and more. 
+
+Blackbird has been/is being used by 10 different JPL missions and mission proposals. 
+
+For developers, Javadocs are available in [GitHub Pages](https://github.jpl.nasa.gov/pages/Blackbird/Blackbird/)
+
+For adapters, we recommend you start with the adapter's guide located [here](https://github.jpl.nasa.gov/Blackbird/Blackbird/wiki)
+
+Credit to Chris Lawler, Flora Ridenhour, and David Crowley for their key contributions to the project when it was versioned in the internal JPL repository. 
