@@ -39,5 +39,10 @@ out/
 target/
 *.dir
 *.fincon.json
+*test.plan.json
+*.constraints.json
 *.tol.xml
+adaptation.dict.json
+*.satf
+*.sasf
 *.puml

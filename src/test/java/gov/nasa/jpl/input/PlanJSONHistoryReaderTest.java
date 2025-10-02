@@ -123,7 +123,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
 
     @Test
     public void readJSONWithoutOptionalArguments(){
-        String fileName = "optional_args_missing.plan.json";
+        String fileName = "optional_args_missing_test.plan.json";
         ActivityInstanceList actList = ActivityInstanceList.getActivityList();
         actList.clear();
 
@@ -152,7 +152,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
         JsonArray parameterList;
         JsonObject parameter1;
 
-        filename = "negative_duration.plan.json";
+        filename = "negative_duration_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("-00:01:00"));
@@ -168,7 +168,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "type_does_not_exist.plan.json";
+        filename = "type_does_not_exist_test.plan.json";
         writeFileWithOneActivity(filename, "ShouldNotExist", Time.getDefaultReferenceTime(), parameterList);
 
         try {
@@ -180,7 +180,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "wrong_type_parameter.plan.json";
+        filename = "wrong_type_parameter_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive(5));
@@ -196,7 +196,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "null_parameter.plan.json";
+        filename = "null_parameter_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", null);
@@ -212,7 +212,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "bad_start_time.plan.json";
+        filename = "bad_start_time_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("00:01:00"));
@@ -228,7 +228,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "no_start_time.plan.json";
+        filename = "no_start_time_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("00:01:00"));
@@ -244,7 +244,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "no_type.plan.json";
+        filename = "no_type_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("00:01:00"));
@@ -260,7 +260,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "no_params_instance.plan.json";
+        filename = "no_params_instance_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("00:01:00"));
@@ -276,7 +276,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "only_start_time.plan.json";
+        filename = "only_start_time_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("00:01:00"));
@@ -299,7 +299,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
         ActivityInstanceList actList = ActivityInstanceList.getActivityList();
         actList.clear();
 
-        String filename = "non_DOY_format.plan.json";
+        String filename = "non_DOY_format_test.plan.json";
         JsonArray parameterList = new JsonArray();
         JsonObject parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("2020 MAY 27 02:00:00"));
