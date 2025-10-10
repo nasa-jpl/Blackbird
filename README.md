@@ -8,4 +8,4 @@ For developers, Javadocs are available here: https://nasa-jpl.github.io/Blackbir
 
 For adapters, we recommend you start with the adapter's guide located [here](https://github.com/nasa-jpl/Blackbird/wiki)
 
-Credit to Chris Lawler, Flora Ridenhour, and David Crowley for their key contributions to the project when it was versioned in the internal JPL repository. 
+Credit to Chris Lawler, Flora Ridenhour, and David Crowley for their key contributions to the project when it was versioned in the internal JPL repository. If you use this framework and then write a scholarly paper about the results, please consider referencing the [Blackbird introduction paper](https://ieeexplore.ieee.org/abstract/document/9172680), which is also a good source of information.
