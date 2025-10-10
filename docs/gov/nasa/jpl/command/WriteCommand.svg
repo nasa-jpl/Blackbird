@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="297px" preserveAspectRatio="none" style="width:363px;height:297px;" version="1.1" viewBox="0 0 363 297" width="363px" zoomAndPan="magnify"><defs><filter height="300%" id="f5n4ksf7of95g" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[c848fc917afb70b1376c8aaa22452348]
+class gov.nasa.jpl.command.WriteCommand--><a href="WriteCommand.html" target="_top" title="WriteCommand.html" xlink:actuate="onRequest" xlink:href="WriteCommand.html" xlink:show="new" xlink:title="WriteCommand.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f5n4ksf7of95g)" height="123.9961" id="gov.nasa.jpl.command.WriteCommand" style="stroke: #A80036; stroke-width: 1.5;" width="346" x="6" y="140"/><ellipse cx="120.75" cy="159.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M123.2231,165.2759 Q122.6421,165.5747 122.0029,165.7241 Q121.3638,165.8735 120.6582,165.8735 Q118.1514,165.8735 116.8315,164.2217 Q115.5117,162.5698 115.5117,159.4487 Q115.5117,156.3193 116.8315,154.6675 Q118.1514,153.0156 120.6582,153.0156 Q121.3638,153.0156 122.0112,153.165 Q122.6587,153.3145 123.2231,153.6133 L123.2231,156.3359 Q122.5923,155.7549 121.9988,155.4851 Q121.4053,155.2153 120.7744,155.2153 Q119.4297,155.2153 118.7449,156.282 Q118.0601,157.3486 118.0601,159.4487 Q118.0601,161.5405 118.7449,162.6072 Q119.4297,163.6738 120.7744,163.6738 Q121.4053,163.6738 121.9988,163.4041 Q122.5923,163.1343 123.2231,162.5532 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="106" x="142.25" y="158.5352">WriteCommand</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="108" x="141.25" y="171.1563">gov.nasa.jpl.command</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="351" y1="178.2656" y2="178.2656"/><ellipse cx="17" cy="189.2656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="122" x="26" y="192.9004">WriteCommand(String)</text><ellipse cx="17" cy="202.2207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="79" x="26" y="205.8555">execute(): void</text><ellipse cx="17" cy="215.1758" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="93" x="26" y="218.8105">unExecute(): void</text><ellipse cx="17" cy="228.1309" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="219" x="26" y="231.7656">validateActivityTypes(List&lt;String&gt;): void</text><ellipse cx="17" cy="241.0859" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="261" x="26" y="244.7207">getResourceListFromString(String): ResourceList</text><ellipse cx="17" cy="254.041" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="320" x="26" y="257.6758">getConstraintListFromString(String): ConstraintInstanceList</text></a><!--MD5=[9a77bcc6d87e42cdf3e2bd8d24f5a402]
+class gov.nasa.jpl.command.Command--><a href="Command.html" target="_top" title="Command.html" xlink:actuate="onRequest" xlink:href="Command.html" xlink:show="new" xlink:title="Command.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f5n4ksf7of95g)" height="72.1758" id="gov.nasa.jpl.command.Command" style="stroke: #A80036; stroke-width: 1.5;" width="140" x="109" y="7.83"/><ellipse cx="124" cy="26.9628" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M120.4277,23.2279 L120.4277,21.0697 L127.8071,21.0697 L127.8071,23.2279 L125.3418,23.2279 L125.3418,31.3046 L127.8071,31.3046 L127.8071,33.4628 L120.4277,33.4628 L120.4277,31.3046 L122.8931,31.3046 L122.8931,23.2279 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="71" x="156.5" y="26.3652">Command</text><text fill="#000000" font-family="sans-serif" font-size="10" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="108" x="138" y="38.9862">gov.nasa.jpl.command</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="110" x2="248" y1="46.0956" y2="46.0956"/><ellipse cx="120" cy="57.0956" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="79" x="129" y="60.7304">execute(): void</text><ellipse cx="120" cy="70.0507" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="93" x="129" y="73.6855">unExecute(): void</text></a><!--MD5=[34c629de9c99d8fedc5016e753d969a6]
+reverse link gov.nasa.jpl.command.Command to gov.nasa.jpl.command.WriteCommand--><path d="M179,101.51 C179,113.92 179,127.1 179,139.68 " fill="none" id="gov.nasa.jpl.command.Command&lt;-gov.nasa.jpl.command.WriteCommand" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="172,101.85,179,81.85,186,101.85,172,101.85" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="94" y="283.668">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[a4c1464f099c0e8657e4ecd0a91bde55]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>WriteCommand\n<size:10>gov.nasa.jpl.command" as gov.nasa.jpl.command.WriteCommand [[WriteCommand.html]] {
+        +WriteCommand(String)
+        +execute(): void
+        +unExecute(): void
+        {static} +validateActivityTypes(List<String>): void
+        {static} +getResourceListFromString(String): ResourceList
+        {static} +getConstraintListFromString(String): ConstraintInstanceList
+    }
+
+    interface "<size:14>Command\n<size:10>gov.nasa.jpl.command" as gov.nasa.jpl.command.Command [[Command.html]] {
+        {abstract} +execute(): void
+        {abstract} +unExecute(): void
+    }
+
+    gov.nasa.jpl.command.Command <|.. gov.nasa.jpl.command.WriteCommand
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

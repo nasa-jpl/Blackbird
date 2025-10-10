@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="178px" preserveAspectRatio="none" style="width:230px;height:178px;" version="1.1" viewBox="0 0 230 178" width="230px" zoomAndPan="magnify"><defs><filter height="300%" id="f17xqavmvfcy93" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[842be895cac607fe460e7ecc8d516612]
+class gov.nasa.jpl.exampleAdaptation.ResourceSubclassSubclass--><a href="ResourceSubclassSubclass.html" target="_top" title="ResourceSubclassSubclass.html" xlink:actuate="onRequest" xlink:href="ResourceSubclassSubclass.html" xlink:show="new" xlink:title="ResourceSubclassSubclass.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f17xqavmvfcy93)" height="38.2656" id="gov.nasa.jpl.exampleAdaptation.ResourceSubclassSubclass" style="stroke: #A80036; stroke-width: 1.5;" width="213" x="6" y="106.73"/><ellipse cx="21" cy="125.8628" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M23.4731,132.0059 Q22.8921,132.3047 22.2529,132.4541 Q21.6138,132.6035 20.9082,132.6035 Q18.4014,132.6035 17.0815,130.9517 Q15.7617,129.2998 15.7617,126.1787 Q15.7617,123.0493 17.0815,121.3975 Q18.4014,119.7456 20.9082,119.7456 Q21.6138,119.7456 22.2612,119.895 Q22.9087,120.0445 23.4731,120.3433 L23.4731,123.0659 Q22.8423,122.4849 22.2488,122.2151 Q21.6553,121.9453 21.0244,121.9453 Q19.6797,121.9453 18.9949,123.012 Q18.3101,124.0786 18.3101,126.1787 Q18.3101,128.2705 18.9949,129.3372 Q19.6797,130.4038 21.0244,130.4038 Q21.6553,130.4038 22.2488,130.1341 Q22.8423,129.8643 23.4731,129.2832 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="181" x="35" y="125.2652">ResourceSubclassSubclass</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="157" x="47" y="137.8863">gov.nasa.jpl.exampleAdaptation</text></a><!--MD5=[1b3fedc54a02f8d4e8f5cf7579e17e86]
+class gov.nasa.jpl.resource.DoubleResource--><a href="../resource/DoubleResource.html" target="_top" title="../resource/DoubleResource.html" xlink:actuate="onRequest" xlink:href="../resource/DoubleResource.html" xlink:show="new" xlink:title="../resource/DoubleResource.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f17xqavmvfcy93)" height="38.2656" id="gov.nasa.jpl.resource.DoubleResource" style="stroke: #A80036; stroke-width: 1.5;" width="144" x="40.5" y="8.47"/><ellipse cx="55.5" cy="27.6028" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M57.9731,33.7459 Q57.3921,34.0447 56.7529,34.1941 Q56.1138,34.3435 55.4082,34.3435 Q52.9014,34.3435 51.5815,32.6917 Q50.2617,31.0398 50.2617,27.9187 Q50.2617,24.7893 51.5815,23.1375 Q52.9014,21.4856 55.4082,21.4856 Q56.1138,21.4856 56.7612,21.635 Q57.4087,21.7845 57.9731,22.0833 L57.9731,24.8059 Q57.3423,24.2249 56.7488,23.9551 Q56.1553,23.6853 55.5244,23.6853 Q54.1797,23.6853 53.4949,24.752 Q52.8101,25.8186 52.8101,27.9187 Q52.8101,30.0105 53.4949,31.0772 Q54.1797,32.1438 55.5244,32.1438 Q56.1553,32.1438 56.7488,31.8741 Q57.3423,31.6043 57.9731,31.0232 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="112" x="69.5" y="27.0052">DoubleResource</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="103" x="74" y="39.6263">gov.nasa.jpl.resource</text></a><!--MD5=[66d0ed4cd2a24c7f933559ff95c76974]
+reverse link gov.nasa.jpl.resource.DoubleResource to gov.nasa.jpl.exampleAdaptation.ResourceSubclassSubclass--><path d="M112.5,68.41 C112.5,81.57 112.5,95.59 112.5,106.36 " fill="none" id="gov.nasa.jpl.resource.DoubleResource&lt;-gov.nasa.jpl.exampleAdaptation.ResourceSubclassSubclass" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="105.5,68.68,112.5,48.68,119.5,68.68,105.5,68.68" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="27.5" y="164.668">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[3905534a88073e77fedbe1fa94270acc]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>ResourceSubclassSubclass\n<size:10>gov.nasa.jpl.exampleAdaptation" as gov.nasa.jpl.exampleAdaptation.ResourceSubclassSubclass [[ResourceSubclassSubclass.html]]
+
+    class "<size:14>DoubleResource\n<size:10>gov.nasa.jpl.resource" as gov.nasa.jpl.resource.DoubleResource [[../resource/DoubleResource.html]]
+
+    gov.nasa.jpl.resource.DoubleResource <|- - gov.nasa.jpl.exampleAdaptation.ResourceSubclassSubclass
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

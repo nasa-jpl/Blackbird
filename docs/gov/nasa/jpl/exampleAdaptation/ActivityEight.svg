@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="211px" preserveAspectRatio="none" style="width:220px;height:211px;" version="1.1" viewBox="0 0 220 211" width="220px" zoomAndPan="magnify"><defs><filter height="300%" id="f111q5mtxy5rje" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[dcf213f7953d6237541a7b89cec06b34]
+class gov.nasa.jpl.exampleAdaptation.ActivityEight--><a href="ActivityEight.html" target="_top" title="ActivityEight.html" xlink:actuate="onRequest" xlink:href="ActivityEight.html" xlink:show="new" xlink:title="ActivityEight.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f111q5mtxy5rje)" height="72.1758" id="gov.nasa.jpl.exampleAdaptation.ActivityEight" style="stroke: #A80036; stroke-width: 1.5;" width="203" x="6" y="105.82"/><ellipse cx="27.3" cy="124.9528" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M29.7731,131.0959 Q29.1921,131.3947 28.5529,131.5441 Q27.9138,131.6935 27.2082,131.6935 Q24.7014,131.6935 23.3815,130.0417 Q22.0617,128.3898 22.0617,125.2687 Q22.0617,122.1393 23.3815,120.4875 Q24.7014,118.8356 27.2082,118.8356 Q27.9138,118.8356 28.5612,118.985 Q29.2087,119.1345 29.7731,119.4333 L29.7731,122.1559 Q29.1423,121.5749 28.5488,121.3051 Q27.9553,121.0353 27.3244,121.0353 Q25.9797,121.0353 25.2949,122.102 Q24.6101,123.1686 24.6101,125.2687 Q24.6101,127.3605 25.2949,128.4272 Q25.9797,129.4938 27.3244,129.4938 Q27.9553,129.4938 28.5488,129.2241 Q29.1423,128.9543 29.7731,128.3732 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="84" x="79.2" y="124.3552">ActivityEight</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="157" x="42.7" y="136.9763">gov.nasa.jpl.exampleAdaptation</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="208" y1="144.0856" y2="144.0856"/><ellipse cx="17" cy="155.0856" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="177" x="26" y="158.7204">ActivityEight(Time, String, String)</text><ellipse cx="17" cy="168.0407" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="70" x="26" y="171.6755">model(): void</text></a><!--MD5=[9fb577203c08bfd183ae1eb5c832aad4]
+class gov.nasa.jpl.activity.Activity--><a href="../activity/Activity.html" target="_top" title="../activity/Activity.html" xlink:actuate="onRequest" xlink:href="../activity/Activity.html" xlink:show="new" xlink:title="../activity/Activity.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f111q5mtxy5rje)" height="38.2656" id="gov.nasa.jpl.activity.Activity" style="stroke: #A80036; stroke-width: 1.5;" width="128" x="43.5" y="7.56"/><ellipse cx="58.5" cy="26.6928" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M60.9731,32.8359 Q60.3921,33.1347 59.7529,33.2841 Q59.1138,33.4335 58.4082,33.4335 Q55.9014,33.4335 54.5815,31.7817 Q53.2617,30.1298 53.2617,27.0087 Q53.2617,23.8793 54.5815,22.2275 Q55.9014,20.5756 58.4082,20.5756 Q59.1138,20.5756 59.7612,20.725 Q60.4087,20.8745 60.9731,21.1733 L60.9731,23.8959 Q60.3423,23.3149 59.7488,23.0451 Q59.1553,22.7753 58.5244,22.7753 Q57.1797,22.7753 56.4949,23.842 Q55.8101,24.9086 55.8101,27.0087 Q55.8101,29.1005 56.4949,30.1672 Q57.1797,31.2338 58.5244,31.2338 Q59.1553,31.2338 59.7488,30.9641 Q60.3423,30.6943 60.9731,30.1132 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="49" x="96" y="26.0952">Activity</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="96" x="72.5" y="38.7163">gov.nasa.jpl.activity</text></a><!--MD5=[78d57b799439e2477a6d3947f4f8203b]
+reverse link gov.nasa.jpl.activity.Activity to gov.nasa.jpl.exampleAdaptation.ActivityEight--><path d="M107.5,67.27 C107.5,79.73 107.5,93.41 107.5,105.55 " fill="none" id="gov.nasa.jpl.activity.Activity&lt;-gov.nasa.jpl.exampleAdaptation.ActivityEight" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="100.5,67.65,107.5,47.65,114.5,67.65,100.5,67.65" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="22.5" y="197.668">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[4ec760dde267b1bbe39f83f28a1cf13a]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>ActivityEight\n<size:10>gov.nasa.jpl.exampleAdaptation" as gov.nasa.jpl.exampleAdaptation.ActivityEight [[ActivityEight.html]] {
+        +ActivityEight(Time, String, String)
+        +model(): void
+    }
+
+    class "<size:14>Activity\n<size:10>gov.nasa.jpl.activity" as gov.nasa.jpl.activity.Activity [[../activity/Activity.html]]
+
+    gov.nasa.jpl.activity.Activity <|- - gov.nasa.jpl.exampleAdaptation.ActivityEight
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

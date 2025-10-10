@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="212px" preserveAspectRatio="none" style="width:330px;height:212px;" version="1.1" viewBox="0 0 330 212" width="330px" zoomAndPan="magnify"><defs><filter height="300%" id="f1w0fo2k17hqxn" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[1913f0d59dace7926023b83247344a2b]
+class gov.nasa.jpl.scheduler.Condition--><a href="Condition.html" target="_top" title="Condition.html" xlink:actuate="onRequest" xlink:href="Condition.html" xlink:show="new" xlink:title="Condition.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f1w0fo2k17hqxn)" height="175.8164" id="gov.nasa.jpl.scheduler.Condition" style="stroke: #A80036; stroke-width: 1.5;" width="312" x="7" y="7"/><ellipse cx="104.75" cy="26.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M107.2231,32.2759 Q106.6421,32.5747 106.0029,32.7241 Q105.3638,32.8735 104.6582,32.8735 Q102.1514,32.8735 100.8315,31.2217 Q99.5117,29.5698 99.5117,26.4487 Q99.5117,23.3193 100.8315,21.6675 Q102.1514,20.0156 104.6582,20.0156 Q105.3638,20.0156 106.0112,20.165 Q106.6587,20.3145 107.2231,20.6133 L107.2231,23.3359 Q106.5923,22.7549 105.9988,22.4851 Q105.4053,22.2153 104.7744,22.2153 Q103.4297,22.2153 102.7449,23.282 Q102.0601,24.3486 102.0601,26.4487 Q102.0601,28.5405 102.7449,29.6072 Q103.4297,30.6738 104.7744,30.6738 Q105.4053,30.6738 105.9988,30.4041 Q106.5923,30.1343 107.2231,29.5532 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="68" x="145.25" y="25.5352">Condition</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="108" x="125.25" y="38.1563">gov.nasa.jpl.scheduler</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="318" y1="45.2656" y2="45.2656"/><ellipse cx="18" cy="56.2656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="286" x="27" y="59.9004">Condition(Resource, CompareToValues, Comparable)</text><ellipse cx="18" cy="69.2207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="141" x="27" y="72.8555">or(Condition...): Condition</text><ellipse cx="18" cy="82.1758" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="149" x="27" y="85.8105">and(Condition...): Condition</text><ellipse cx="18" cy="95.1309" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="198" x="27" y="98.7656">xor(Condition, Condition): Condition</text><ellipse cx="18" cy="108.0859" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="138" x="27" y="111.7207">not(Condition): Condition</text><ellipse cx="18" cy="121.041" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="91" x="27" y="124.6758">isTrue(): boolean</text><ellipse cx="18" cy="133.9961" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="127" x="27" y="137.6309">evaluate(Time): boolean</text><ellipse cx="18" cy="146.9512" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="144" x="27" y="150.5859">setEvaluatedTo(Time): void</text><ellipse cx="18" cy="159.9063" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="195" x="27" y="163.541">update(Resource, Comparable): void</text><ellipse cx="18" cy="172.8613" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="269" x="27" y="176.4961">getAllResourcesRecursively(): Set&lt;Resource&lt;?&gt;&gt;</text></a><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="72" y="199.4844">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[2c4dfed61f4f3f6c2b74b6f0298aeaf2]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>Condition\n<size:10>gov.nasa.jpl.scheduler" as gov.nasa.jpl.scheduler.Condition [[Condition.html]] {
+        +Condition(Resource, CompareToValues, Comparable)
+        {static} +or(Condition...): Condition
+        {static} +and(Condition...): Condition
+        {static} +xor(Condition, Condition): Condition
+        {static} +not(Condition): Condition
+        +isTrue(): boolean
+        +evaluate(Time): boolean
+        +setEvaluatedTo(Time): void
+        +update(Resource, Comparable): void
+        +getAllResourcesRecursively(): Set<Resource<?>>
+    }
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="135px" preserveAspectRatio="none" style="width:330px;height:135px;" version="1.1" viewBox="0 0 330 135" width="330px" zoomAndPan="magnify"><defs><filter height="300%" id="ffvbxvkd6cvhs" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[90216b5edcd6a97906c3bde4c5dac7be]
+class gov.nasa.jpl.constraint.ConstraintDeclaration--><a href="ConstraintDeclaration.html" target="_top" title="ConstraintDeclaration.html" xlink:actuate="onRequest" xlink:href="ConstraintDeclaration.html" xlink:show="new" xlink:title="ConstraintDeclaration.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#ffvbxvkd6cvhs)" height="98.0859" id="gov.nasa.jpl.constraint.ConstraintDeclaration" style="stroke: #A80036; stroke-width: 1.5;" width="312" x="7" y="7"/><ellipse cx="83.75" cy="26.1328" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M86.2231,32.2759 Q85.6421,32.5747 85.0029,32.7241 Q84.3638,32.8735 83.6582,32.8735 Q81.1514,32.8735 79.8315,31.2217 Q78.5117,29.5698 78.5117,26.4487 Q78.5117,23.3193 79.8315,21.6675 Q81.1514,20.0156 83.6582,20.0156 Q84.3638,20.0156 85.0112,20.165 Q85.6587,20.3145 86.2231,20.6133 L86.2231,23.3359 Q85.5923,22.7549 84.9988,22.4851 Q84.4053,22.2153 83.7744,22.2153 Q82.4297,22.2153 81.7449,23.282 Q81.0601,24.3486 81.0601,26.4487 Q81.0601,28.5405 81.7449,29.6072 Q82.4297,30.6738 83.7744,30.6738 Q84.4053,30.6738 84.9988,30.4041 Q85.5923,30.1343 86.2231,29.5532 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="150" x="104.25" y="25.5352">ConstraintDeclaration</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="110" x="124.25" y="38.1563">gov.nasa.jpl.constraint</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="318" y1="45.2656" y2="45.2656"/><ellipse cx="18" cy="56.2656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="85" x="27" y="59.9004">getFields(): void</text><ellipse cx="18" cy="69.2207" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="154" x="27" y="72.8555">gatherNames(): List&lt;String&gt;</text><ellipse cx="18" cy="82.1758" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="199" x="27" y="85.8105">assignNamesToAllConstraints(): void</text><ellipse cx="18" cy="95.1309" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="286" x="27" y="98.7656">getConstraintNamesWithClass(String...): List&lt;String&gt;</text></a><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="72" y="121.7539">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[f7de7664fea592a7f623ebc2b3dd2a78]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>ConstraintDeclaration\n<size:10>gov.nasa.jpl.constraint" as gov.nasa.jpl.constraint.ConstraintDeclaration [[ConstraintDeclaration.html]] {
+        +getFields(): void
+        +gatherNames(): List<String>
+        {static} +assignNamesToAllConstraints(): void
+        {static} +getConstraintNamesWithClass(String...): List<String>
+    }
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

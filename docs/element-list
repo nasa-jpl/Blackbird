@@ -1,0 +1,17 @@
+gov.nasa.jpl
+gov.nasa.jpl.activity
+gov.nasa.jpl.command
+gov.nasa.jpl.constraint
+gov.nasa.jpl.engine
+gov.nasa.jpl.input
+gov.nasa.jpl.input.parallel
+gov.nasa.jpl.output
+gov.nasa.jpl.output.adaptation
+gov.nasa.jpl.output.parallel
+gov.nasa.jpl.output.tol
+gov.nasa.jpl.resource
+gov.nasa.jpl.scheduler
+gov.nasa.jpl.sequencing
+gov.nasa.jpl.sequencing.sasfSequencing
+gov.nasa.jpl.sequencing.satfSequencing
+gov.nasa.jpl.spice

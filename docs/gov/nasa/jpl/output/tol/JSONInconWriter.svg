@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="219px" preserveAspectRatio="none" style="width:543px;height:219px;" version="1.1" viewBox="0 0 543 219" width="543px" zoomAndPan="magnify"><defs><filter height="300%" id="f7ctyf4xwsq3y" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[c0c75429abf50c0450b96aa4bae062ae]
+class gov.nasa.jpl.output.tol.JSONInconWriter--><a href="JSONInconWriter.html" target="_top" title="JSONInconWriter.html" xlink:actuate="onRequest" xlink:href="JSONInconWriter.html" xlink:show="new" xlink:title="JSONInconWriter.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f7ctyf4xwsq3y)" height="59.2207" id="gov.nasa.jpl.output.tol.JSONInconWriter" style="stroke: #A80036; stroke-width: 1.5;" width="526" x="6" y="126.78"/><ellipse cx="208.75" cy="145.9128" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M211.2231,152.0559 Q210.6421,152.3547 210.0029,152.5041 Q209.3638,152.6535 208.6582,152.6535 Q206.1514,152.6535 204.8315,151.0017 Q203.5117,149.3498 203.5117,146.2287 Q203.5117,143.0993 204.8315,141.4475 Q206.1514,139.7956 208.6582,139.7956 Q209.3638,139.7956 210.0112,139.945 Q210.6587,140.0945 211.2231,140.3933 L211.2231,143.1159 Q210.5923,142.5349 209.9988,142.2651 Q209.4053,141.9953 208.7744,141.9953 Q207.4297,141.9953 206.7449,143.062 Q206.0601,144.1286 206.0601,146.2287 Q206.0601,148.3205 206.7449,149.3872 Q207.4297,150.4538 208.7744,150.4538 Q209.4053,150.4538 209.9988,150.1841 Q210.5923,149.9143 211.2231,149.3332 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="112" x="229.25" y="145.3152">JSONInconWriter</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="109" x="230.75" y="157.9363">gov.nasa.jpl.output.tol</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="531" y1="165.0456" y2="165.0456"/><ellipse cx="17" cy="176.0456" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="500" x="26" y="179.6804">writeFileContents(ActivityInstanceList, ResourceList, ConstraintInstanceList, Time, Time): void</text></a><!--MD5=[b6cc7f9733b3bb21e0572bab9cf3c83b]
+class gov.nasa.jpl.output.TOLWriter--><a href="../TOLWriter.html" target="_top" title="../TOLWriter.html" xlink:actuate="onRequest" xlink:href="../TOLWriter.html" xlink:show="new" xlink:title="../TOLWriter.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f7ctyf4xwsq3y)" height="59.2207" id="gov.nasa.jpl.output.TOLWriter" style="stroke: #A80036; stroke-width: 1.5;" width="526" x="6" y="7.56"/><ellipse cx="218.25" cy="26.6928" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M218.1133,22.041 L216.9595,27.1127 L219.2754,27.1127 Z M216.6191,19.7997 L219.6157,19.7997 L222.9609,32.1928 L220.5122,32.1928 L219.7485,29.1298 L216.4697,29.1298 L215.7227,32.1928 L213.2739,32.1928 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="68" x="251.25" y="26.0952">TOLWriter</text><text fill="#000000" font-family="sans-serif" font-size="10" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="93" x="238.75" y="38.7163">gov.nasa.jpl.output</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="531" y1="45.8256" y2="45.8256"/><ellipse cx="17" cy="56.8256" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="500" x="26" y="60.4604">writeFileContents(ActivityInstanceList, ResourceList, ConstraintInstanceList, Time, Time): void</text></a><!--MD5=[75a52b37ce426ca20218d67418527532]
+reverse link gov.nasa.jpl.output.TOLWriter to gov.nasa.jpl.output.tol.JSONInconWriter--><path d="M269,88.56 C269,101.47 269,114.92 269,126.34 " fill="none" id="gov.nasa.jpl.output.TOLWriter&lt;-gov.nasa.jpl.output.tol.JSONInconWriter" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="262,88.66,269,68.66,276,88.66,262,88.66" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="184" y="205.668">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[9ebff2bd0fdf547e32574474e11eabb1]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>JSONInconWriter\n<size:10>gov.nasa.jpl.output.tol" as gov.nasa.jpl.output.tol.JSONInconWriter [[JSONInconWriter.html]] {
+        +writeFileContents(ActivityInstanceList, ResourceList, ConstraintInstanceList, Time, Time): void
+    }
+
+    abstract class "<size:14>TOLWriter\n<size:10>gov.nasa.jpl.output" as gov.nasa.jpl.output.TOLWriter [[../TOLWriter.html]] {
+        {abstract} +writeFileContents(ActivityInstanceList, ResourceList, ConstraintInstanceList, Time, Time): void
+    }
+
+    gov.nasa.jpl.output.TOLWriter <|- - gov.nasa.jpl.output.tol.JSONInconWriter
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

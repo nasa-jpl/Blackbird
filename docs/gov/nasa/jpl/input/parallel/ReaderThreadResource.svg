@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="232px" preserveAspectRatio="none" style="width:243px;height:232px;" version="1.1" viewBox="0 0 243 232" width="243px" zoomAndPan="magnify"><defs><filter height="300%" id="f119s7q9bynpvf" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[4d1cf1132bd90db52411b557dc0e6c1a]
+class gov.nasa.jpl.input.parallel.ReaderThreadResource--><a href="ReaderThreadResource.html" target="_top" title="ReaderThreadResource.html" xlink:actuate="onRequest" xlink:href="ReaderThreadResource.html" xlink:show="new" xlink:title="ReaderThreadResource.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f119s7q9bynpvf)" height="72.1758" id="gov.nasa.jpl.input.parallel.ReaderThreadResource" style="stroke: #A80036; stroke-width: 1.5;" width="226" x="6" y="126.82"/><ellipse cx="36.3" cy="145.9528" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M38.7731,152.0959 Q38.1921,152.3947 37.5529,152.5441 Q36.9138,152.6935 36.2082,152.6935 Q33.7014,152.6935 32.3815,151.0417 Q31.0617,149.3898 31.0617,146.2687 Q31.0617,143.1393 32.3815,141.4875 Q33.7014,139.8356 36.2082,139.8356 Q36.9138,139.8356 37.5612,139.985 Q38.2087,140.1345 38.7731,140.4333 L38.7731,143.1559 Q38.1423,142.5749 37.5488,142.3051 Q36.9553,142.0353 36.3244,142.0353 Q34.9797,142.0353 34.2949,143.102 Q33.6101,144.1686 33.6101,146.2687 Q33.6101,148.3605 34.2949,149.4272 Q34.9797,150.4938 36.3244,150.4938 Q36.9553,150.4938 37.5488,150.2241 Q38.1423,149.9543 38.7731,149.3732 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="160" x="53.7" y="145.3552">ReaderThreadResource</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="126" x="70.7" y="157.9763">gov.nasa.jpl.input.parallel</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="231" y1="165.0856" y2="165.0856"/><ellipse cx="17" cy="176.0856" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="200" x="26" y="179.7204">ReaderThreadResource(File, boolean)</text><ellipse cx="17" cy="189.0407" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="56" x="26" y="192.6755">run(): void</text></a><!--MD5=[8dac795f9edbf65a524ac462449c98fb]
+class java.lang.Runnable--><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Runnable.html?is-external=true" target="_top" title="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Runnable.html?is-external=true" xlink:actuate="onRequest" xlink:href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Runnable.html?is-external=true" xlink:show="new" xlink:title="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Runnable.html?is-external=true" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f119s7q9bynpvf)" height="59.2207" id="java.lang.Runnable" style="stroke: #A80036; stroke-width: 1.5;" width="97" x="70.5" y="7.6"/><ellipse cx="85.5" cy="26.7328" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M81.9277,22.9979 L81.9277,20.8397 L89.3071,20.8397 L89.3071,22.9979 L86.8418,22.9979 L86.8418,31.0746 L89.3071,31.0746 L89.3071,33.2328 L81.9277,33.2328 L81.9277,31.0746 L84.3931,31.0746 L84.3931,22.9979 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="99.5" y="26.1352">Runnable</text><text fill="#000000" font-family="sans-serif" font-size="10" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="44" x="110" y="38.7562">java.lang</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="71.5" x2="166.5" y1="45.8656" y2="45.8656"/><ellipse cx="81.5" cy="56.8656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="56" x="90.5" y="60.5004">run(): void</text></a><!--MD5=[6d41cffce9a91c514be577ecabac25f0]
+reverse link java.lang.Runnable to gov.nasa.jpl.input.parallel.ReaderThreadResource--><path d="M119,88.32 C119,101.11 119,114.59 119,126.47 " fill="none" id="java.lang.Runnable&lt;-gov.nasa.jpl.input.parallel.ReaderThreadResource" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="112,88.73,119,68.73,126,88.73,112,88.73" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="34" y="218.668">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[c20143b16e29afc5721088dd62b50a97]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>ReaderThreadResource\n<size:10>gov.nasa.jpl.input.parallel" as gov.nasa.jpl.input.parallel.ReaderThreadResource [[ReaderThreadResource.html]] {
+        +ReaderThreadResource(File, boolean)
+        +run(): void
+    }
+
+    interface "<size:14>Runnable\n<size:10>java.lang" as java.lang.Runnable [[https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Runnable.html?is-external=true]] {
+        {abstract} +run(): void
+    }
+
+    java.lang.Runnable <|.. gov.nasa.jpl.input.parallel.ReaderThreadResource
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

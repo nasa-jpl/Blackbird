@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="233px" preserveAspectRatio="none" style="width:247px;height:233px;" version="1.1" viewBox="0 0 247 233" width="247px" zoomAndPan="magnify"><defs><filter height="300%" id="fsiso8fk6do8k" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[ebc6d0b9ed7860b6b20f51e84cf9c1e4]
+class gov.nasa.jpl.sequencing.sasfSequencing.SASFStep--><a href="SASFStep.html" target="_top" title="SASFStep.html" xlink:actuate="onRequest" xlink:href="SASFStep.html" xlink:show="new" xlink:title="SASFStep.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#fsiso8fk6do8k)" height="196.7715" id="gov.nasa.jpl.sequencing.sasfSequencing.SASFStep" style="stroke: #A80036; stroke-width: 1.5;" width="229" x="7" y="7"/><ellipse cx="23.35" cy="26.1328" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M23.2133,21.481 L22.0595,26.5527 L24.3754,26.5527 Z M21.7191,19.2397 L24.7157,19.2397 L28.0609,31.6328 L25.6122,31.6328 L24.8485,28.5698 L21.5697,28.5698 L20.8227,31.6328 L18.3739,31.6328 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="64" x="102.65" y="25.5352">SASFStep</text><text fill="#000000" font-family="sans-serif" font-size="10" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="194" x="37.65" y="38.1563">gov.nasa.jpl.sequencing.sasfSequencing</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="235" y1="45.2656" y2="45.2656"/><polygon fill="none" points="18,51.2656,22,55.2656,18,59.2656,14,55.2656" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="87" x="27" y="59.9004">stepType: String</text><polygon fill="none" points="18,64.2207,22,68.2207,18,72.2207,14,68.2207" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="80" x="27" y="72.8555">stepStart: Time</text><polygon fill="none" points="18,77.1758,22,81.1758,18,85.1758,14,81.1758" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="88" x="27" y="85.8105">comment: String</text><polygon fill="none" points="18,90.1309,22,94.1309,18,98.1309,14,94.1309" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="66" x="27" y="98.7656">ntext: String</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="8" x2="235" y1="105.0859" y2="105.0859"/><polygon fill="#FFFF44" points="18,111.0859,22,115.0859,18,119.0859,14,115.0859" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="121" x="27" y="119.7207">SASFStep(String, Time)</text><polygon fill="#FFFF44" points="18,124.041,22,128.041,18,132.041,14,128.041" style="stroke: #B38D22; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="200" x="27" y="132.6758">formatStepArgs(List&lt;String&gt;): String</text><ellipse cx="18" cy="141.9961" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="203" x="27" y="145.6309">writeStepHeader(Integer, Time): String</text><ellipse cx="18" cy="154.9512" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="121" x="27" y="158.5859">writeStepBody(): String</text><ellipse cx="18" cy="167.9063" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="130" x="27" y="171.541">writeStepFooter(): String</text><ellipse cx="18" cy="180.8613" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="141" x="27" y="184.4961">addComment(String): void</text><ellipse cx="18" cy="193.8164" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="121" x="27" y="197.4512">addNText(String): void</text></a><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="30.5" y="220.4395">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[2769a733ca87395a716d746b031e0a62]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    abstract class "<size:14>SASFStep\n<size:10>gov.nasa.jpl.sequencing.sasfSequencing" as gov.nasa.jpl.sequencing.sasfSequencing.SASFStep [[SASFStep.html]] {
+        #stepType: String
+        #stepStart: Time
+        #comment: String
+        #ntext: String
+        #SASFStep(String, Time)
+        {static} #formatStepArgs(List<String>): String
+        +writeStepHeader(Integer, Time): String
+        {abstract} +writeStepBody(): String
+        +writeStepFooter(): String
+        +addComment(String): void
+        +addNText(String): void
+    }
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

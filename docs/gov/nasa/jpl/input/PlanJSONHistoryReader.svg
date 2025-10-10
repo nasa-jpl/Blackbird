@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="232px" preserveAspectRatio="none" style="width:379px;height:232px;" version="1.1" viewBox="0 0 379 232" width="379px" zoomAndPan="magnify"><defs><filter height="300%" id="fdhjqi2irbz9h" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[f9c3d7da6ce25e53486f2a1e0c8e9ad6]
+class gov.nasa.jpl.input.PlanJSONHistoryReader--><a href="PlanJSONHistoryReader.html" target="_top" title="PlanJSONHistoryReader.html" xlink:actuate="onRequest" xlink:href="PlanJSONHistoryReader.html" xlink:show="new" xlink:title="PlanJSONHistoryReader.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#fdhjqi2irbz9h)" height="72.1758" id="gov.nasa.jpl.input.PlanJSONHistoryReader" style="stroke: #A80036; stroke-width: 1.5;" width="362" x="6" y="126.82"/><ellipse cx="103.75" cy="145.9528" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M106.2231,152.0959 Q105.6421,152.3947 105.0029,152.5441 Q104.3638,152.6935 103.6582,152.6935 Q101.1514,152.6935 99.8315,151.0417 Q98.5117,149.3898 98.5117,146.2687 Q98.5117,143.1393 99.8315,141.4875 Q101.1514,139.8356 103.6582,139.8356 Q104.3638,139.8356 105.0112,139.985 Q105.6587,140.1345 106.2231,140.4333 L106.2231,143.1559 Q105.5923,142.5749 104.9988,142.3051 Q104.4053,142.0353 103.7744,142.0353 Q102.4297,142.0353 101.7449,143.102 Q101.0601,144.1686 101.0601,146.2687 Q101.0601,148.3605 101.7449,149.4272 Q102.4297,150.4938 103.7744,150.4938 Q104.4053,150.4938 104.9988,150.2241 Q105.5923,149.9543 106.2231,149.3732 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="158" x="124.25" y="145.3552">PlanJSONHistoryReader</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="86" x="160.25" y="157.9763">gov.nasa.jpl.input</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="367" y1="165.0856" y2="165.0856"/><ellipse cx="17" cy="176.0856" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="164" x="26" y="179.7204">PlanJSONHistoryReader(String)</text><ellipse cx="17" cy="189.0407" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="336" x="26" y="192.6755">readInHistoryOfActivitiesAndResource(boolean, boolean): void</text></a><!--MD5=[77925f11b74d0d496fb7c39b922ce28e]
+class gov.nasa.jpl.input.HistoryReader--><a href="HistoryReader.html" target="_top" title="HistoryReader.html" xlink:actuate="onRequest" xlink:href="HistoryReader.html" xlink:show="new" xlink:title="HistoryReader.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#fdhjqi2irbz9h)" height="59.2207" id="gov.nasa.jpl.input.HistoryReader" style="stroke: #A80036; stroke-width: 1.5;" width="362" x="6" y="7.6"/><ellipse cx="134.75" cy="26.7328" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M131.1777,22.9979 L131.1777,20.8397 L138.5571,20.8397 L138.5571,22.9979 L136.0918,22.9979 L136.0918,31.0746 L138.5571,31.0746 L138.5571,33.2328 L131.1777,33.2328 L131.1777,31.0746 L133.6431,31.0746 L133.6431,22.9979 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="96" x="155.25" y="26.1352">HistoryReader</text><text fill="#000000" font-family="sans-serif" font-size="10" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="86" x="160.25" y="38.7562">gov.nasa.jpl.input</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="367" y1="45.8656" y2="45.8656"/><ellipse cx="17" cy="56.8656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="336" x="26" y="60.5004">readInHistoryOfActivitiesAndResource(boolean, boolean): void</text></a><!--MD5=[b2da8f93e45e677d91aa04871e7dfef6]
+reverse link gov.nasa.jpl.input.HistoryReader to gov.nasa.jpl.input.PlanJSONHistoryReader--><path d="M187,88.32 C187,101.11 187,114.59 187,126.47 " fill="none" id="gov.nasa.jpl.input.HistoryReader&lt;-gov.nasa.jpl.input.PlanJSONHistoryReader" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="180,88.73,187,68.73,194,88.73,180,88.73" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="102" y="218.668">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[a1f4a203f5b515d02a7859f556534963]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>PlanJSONHistoryReader\n<size:10>gov.nasa.jpl.input" as gov.nasa.jpl.input.PlanJSONHistoryReader [[PlanJSONHistoryReader.html]] {
+        +PlanJSONHistoryReader(String)
+        +readInHistoryOfActivitiesAndResource(boolean, boolean): void
+    }
+
+    interface "<size:14>HistoryReader\n<size:10>gov.nasa.jpl.input" as gov.nasa.jpl.input.HistoryReader [[HistoryReader.html]] {
+        {abstract} +readInHistoryOfActivitiesAndResource(boolean, boolean): void
+    }
+
+    gov.nasa.jpl.input.HistoryReader <|.. gov.nasa.jpl.input.PlanJSONHistoryReader
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

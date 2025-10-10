@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="232px" preserveAspectRatio="none" style="width:243px;height:232px;" version="1.1" viewBox="0 0 243 232" width="243px" zoomAndPan="magnify"><defs><filter height="300%" id="fp9yxu07z0thi" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[5a6946420e7452783f793c7a730be229]
+class gov.nasa.jpl.sequencing.sasfSequencing.SASFNote--><a href="SASFNote.html" target="_top" title="SASFNote.html" xlink:actuate="onRequest" xlink:href="SASFNote.html" xlink:show="new" xlink:title="SASFNote.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#fp9yxu07z0thi)" height="72.1758" id="gov.nasa.jpl.sequencing.sasfSequencing.SASFNote" style="stroke: #A80036; stroke-width: 1.5;" width="226" x="6" y="126.82"/><ellipse cx="21" cy="145.9528" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M23.4731,152.0959 Q22.8921,152.3947 22.2529,152.5441 Q21.6138,152.6935 20.9082,152.6935 Q18.4014,152.6935 17.0815,151.0417 Q15.7617,149.3898 15.7617,146.2687 Q15.7617,143.1393 17.0815,141.4875 Q18.4014,139.8356 20.9082,139.8356 Q21.6138,139.8356 22.2612,139.985 Q22.9087,140.1345 23.4731,140.4333 L23.4731,143.1559 Q22.8423,142.5749 22.2488,142.3051 Q21.6553,142.0353 21.0244,142.0353 Q19.6797,142.0353 18.9949,143.102 Q18.3101,144.1686 18.3101,146.2687 Q18.3101,148.3605 18.9949,149.4272 Q19.6797,150.4938 21.0244,150.4938 Q21.6553,150.4938 22.2488,150.2241 Q22.8423,149.9543 23.4731,149.3732 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="66" x="99" y="145.3552">SASFNote</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="194" x="35" y="157.9763">gov.nasa.jpl.sequencing.sasfSequencing</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="231" y1="165.0856" y2="165.0856"/><ellipse cx="17" cy="176.0856" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="123" x="26" y="179.7204">SASFNote(Time, String)</text><ellipse cx="17" cy="189.0407" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="121" x="26" y="192.6755">writeStepBody(): String</text></a><!--MD5=[ebc6d0b9ed7860b6b20f51e84cf9c1e4]
+class gov.nasa.jpl.sequencing.sasfSequencing.SASFStep--><a href="SASFStep.html" target="_top" title="SASFStep.html" xlink:actuate="onRequest" xlink:href="SASFStep.html" xlink:show="new" xlink:title="SASFStep.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#fp9yxu07z0thi)" height="59.2207" id="gov.nasa.jpl.sequencing.sasfSequencing.SASFStep" style="stroke: #A80036; stroke-width: 1.5;" width="226" x="6" y="7.6"/><ellipse cx="21" cy="26.7328" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M20.8633,22.081 L19.7095,27.1527 L22.0254,27.1527 Z M19.3691,19.8397 L22.3657,19.8397 L25.7109,32.2328 L23.2622,32.2328 L22.4985,29.1698 L19.2197,29.1698 L18.4727,32.2328 L16.0239,32.2328 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="64" x="100" y="26.1352">SASFStep</text><text fill="#000000" font-family="sans-serif" font-size="10" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="194" x="35" y="38.7562">gov.nasa.jpl.sequencing.sasfSequencing</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="231" y1="45.8656" y2="45.8656"/><ellipse cx="17" cy="56.8656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="121" x="26" y="60.5004">writeStepBody(): String</text></a><!--MD5=[39e74036a06490840c7d8b3bbdd8aa8d]
+reverse link gov.nasa.jpl.sequencing.sasfSequencing.SASFStep to gov.nasa.jpl.sequencing.sasfSequencing.SASFNote--><path d="M119,88.32 C119,101.11 119,114.59 119,126.47 " fill="none" id="gov.nasa.jpl.sequencing.sasfSequencing.SASFStep&lt;-gov.nasa.jpl.sequencing.sasfSequencing.SASFNote" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="112,88.73,119,68.73,126,88.73,112,88.73" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="34" y="218.668">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[ceafc6cc2e068641c2dc50842b4a0e60]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>SASFNote\n<size:10>gov.nasa.jpl.sequencing.sasfSequencing" as gov.nasa.jpl.sequencing.sasfSequencing.SASFNote [[SASFNote.html]] {
+        +SASFNote(Time, String)
+        +writeStepBody(): String
+    }
+
+    abstract class "<size:14>SASFStep\n<size:10>gov.nasa.jpl.sequencing.sasfSequencing" as gov.nasa.jpl.sequencing.sasfSequencing.SASFStep [[SASFStep.html]] {
+        {abstract} +writeStepBody(): String
+    }
+
+    gov.nasa.jpl.sequencing.sasfSequencing.SASFStep <|- - gov.nasa.jpl.sequencing.sasfSequencing.SASFNote
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

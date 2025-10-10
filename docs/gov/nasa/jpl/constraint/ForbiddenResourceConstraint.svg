@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="224px" preserveAspectRatio="none" style="width:399px;height:224px;" version="1.1" viewBox="0 0 399 224" width="399px" zoomAndPan="magnify"><defs><filter height="300%" id="f1jvigcfeo0dzw" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[f51f5da58264093fd33cd58fa9ba500d]
+class gov.nasa.jpl.constraint.ForbiddenResourceConstraint--><a href="ForbiddenResourceConstraint.html" target="_top" title="ForbiddenResourceConstraint.html" xlink:actuate="onRequest" xlink:href="ForbiddenResourceConstraint.html" xlink:show="new" xlink:title="ForbiddenResourceConstraint.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f1jvigcfeo0dzw)" height="85.1309" id="gov.nasa.jpl.constraint.ForbiddenResourceConstraint" style="stroke: #A80036; stroke-width: 1.5;" width="382" x="6" y="105.87"/><ellipse cx="89.75" cy="125.0028" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M92.2231,131.1459 Q91.6421,131.4447 91.0029,131.5941 Q90.3638,131.7435 89.6582,131.7435 Q87.1514,131.7435 85.8315,130.0917 Q84.5117,128.4398 84.5117,125.3187 Q84.5117,122.1893 85.8315,120.5375 Q87.1514,118.8856 89.6582,118.8856 Q90.3638,118.8856 91.0112,119.035 Q91.6587,119.1845 92.2231,119.4833 L92.2231,122.2059 Q91.5923,121.6249 90.9988,121.3551 Q90.4053,121.0853 89.7744,121.0853 Q88.4297,121.0853 87.7449,122.152 Q87.0601,123.2186 87.0601,125.3187 Q87.0601,127.4105 87.7449,128.4772 Q88.4297,129.5438 89.7744,129.5438 Q90.4053,129.5438 90.9988,129.2741 Q91.5923,129.0043 92.2231,128.4232 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="206" x="110.25" y="124.4052">ForbiddenResourceConstraint</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="110" x="158.25" y="137.0263">gov.nasa.jpl.constraint</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="387" y1="144.1356" y2="144.1356"/><ellipse cx="17" cy="155.1356" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="356" x="26" y="158.7704">ForbiddenResourceConstraint(Condition, String, ViolationSeverity)</text><ellipse cx="17" cy="168.0907" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="241" x="26" y="171.7255">propertyChange(PropertyChangeEvent): void</text><ellipse cx="17" cy="181.0458" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="208" x="26" y="184.6805">finalizeConstraintAfterModeling(): void</text></a><!--MD5=[dea5b593040d675373ad1fa7b4d4116e]
+class gov.nasa.jpl.constraint.ResourceConstraint--><a href="ResourceConstraint.html" target="_top" title="ResourceConstraint.html" xlink:actuate="onRequest" xlink:href="ResourceConstraint.html" xlink:show="new" xlink:title="ResourceConstraint.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#f1jvigcfeo0dzw)" height="38.2656" id="gov.nasa.jpl.constraint.ResourceConstraint" style="stroke: #A80036; stroke-width: 1.5;" width="167" x="113.5" y="7.6"/><ellipse cx="128.5" cy="26.7328" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M128.3633,22.081 L127.2095,27.1527 L129.5254,27.1527 Z M126.8691,19.8397 L129.8657,19.8397 L133.2109,32.2328 L130.7622,32.2328 L129.9985,29.1698 L126.7197,29.1698 L125.9727,32.2328 L123.5239,32.2328 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="135" x="142.5" y="26.1352">ResourceConstraint</text><text fill="#000000" font-family="sans-serif" font-size="10" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="110" x="155" y="38.7562">gov.nasa.jpl.constraint</text></a><!--MD5=[091593782936d3316c1d4e454875b46c]
+reverse link gov.nasa.jpl.constraint.ResourceConstraint to gov.nasa.jpl.constraint.ForbiddenResourceConstraint--><path d="M197,67.43 C197,79.61 197,93.06 197,105.39 " fill="none" id="gov.nasa.jpl.constraint.ResourceConstraint&lt;-gov.nasa.jpl.constraint.ForbiddenResourceConstraint" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="190,67.69,197,47.69,204,67.69,190,67.69" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="112" y="210.668">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[812a370d81351b04bb64bb137efd4a06]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>ForbiddenResourceConstraint\n<size:10>gov.nasa.jpl.constraint" as gov.nasa.jpl.constraint.ForbiddenResourceConstraint [[ForbiddenResourceConstraint.html]] {
+        +ForbiddenResourceConstraint(Condition, String, ViolationSeverity)
+        +propertyChange(PropertyChangeEvent): void
+        +finalizeConstraintAfterModeling(): void
+    }
+
+    abstract class "<size:14>ResourceConstraint\n<size:10>gov.nasa.jpl.constraint" as gov.nasa.jpl.constraint.ResourceConstraint [[ResourceConstraint.html]]
+
+    gov.nasa.jpl.constraint.ResourceConstraint <|- - gov.nasa.jpl.constraint.ForbiddenResourceConstraint
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="232px" preserveAspectRatio="none" style="width:444px;height:232px;" version="1.1" viewBox="0 0 444 232" width="444px" zoomAndPan="magnify"><defs><filter height="300%" id="fc2knftiivpvp" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[23d1dd1314c7218e6938320febf221ac]
+class gov.nasa.jpl.output.adaptation.JSONDictionaryWriter--><a href="JSONDictionaryWriter.html" target="_top" title="JSONDictionaryWriter.html" xlink:actuate="onRequest" xlink:href="JSONDictionaryWriter.html" xlink:show="new" xlink:title="JSONDictionaryWriter.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#fc2knftiivpvp)" height="72.1758" id="gov.nasa.jpl.output.adaptation.JSONDictionaryWriter" style="stroke: #A80036; stroke-width: 1.5;" width="427" x="6" y="126.82"/><ellipse cx="140.75" cy="145.9528" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M143.2231,152.0959 Q142.6421,152.3947 142.0029,152.5441 Q141.3638,152.6935 140.6582,152.6935 Q138.1514,152.6935 136.8315,151.0417 Q135.5117,149.3898 135.5117,146.2687 Q135.5117,143.1393 136.8315,141.4875 Q138.1514,139.8356 140.6582,139.8356 Q141.3638,139.8356 142.0112,139.985 Q142.6587,140.1345 143.2231,140.4333 L143.2231,143.1559 Q142.5923,142.5749 141.9988,142.3051 Q141.4053,142.0353 140.7744,142.0353 Q139.4297,142.0353 138.7449,143.102 Q138.0601,144.1686 138.0601,146.2687 Q138.0601,148.3605 138.7449,149.4272 Q139.4297,150.4938 140.7744,150.4938 Q141.4053,150.4938 141.9988,150.2241 Q142.5923,149.9543 143.2231,149.3732 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="143" x="164.25" y="145.3552">JSONDictionaryWriter</text><text fill="#000000" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="149" x="161.25" y="157.9763">gov.nasa.jpl.output.adaptation</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="432" y1="165.0856" y2="165.0856"/><ellipse cx="17" cy="176.0856" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="401" x="26" y="179.7204">writeFileContents(List&lt;String&gt;, ResourceList, ConstraintInstanceList): void</text><ellipse cx="17" cy="189.0407" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="179" x="26" y="192.6755">activityTypeToJson(String): String</text></a><!--MD5=[59280e5b14d3330bd8da902a95494c96]
+class gov.nasa.jpl.output.adaptation.AdaptationWriter--><a href="AdaptationWriter.html" target="_top" title="AdaptationWriter.html" xlink:actuate="onRequest" xlink:href="AdaptationWriter.html" xlink:show="new" xlink:title="AdaptationWriter.html" xlink:type="simple"><rect fill="#FEFECE" filter="url(#fc2knftiivpvp)" height="59.2207" id="gov.nasa.jpl.output.adaptation.AdaptationWriter" style="stroke: #A80036; stroke-width: 1.5;" width="427" x="6" y="7.6"/><ellipse cx="140.75" cy="26.7328" fill="#A9DCDF" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M140.6133,22.081 L139.4595,27.1527 L141.7754,27.1527 Z M139.1191,19.8397 L142.1157,19.8397 L145.4609,32.2328 L143.0122,32.2328 L142.2485,29.1698 L138.9697,29.1698 L138.2227,32.2328 L135.7739,32.2328 Z "/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="117" x="177.25" y="26.1352">AdaptationWriter</text><text fill="#000000" font-family="sans-serif" font-size="10" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="149" x="161.25" y="38.7562">gov.nasa.jpl.output.adaptation</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="432" y1="45.8656" y2="45.8656"/><ellipse cx="17" cy="56.8656" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="401" x="26" y="60.5004">writeFileContents(List&lt;String&gt;, ResourceList, ConstraintInstanceList): void</text></a><!--MD5=[7aa69a67fb105c413f2eb0bd026c555f]
+reverse link gov.nasa.jpl.output.adaptation.AdaptationWriter to gov.nasa.jpl.output.adaptation.JSONDictionaryWriter--><path d="M219.5,88.32 C219.5,101.11 219.5,114.59 219.5,126.47 " fill="none" id="gov.nasa.jpl.output.adaptation.AdaptationWriter&lt;-gov.nasa.jpl.output.adaptation.JSONDictionaryWriter" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="none" points="212.5,88.73,219.5,68.73,226.5,88.73,212.5,88.73" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="182" x="134.5" y="218.668">UMLDoclet 2.0.8, PlantUML 1.2020.01</text><!--MD5=[7b9608bc2cf8aff74bdcda009fa9684b]
+@startuml
+    set namespaceSeparator none
+    hide empty fields
+    hide empty methods
+
+    class "<size:14>JSONDictionaryWriter\n<size:10>gov.nasa.jpl.output.adaptation" as gov.nasa.jpl.output.adaptation.JSONDictionaryWriter [[JSONDictionaryWriter.html]] {
+        +writeFileContents(List<String>, ResourceList, ConstraintInstanceList): void
+        +activityTypeToJson(String): String
+    }
+
+    abstract class "<size:14>AdaptationWriter\n<size:10>gov.nasa.jpl.output.adaptation" as gov.nasa.jpl.output.adaptation.AdaptationWriter [[AdaptationWriter.html]] {
+        {abstract} +writeFileContents(List<String>, ResourceList, ConstraintInstanceList): void
+    }
+
+    gov.nasa.jpl.output.adaptation.AdaptationWriter <|- - gov.nasa.jpl.output.adaptation.JSONDictionaryWriter
+
+    center footer UMLDoclet 2.0.8, PlantUML 1.2020.01
+@enduml
+
+PlantUML version 1.2020.01(Sun Feb 16 09:40:32 PST 2020)
+(APACHE source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 17.0.6+10
+Operating System: Mac OS X
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
