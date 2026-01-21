@@ -52,7 +52,7 @@
         <dependency>
             <groupId>gov.nasa.jpl</groupId>
             <artifactId>jpl_time</artifactId>
-            <version>2025-10a</version>
+            <version>2026-01a</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
