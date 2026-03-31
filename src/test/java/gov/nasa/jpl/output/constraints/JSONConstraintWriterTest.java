@@ -5,9 +5,11 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import gov.nasa.jpl.activity.ActivityInstanceList;
+import gov.nasa.jpl.command.CommandController;
 import gov.nasa.jpl.common.BaseTest;
 import gov.nasa.jpl.constraint.Constraint;
 import gov.nasa.jpl.constraint.ConstraintInstanceList;
+import gov.nasa.jpl.engine.AdaptationException;
 import gov.nasa.jpl.engine.ModelingEngine;
 import gov.nasa.jpl.engine.Setup;
 import gov.nasa.jpl.exampleAdaptation.ActivityTwo;
@@ -22,6 +24,7 @@ import java.util.Map;
 import static gov.nasa.jpl.output.tol.JSONConstraintWriter.getConstraintViolationsForWriting;
 import static gov.nasa.jpl.output.tol.JSONConstraintWriter.getNonDeactivatedConstraintsForWriting;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class JSONConstraintWriterTest extends BaseTest {
     @Test
@@ -88,5 +91,18 @@ public class JSONConstraintWriterTest extends BaseTest {
         assertEquals(false, violations.containsKey("forbidden"));
 
         Time.setDefaultOutputPrecision(6);
+    }
+
+    @Test
+    public void testConstraintOutUsingCommand(){
+        try{
+            // this should fail with an AdaptationException because other tests leak unnammed Constraint objects into the global Constraint list, but that's ok because it provides a natural test
+            CommandController.issueCommand("WRITE", "example.constraints.json");
+        }
+        catch(AdaptationException e){
+            if(!e.getMessage().contains("Constraint declared without name.")){
+                fail();
+            }
+        }
     }
 }
