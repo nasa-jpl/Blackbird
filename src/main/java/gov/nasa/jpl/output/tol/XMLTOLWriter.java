@@ -34,10 +34,18 @@ public class XMLTOLWriter extends TOLWriter {
         exec = Executors.newFixedThreadPool(numAvailableCores);
     }
 
+    @Override
     public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime) {
+        writeFileContents(actList, resList, conList, startTime, endTime, null);
+    }
+
+    @Override
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
         writeXMLHeader();
         writeResourceMetadata(resList);
-        writeResourceBoundsAtStart(resList, startTime);
+        if (resourcesWindow == null || RegexUtilities.PAST_SET_STRING.equals(resourcesWindow)) {
+            writeResourceBoundsAtStart(resList, startTime);
+        }
         writeTOLRecords(actList, resList, conList, startTime, endTime);
         writeResFinalVal(resList, endTime);
         writeXMLFooter();

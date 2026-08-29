@@ -25,6 +25,9 @@ public abstract class TOLWriter {
 
     public abstract void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime);
 
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
+        writeFileContents(actList, resList, conList, startTime, endTime);
+    }
     public void closeFile() {
         writer.close();
     }
@@ -34,4 +37,12 @@ public abstract class TOLWriter {
         writeFileContents(actList, resList, conList, startTime, endTime);
         closeFile();
     }
+
+    public void dumpTimelinesToFile(String filename, ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
+        createFile(filename);
+        writeFileContents(actList, resList, conList, startTime, endTime, resourcesWindow);
+        closeFile();
+    }
+
+
 }

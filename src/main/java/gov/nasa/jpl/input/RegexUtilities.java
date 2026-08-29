@@ -35,6 +35,8 @@ public class RegexUtilities {
     public static final String SEQUENCE = "SEQUENCE";
     public static final String INCLUDE_STRING = "INCLUDE";
     public static final String EXCLUDE_STRING = "EXCLUDE";
+    public static final String PAST_SET_STRING = "setBeforeWindow";
+    public static final String CURRENT_SET_STRING = "setInWindow";
 
     // regex needed for command strings
     public static final Pattern COMMAND_ACT_PARAM_PATTERN = Pattern.compile("^\\s*(?<name>[a-zA-Z_0-9\\.]+)\\s*\\((?<params>.*)\\)\\s*$");
@@ -58,6 +60,10 @@ public class RegexUtilities {
             "|" + EXCLUDE_STRING + ")\\s+\\(\\s*(?<constraints>(?:[a-zA-Z0-9_]+\\s*?)+)\\s*\\)";
     public static final Pattern WRITE_CONSTRAINTS_PATTERN = Pattern.compile(WRITE_CONSTRAINTS_STRING);
 
+    public static final String RESOURCES_WINDOW_STRING = "RESOURCES_WINDOW\\s+(?<action>(?:" + PAST_SET_STRING +
+            "|" + CURRENT_SET_STRING + "))";
+    public static final Pattern RESOURCES_WINDOW_PATTERN = Pattern.compile(RESOURCES_WINDOW_STRING);
+
     public static final String WRITE_START_STRING = "START\\s+(?<time>" + Time.TIME_REGEX + ")";
     public static final String WRITE_END_STRING = "END\\s+(?<time>" + Time.TIME_REGEX + ")";
     public static final Pattern WRITE_START_PATTERN = Pattern.compile(WRITE_START_STRING);
@@ -65,7 +71,7 @@ public class RegexUtilities {
 
     // regex used to check that a WRITE command contains only expected options, and in expected format
     // replaceAll gets rid of all named regex groups to prevent collisions
-    public static final Pattern WRITE_COMMAND_PATTERN = Pattern.compile(("^([^\\s]+)(\\s+(((" + WRITE_START_STRING + ")|(" + WRITE_END_STRING + ")|(" + WRITE_ACTIVITIES_STRING + ")|(" + WRITE_RESOURCES_STRING + ")|(" + WRITE_CONSTRAINTS_STRING + "))\\s*)*)?$").replaceAll("\\?<[a-zA-Z0-9]+>", ""));
+    public static final Pattern WRITE_COMMAND_PATTERN = Pattern.compile(("^([^\\s]+)(\\s+(((" + WRITE_START_STRING + ")|(" + WRITE_END_STRING + ")|(" + WRITE_ACTIVITIES_STRING + ")|(" + WRITE_RESOURCES_STRING + ")|(" + WRITE_CONSTRAINTS_STRING + ")|(" + RESOURCES_WINDOW_STRING + "))\\s*)*)?$").replaceAll("\\?<[a-zA-Z0-9]+>", ""));
 
     // regex used to check that a CREATE_DICTIONARY command contains only expected options, and in expected format
     // replaceAll gets rid of all named regex groups to prevent collisions
