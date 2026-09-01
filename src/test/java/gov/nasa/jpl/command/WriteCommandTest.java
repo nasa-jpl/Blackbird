@@ -13,8 +13,7 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class WriteCommandTest extends BaseTest {
 
@@ -131,5 +130,35 @@ public class WriteCommandTest extends BaseTest {
             String expectedError = invalidFormatError + "\"" + command + "\"";
             assertEquals(e.getMessage(), expectedError);
         }
+    }
+
+    @Test
+    public void resourcesWindowSetBeforeWindow() {
+        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00 RESOURCES_WINDOW setBeforeWindow");
+        assertEquals("setBeforeWindow", command.resourcesWindow);
+    }
+
+    @Test
+    public void resourcesWindowSetInWindow() {
+        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00 RESOURCES_WINDOW setInWindow");
+        assertEquals("setInWindow", command.resourcesWindow);
+    }
+
+    @Test
+    public void resourcesWindowNotSpecified() {
+        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00");
+        assertNull(command.resourcesWindow);
+    }
+
+    @Test
+    public void resourcesWindowInvalidValue() {
+        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00");
+        assertNull(command.resourcesWindow);
+    }
+
+    @Test
+    public void resourcesWindowWithOtherFilters() {
+        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00 ACTIVITIES INCLUDE (ActivityOne) RESOURCES_WINDOW setInWindow");
+        assertEquals("setInWindow", command.resourcesWindow);
     }
 }
