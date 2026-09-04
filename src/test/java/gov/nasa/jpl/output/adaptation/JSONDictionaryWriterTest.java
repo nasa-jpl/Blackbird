@@ -1,15 +1,11 @@
 package gov.nasa.jpl.output.adaptation;
 
+import com.google.gson.*;
 import gov.nasa.jpl.command.CommandController;
 import gov.nasa.jpl.common.BaseTest;
-import gov.nasa.jpl.engine.Setup;
-import org.junit.Before;
 import org.junit.Test;
-import org.sonarsource.scanner.api.internal.shaded.minimaljson.Json;
-import org.sonarsource.scanner.api.internal.shaded.minimaljson.JsonValue;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 
 import static org.junit.Assert.*;
 
@@ -68,20 +64,13 @@ public class JSONDictionaryWriterTest extends BaseTest {
         CommandController.issueCommand("CREATE_DICTIONARY", testFileName);
 
         // check to make sure what we're writing out is actually valid JSON
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(testFileName));
-            StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
-            while(line != null){
-                sb.append(line);
-                line = br.readLine();
-            }
-            JsonValue hello = Json.parse(sb.toString());
+        JsonObject inputJSON;
 
-        } catch (java.io.IOException e) {
-            e.printStackTrace();
+        try(FileReader fr = new FileReader(testFileName)){
+            inputJSON = JsonParser.parseReader(fr).getAsJsonObject();
         }
-
-
+        catch(IOException | JsonIOException | JsonSyntaxException e) {
+            fail(e.getMessage());
+        }
     }
 }
