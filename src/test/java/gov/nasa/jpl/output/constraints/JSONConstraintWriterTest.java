@@ -22,6 +22,7 @@ import java.util.Map;
 import static gov.nasa.jpl.output.tol.JSONConstraintWriter.getConstraintViolationsForWriting;
 import static gov.nasa.jpl.output.tol.JSONConstraintWriter.getNonDeactivatedConstraintsForWriting;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class JSONConstraintWriterTest extends BaseTest {
     @Test
@@ -77,7 +78,7 @@ public class JSONConstraintWriterTest extends BaseTest {
                 "  }\n" +
                 "}";
 
-        assertEquals(expectedOut, result);
+        assertTrue("Strings do not match!\nExpected:\n" + expectedOut + "\nActual:\n" + result, expectedOut.equals(result));
 
         // filter one out
         violations = getConstraintViolationsForWriting(cleanConList, null, t.add(Duration.HOUR_DURATION.multiply(2)));

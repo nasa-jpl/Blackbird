@@ -88,7 +88,6 @@
                 <configuration>
                     <argLine>${surefireArgLine}</argLine>
                     <argLine>-Djava.library.path=lib</argLine>
-                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
         </plugins>
