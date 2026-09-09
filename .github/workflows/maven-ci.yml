@@ -17,6 +17,8 @@ jobs:
         with:
           java-version: '8'
           distribution: 'zulu'
+          server-id: github-read
+          settings-path: ${{ github.workspace }} # Generates settings.xml in the workspace directory
 
       - name: Build with Maven and run unit tests
         run: mvn --batch-mode verify
