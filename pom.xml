@@ -14,10 +14,18 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>github-read</id>
+            <name>GitHub Packages - Dependency Source</name>
+            <url>https://maven.pkg.github.com/nasa-jpl/jplTime</url>
+        </repository>
+    </repositories>
+
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>GitHub Packages</name>
+            <name>GitHub Packages - Deployment Destination</name>
             <url>https://maven.pkg.github.com/nasa-jpl/Blackbird</url>
         </repository>
     </distributionManagement>
