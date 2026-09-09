@@ -1,0 +1,44 @@
+name: Maven CI
+
+on:
+  pull_request:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'zulu'
+
+      - name: Build with Maven and run unit tests
+        run: mvn --batch-mode verify
+  deploy-to-packages:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write  # Crucial for publishing to GitHub Packages
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'zulu'
+          server-id: github
+          settings-path: ${{ github.workspace }} # Generates settings.xml in the workspace directory
+
+      - name: Deploy package with Maven
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
