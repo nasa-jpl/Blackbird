@@ -86,7 +86,7 @@ public class XMLTOLWriterTest extends BaseTest {
 
         String fileName = "test_past_resources.tol.xml";
         Time queryStart = Time.getDefaultReferenceTime().add(new Duration("01:00:00"));
-        CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString() + " RESOURCES_WINDOW setBeforeWindow");
+        CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString() + " RESOURCES_WINDOW includeIncon");
 
         File file = new File(fileName);
         try {
@@ -94,7 +94,7 @@ public class XMLTOLWriterTest extends BaseTest {
             String fileContent = scanner.useDelimiter("\\Z").next();
             scanner.close();
             // Should contain IntegratesA value at query start time (from before the window)
-            assertTrue("File should contain resource value at query start with setBeforeWindow",
+            assertTrue("File should contain resource value at query start with includeIncon",
                 fileContent.contains("IntegratesA") && fileContent.contains(queryStart.toString()) && fileContent.contains("RES_VAL"));
         } catch (FileNotFoundException e) {
             fail("Output file not created");
@@ -111,7 +111,7 @@ public class XMLTOLWriterTest extends BaseTest {
 
         String fileName = "test_no_past_resources.tol.xml";
         Time queryStart = Time.getDefaultReferenceTime().add(new Duration("01:00:00"));
-        CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString() + " RESOURCES_WINDOW setInWindow");
+        CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString() + " RESOURCES_WINDOW onlySetsInWindow");
 
         File file = new File(fileName);
         try {
@@ -119,7 +119,7 @@ public class XMLTOLWriterTest extends BaseTest {
             String fileContent = scanner.useDelimiter("\\Z").next();
             scanner.close();
             // Should NOT contain IntegratesA value at query start time with RES_VAL tag
-            assertFalse("File should NOT contain resource RES_VAL at query start with setInWindow",
+            assertFalse("File should NOT contain resource RES_VAL at query start with onlySetsInWindow",
                 fileContent.contains(queryStart.toString()) && fileContent.contains("IntegratesA") && fileContent.contains("RES_VAL"));
         } catch (FileNotFoundException e) {
             fail("Output file not created");
@@ -143,7 +143,7 @@ public class XMLTOLWriterTest extends BaseTest {
             Scanner scanner = new Scanner(file);
             String fileContent = scanner.useDelimiter("\\Z").next();
             scanner.close();
-            // Default behavior should include past resources (same as setBeforeWindow)
+            // Default behavior should include past resources (same as includeIncon)
             assertTrue("File should contain resource value at query start by default",
                 fileContent.contains("IntegratesA") && fileContent.contains(queryStart.toString()) && fileContent.contains("RES_VAL"));
         } catch (FileNotFoundException e) {

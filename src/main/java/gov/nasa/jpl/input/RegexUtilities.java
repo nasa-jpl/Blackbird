@@ -35,8 +35,8 @@ public class RegexUtilities {
     public static final String SEQUENCE = "SEQUENCE";
     public static final String INCLUDE_STRING = "INCLUDE";
     public static final String EXCLUDE_STRING = "EXCLUDE";
-    public static final String PAST_SET_STRING = "setBeforeWindow";
-    public static final String CURRENT_SET_STRING = "setInWindow";
+    public static final String PAST_SET_STRING = "includeIncon";
+    public static final String CURRENT_SET_STRING = "onlySetsInWindow";
 
     // regex needed for command strings
     public static final Pattern COMMAND_ACT_PARAM_PATTERN = Pattern.compile("^\\s*(?<name>[a-zA-Z_0-9\\.]+)\\s*\\((?<params>.*)\\)\\s*$");

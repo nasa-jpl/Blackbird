@@ -134,14 +134,14 @@ public class WriteCommandTest extends BaseTest {
 
     @Test
     public void resourcesWindowSetBeforeWindow() {
-        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00 RESOURCES_WINDOW setBeforeWindow");
-        assertEquals("setBeforeWindow", command.resourcesWindow);
+        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00 RESOURCES_WINDOW includeIncon");
+        assertEquals("includeIncon", command.resourcesWindow);
     }
 
     @Test
     public void resourcesWindowSetInWindow() {
-        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00 RESOURCES_WINDOW setInWindow");
-        assertEquals("setInWindow", command.resourcesWindow);
+        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00 RESOURCES_WINDOW onlySetsInWindow");
+        assertEquals("onlySetsInWindow", command.resourcesWindow);
     }
 
     @Test
@@ -158,7 +158,7 @@ public class WriteCommandTest extends BaseTest {
 
     @Test
     public void resourcesWindowWithOtherFilters() {
-        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00 ACTIVITIES INCLUDE (ActivityOne) RESOURCES_WINDOW setInWindow");
-        assertEquals("setInWindow", command.resourcesWindow);
+        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00 ACTIVITIES INCLUDE (ActivityOne) RESOURCES_WINDOW onlySetsInWindow");
+        assertEquals("onlySetsInWindow", command.resourcesWindow);
     }
 }
