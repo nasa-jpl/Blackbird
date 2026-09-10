@@ -41,27 +41,23 @@ jobs:
               }
             ]
 
-      - name: Debug library visibility and architecture
-        run: |
-          uname -m
-          ls -la ${{ github.workspace }}/lib
-          ldd ${{ github.workspace }}/lib/libJNISpice.so
-
       - name: Build with Maven and run unit tests
-        run: mvn --batch-mode verify -DargLine="-Djava.library.path=${{ github.workspace }}/lib"
+        run: mvn --batch-mode verify
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LD_LIBRARY_PATH: ${{ github.workspace }}/lib
 
   deploy-to-packages:
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write  # Crucial for publishing to GitHub Packages
+      packages: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code and get the Git LFS libraries
+        uses: actions/checkout@v4
+        with:
+          lfs: true
       - name: Set up JDK 8
         uses: actions/setup-java@v4
         with:
@@ -89,5 +85,4 @@ jobs:
         run: mvn --batch-mode deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LD_LIBRARY_PATH: ${{ github.workspace }}/lib
 
