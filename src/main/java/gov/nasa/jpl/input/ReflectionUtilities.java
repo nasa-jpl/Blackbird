@@ -147,7 +147,7 @@ public class ReflectionUtilities {
             }
             // if this is a custom data type then we need to use mutation and then return the value
             Class<?> classType = Class.forName(typeString);
-            ConvertableFromString classInstance = (ConvertableFromString) classType.newInstance();
+            ConvertableFromString classInstance = (ConvertableFromString) classType.getDeclaredConstructor().newInstance();
             classInstance.valueOf(valueString);
             return classInstance;
         }
@@ -156,11 +156,11 @@ public class ReflectionUtilities {
             Class<?> classType = getCustomDataType(typeString);
             try {
                 // since this is a custom data type we will need to use mutation to get the value
-                ConvertableFromString classInstance = (ConvertableFromString) classType.newInstance();
+                ConvertableFromString classInstance = (ConvertableFromString) classType.getDeclaredConstructor().newInstance();
                 classInstance.valueOf(valueString);
                 return classInstance;
             }
-            catch (IllegalAccessException | InstantiationException ex) {
+            catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException ex) {
                 throw new RuntimeException("Error: could not instantiate data type " + classType.getName() + "\n");
             }
         }

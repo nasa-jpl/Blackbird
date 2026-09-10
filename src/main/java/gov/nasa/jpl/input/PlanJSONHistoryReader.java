@@ -205,7 +205,7 @@ public class PlanJSONHistoryReader implements HistoryReader {
                 return returnValueOf(typeString, obj.getAsString(), true);
             } else {
                 Class<?> classType = getCustomDataType(typeString);
-                ConvertableFromString classInstance = (ConvertableFromString) classType.newInstance();
+                ConvertableFromString classInstance = (ConvertableFromString) classType.getDeclaredConstructor().newInstance();
                 classInstance.valueOf(obj.getAsString());
                 return classInstance;
             }
