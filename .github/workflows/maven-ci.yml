@@ -20,8 +20,23 @@ jobs:
         with:
           java-version: '8'
           distribution: 'zulu'
-          server-id: github-read
-          settings-path: ${{ github.workspace }} # Generates settings.xml in the workspace directory
+
+      - name: Configure maven for two different repositories
+        uses: whelk-io/maven-settings-xml-action@v22
+        with:
+          servers: |
+            [
+              {
+                "id": "github-read",
+                "username": "${{ github.actor }}",
+                "password": "${{ secrets.GITHUB_TOKEN }}"
+              },
+              {
+                "id": "github",
+                "username": "${{ github.actor }}",
+                "password": "${{ secrets.GITHUB_TOKEN }}"
+              }
+            ]
 
       - name: Build with Maven and run unit tests
         run: mvn --batch-mode verify
@@ -42,8 +57,23 @@ jobs:
         with:
           java-version: '8'
           distribution: 'zulu'
-          server-id: github
-          settings-path: ${{ github.workspace }} # Generates settings.xml in the workspace directory
+
+      - name: Configure maven for two different repositories
+        uses: whelk-io/maven-settings-xml-action@v22
+        with:
+          servers: |
+            [
+              {
+                "id": "github-read",
+                "username": "${{ github.actor }}",
+                "password": "${{ secrets.GITHUB_TOKEN }}"
+              },
+              {
+                "id": "github",
+                "username": "${{ github.actor }}",
+                "password": "${{ secrets.GITHUB_TOKEN }}"
+              }
+            ]
 
       - name: Deploy package with Maven
         run: mvn --batch-mode deploy
