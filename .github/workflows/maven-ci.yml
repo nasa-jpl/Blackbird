@@ -41,7 +41,7 @@ jobs:
       - name: Debug library visibility and architecture
         run: |
           uname -m
-          ls -la ./src/main/resources/libs
+          ls -la ${{ github.workspace }}/lib
 
       - name: Build with Maven and run unit tests
         run: mvn --batch-mode verify
