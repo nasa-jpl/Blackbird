@@ -42,9 +42,10 @@ jobs:
         run: |
           uname -m
           ls -la ${{ github.workspace }}/lib
+          ldd ${{ github.workspace }}/lib/libJNISpice.so
 
       - name: Build with Maven and run unit tests
-        run: mvn --batch-mode verify
+        run: mvn --batch-mode verify -DargLine="-Djava.library.path=${{ github.workspace }}/lib"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LD_LIBRARY_PATH: ${{ github.workspace }}/lib
