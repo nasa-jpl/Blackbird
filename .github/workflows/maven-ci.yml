@@ -38,10 +38,16 @@ jobs:
               }
             ]
 
+      - name: Debug library visibility and architecture
+        run: |
+          uname -m
+          ls -la ./src/main/resources/libs
+
       - name: Build with Maven and run unit tests
         run: mvn --batch-mode verify
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LD_LIBRARY_PATH: ${{ github.workspace }}/lib
 
   deploy-to-packages:
     if: github.event_name == 'release'
@@ -79,4 +85,5 @@ jobs:
         run: mvn --batch-mode deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LD_LIBRARY_PATH: ${{ github.workspace }}/lib
 
