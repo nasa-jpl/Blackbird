@@ -146,6 +146,13 @@ public abstract class ArrayedResource<V extends ResourceContainer> implements Re
         this.indices = index;
     }
 
+    @Override
+    public void setFrozen(boolean frozen){
+        for(ResourceContainer individualResource : individualResources.values()){
+            individualResource.setFrozen(frozen);
+        }
+    }
+
     public String[] getEntries() {
         String[] indices = new String[individualResources.size()];
         return individualResources.keySet().toArray(indices);
