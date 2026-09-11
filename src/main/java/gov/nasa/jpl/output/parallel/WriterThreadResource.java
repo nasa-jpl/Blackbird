@@ -1,5 +1,7 @@
 package gov.nasa.jpl.output.parallel;
 
+import gov.nasa.jpl.input.RegexUtilities;
+import gov.nasa.jpl.resource.DoubleResource;
 import gov.nasa.jpl.resource.Resource;
 import gov.nasa.jpl.time.Time;
 
@@ -18,13 +20,15 @@ public class WriterThreadResource implements Runnable {
     private String dir;
     private Time begin;
     private Time end;
+    private String resourcesWindow;
     private PrintWriter writer;
 
-    public WriterThreadResource(Resource<Comparable> res, String dir, Time begin, Time end){
+    public WriterThreadResource(Resource<Comparable> res, String dir, Time begin, Time end, String resourcesWindow){
         this.res = res;
         this.dir = dir;
         this.begin = begin;
         this.end = end;
+        this.resourcesWindow = resourcesWindow;
     }
 
     @Override
@@ -33,6 +37,18 @@ public class WriterThreadResource implements Runnable {
 
         try {
             writer = new PrintWriter(filename, "UTF-8");
+
+            if(resourcesWindow.equals(RegexUtilities.PAST_SET_STRING) && begin!=null && res.resourceHistoryHasElements() && !begin.equals(res.nextTimeSet(begin, true))){
+                if(DoubleResource.class.isAssignableFrom(res.getClass()) && res.getInterpolation().equalsIgnoreCase("linear")){
+                    writer.println(begin.toUTC() + "," + begin.getTics() + "," + ((DoubleResource) ((Resource) res)).interpval(begin));
+                }
+                else if(res.getDataType().equals(ABSOLUTE_TIME_CLASS_PACKAGE)){
+                    writer.println(begin.toUTC() + "," + begin.getTics() + "," + ((Time) res.valueAt(begin)).toUTC());
+                }
+                else{
+                    writer.println(begin.toUTC() + "," + begin.getTics() + "," + res.valueAt(begin));
+                }
+            }
 
             // serially for each value node in the resource history, write out the human-readable time, then the time in its backing format for fast read-in, then the resource value
             Iterator<Map.Entry<Time, Comparable>> iter = res.historyIterator(begin, end);

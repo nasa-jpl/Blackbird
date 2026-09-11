@@ -2,7 +2,10 @@ package gov.nasa.jpl.output.tol;
 
 import gov.nasa.jpl.activity.ActivityInstanceList;
 import gov.nasa.jpl.constraint.ConstraintInstanceList;
+import gov.nasa.jpl.input.RegexUtilities;
 import gov.nasa.jpl.output.TOLWriter;
+import gov.nasa.jpl.resource.DoubleResource;
+import gov.nasa.jpl.resource.Resource;
 import gov.nasa.jpl.resource.ResourceList;
 import gov.nasa.jpl.time.Time;
 import org.apache.commons.collections4.IteratorUtils;
@@ -17,12 +20,15 @@ import java.util.*;
  */
 public class FlatTOLWriter extends TOLWriter {
     @Override
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime) {
-        writeTOLRecords(actList, resList, conList, startTime, endTime);
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
+        writeTOLRecords(actList, resList, conList, startTime, endTime, resourcesWindow);
     }
 
-    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime){
+    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime, String resourcesWindow){
         List<Iterator<TOLRecord>> allTOLRecords = new ArrayList<>();
+        if(resourcesWindow.equals(RegexUtilities.PAST_SET_STRING) && startTime!=null){
+            allTOLRecords.add(getInconTOLRecordIterator(resList, startTime).listIterator());
+        }
         allTOLRecords.add(new TOLActivityIterator(actList.createListOfActivityBeginAndEndTimes()));
         allTOLRecords.add(new TOLResourceIterator(resList.getResourcesIterator(startTime, endTime)));
         allTOLRecords.add(new TOLConstraintIterator(constraintList.createListOfConstraintBeginAndEndTimes()));
@@ -37,5 +43,18 @@ public class FlatTOLWriter extends TOLWriter {
                 writer.print(record.toFlatTOL());
             }
         }
+    }
+
+    // package protected so JSONTOLWriter can also use it
+    static List<TOLRecord> getInconTOLRecordIterator(ResourceList resList, Time startTime){
+        List<TOLRecord> toReturn = new ArrayList<>();
+        for(Resource res: resList.getListOfAllResources()) {
+            if (DoubleResource.class.isAssignableFrom(res.getClass()) && res.getInterpolation().equalsIgnoreCase("linear")) {
+                toReturn.add(new TOLResourceValue(startTime, ((DoubleResource) res).interpval(startTime), res));
+            } else {
+                toReturn.add(new TOLResourceValue(startTime, res.valueAt(startTime), res));
+            }
+        }
+        return toReturn;
     }
 }

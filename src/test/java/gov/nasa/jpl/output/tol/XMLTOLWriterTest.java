@@ -143,9 +143,9 @@ public class XMLTOLWriterTest extends BaseTest {
             Scanner scanner = new Scanner(file);
             String fileContent = scanner.useDelimiter("\\Z").next();
             scanner.close();
-            // Default behavior should include past resources (same as includeIncon)
-            assertTrue("File should contain resource value at query start by default",
-                fileContent.contains("IntegratesA") && fileContent.contains(queryStart.toString()) && fileContent.contains("RES_VAL"));
+            // Default behavior should not include past resources (same as onlySetsInWindow)
+            assertFalse("File should contain resource value at query start by default",
+                    fileContent.contains(queryStart.toString()) && fileContent.contains("IntegratesA") && fileContent.contains("RES_VAL"));
         } catch (FileNotFoundException e) {
             fail("Output file not created");
         }

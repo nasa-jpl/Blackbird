@@ -54,7 +54,7 @@ public class ParallelDirectoryWriter extends TOLWriter {
         exec.shutdown();
     }
 
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime) {
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
         // set up Callable (Runnable) tasks to send to the parallel executor
         List<Callable<Object>> tasks = new ArrayList<>();
 
@@ -63,7 +63,7 @@ public class ParallelDirectoryWriter extends TOLWriter {
         }
 
         for(Resource r : resList.getListOfAllResources()){
-            tasks.add(Executors.callable(new WriterThreadResource(r, dirName, startTime, endTime)));
+            tasks.add(Executors.callable(new WriterThreadResource(r, dirName, startTime, endTime, resourcesWindow)));
         }
 
         for(int i = 0; i<conList.length(); i++){

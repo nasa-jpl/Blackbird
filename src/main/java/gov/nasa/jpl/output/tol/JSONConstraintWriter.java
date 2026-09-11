@@ -21,13 +21,13 @@ public class JSONConstraintWriter extends TOLWriter {
         this.writeDefinitions = writeDefinitions;
     }
 
-    // default is to write violations
+    // default is to write definitions
     public JSONConstraintWriter(){
         this(true);
     }
 
     @Override
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime) {
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
         Map<String, Map<String, String>> constraintsChecked = null;
         if(writeDefinitions) {
             constraintsChecked = getNonDeactivatedConstraintsForWriting(conList);

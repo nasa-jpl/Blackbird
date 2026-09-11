@@ -32,7 +32,7 @@ public class WriteCommand implements Command {
     ConstraintInstanceList constraintList;
     Time startTime;
     Time endTime;
-    // Set whether to use resources that are initialized outside the time window of the TOL
+    // Set whether to write the incoming value of all resources at startTime if it exists
     String resourcesWindow;
 
     public WriteCommand(String commandString) {
@@ -235,21 +235,18 @@ public class WriteCommand implements Command {
     }
 
     private static String getResourcesWindowFromString(String commandString){
-        try {
-            Matcher resourceWindowMatch = RegexUtilities.RESOURCES_WINDOW_PATTERN.matcher(commandString);
+        Matcher resourceWindowMatch = RegexUtilities.RESOURCES_WINDOW_PATTERN.matcher(commandString);
 
-            if (resourceWindowMatch.find()) {
-                String action = resourceWindowMatch.group("action");
-                // Validate that action is one of the expected values
-                if (RegexUtilities.PAST_SET_STRING.equals(action) || RegexUtilities.CURRENT_SET_STRING.equals(action)) {
-                    return action;
-                }
+        if (resourceWindowMatch.find()) {
+            String action = resourceWindowMatch.group("action");
+            // Validate that action is one of the expected values
+            if (RegexUtilities.PAST_SET_STRING.equals(action) || RegexUtilities.CURRENT_SET_STRING.equals(action)) {
+                return action;
             }
-        } catch (Exception e) {
-            // If regex fails treat as no RESOURCES_WINDOW specified
         }
-        // Default behavior: return null to indicate no RESOURCES_WINDOW specified or invalid value
-        return null;
+
+        // default is the behavior which existed before this flag was added
+        return RegexUtilities.CURRENT_SET_STRING;
     }
 
     /**

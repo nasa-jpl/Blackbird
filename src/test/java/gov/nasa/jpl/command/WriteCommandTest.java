@@ -1,14 +1,11 @@
 package gov.nasa.jpl.command;
 
-import gov.nasa.jpl.activity.ActivityInstanceList;
 import gov.nasa.jpl.common.BaseTest;
-import gov.nasa.jpl.engine.Setup;
 import gov.nasa.jpl.exampleAdaptation.ActivityFive;
 import gov.nasa.jpl.exampleAdaptation.ActivityOne;
 import gov.nasa.jpl.resource.ResourceList;
 import gov.nasa.jpl.time.Duration;
 import gov.nasa.jpl.time.Time;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -147,13 +144,18 @@ public class WriteCommandTest extends BaseTest {
     @Test
     public void resourcesWindowNotSpecified() {
         WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00");
-        assertNull(command.resourcesWindow);
+        assertEquals("onlySetsInWindow", command.resourcesWindow);
     }
 
     @Test
     public void resourcesWindowInvalidValue() {
-        WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00");
-        assertNull(command.resourcesWindow);
+        try {
+            WriteCommand command = new WriteCommand("out-tol.xml START 2018-330T00:00:00 END 2018-331T00:00:00 RESOURCES_WINDOW typo");
+            fail();
+        }
+        catch(CommandException e){
+            assertTrue(e.getMessage().contains("unexpected format"));
+        }
     }
 
     @Test

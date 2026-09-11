@@ -35,15 +35,11 @@ public class XMLTOLWriter extends TOLWriter {
     }
 
     @Override
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime) {
-        writeFileContents(actList, resList, conList, startTime, endTime, null);
-    }
-
-    @Override
     public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
         writeXMLHeader();
         writeResourceMetadata(resList);
-        if (resourcesWindow == null || RegexUtilities.PAST_SET_STRING.equals(resourcesWindow)) {
+        // if startTime is null, all resource points will be captured in what we're already writing out
+        if(resourcesWindow.equals(RegexUtilities.PAST_SET_STRING) && startTime!=null){
             writeResourceBoundsAtStart(resList, startTime);
         }
         writeTOLRecords(actList, resList, conList, startTime, endTime);
@@ -147,18 +143,15 @@ public class XMLTOLWriter extends TOLWriter {
     }
 
     private void writeResourceBoundsAtStart(ResourceList resList, Time startTime){
-        // if startTime is null, all resource points will be captured in what we're already writing out
-        if(startTime != null){
-            List<Resource> listOfRelevantResources = resList.getListOfAllResources();
-            for (int i = 0; i < listOfRelevantResources.size(); i++) {
-                Resource currentRes = listOfRelevantResources.get(i);
-                if (currentRes.resourceHistoryHasElements() && startTime != currentRes.nextTimeSet(startTime, true)) {
-                    Comparable startVal = currentRes.valueAt(startTime);
-                    if(DoubleResource.class.isAssignableFrom(currentRes.getClass()) && currentRes.getInterpolation().equalsIgnoreCase("linear")){
-                        startVal = ((DoubleResource) currentRes).interpval(startTime);
-                    }
-                    writer.print(TOLResourceValue.writeResValBlock(startTime, startVal, currentRes, "RES_VAL"));
+        List<Resource> listOfRelevantResources = resList.getListOfAllResources();
+        for (int i = 0; i < listOfRelevantResources.size(); i++) {
+            Resource currentRes = listOfRelevantResources.get(i);
+            if (currentRes.resourceHistoryHasElements() && !startTime.equals(currentRes.nextTimeSet(startTime, true))){
+                Comparable startVal = currentRes.valueAt(startTime);
+                if(DoubleResource.class.isAssignableFrom(currentRes.getClass()) && currentRes.getInterpolation().equalsIgnoreCase("linear")){
+                    startVal = ((DoubleResource) currentRes).interpval(startTime);
                 }
+                writer.print(TOLResourceValue.writeResValBlock(startTime, startVal, currentRes, "RES_VAL"));
             }
         }
     }
