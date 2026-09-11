@@ -27,7 +27,7 @@ public class JSONConstraintWriter extends TOLWriter {
     }
 
     @Override
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow, String activitiesAtStart) {
         Map<String, Map<String, String>> constraintsChecked = null;
         if(writeDefinitions) {
             constraintsChecked = getNonDeactivatedConstraintsForWriting(conList);

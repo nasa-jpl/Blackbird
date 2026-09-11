@@ -51,7 +51,7 @@ public class WriterThreadResource implements Runnable {
             }
 
             // serially for each value node in the resource history, write out the human-readable time, then the time in its backing format for fast read-in, then the resource value
-            Iterator<Map.Entry<Time, Comparable>> iter = res.historyIterator(begin, end);
+            Iterator<Map.Entry<Time, Comparable>> iter = res.historyIterator(begin, end, true);
             if(res.getDataType().equals(ABSOLUTE_TIME_CLASS_PACKAGE)){
                 while(iter.hasNext()){
                     Map.Entry<Time, Comparable> entry = iter.next();

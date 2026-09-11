@@ -214,13 +214,13 @@ public class ResourceTest extends BaseTest {
         myEngine.setTime(t.add(SECOND_DURATION.multiply(240)));
         ResourceA.set(300.0);
 
-        Iterator<Map.Entry<Time, Double>> iter0 = ResourceA.historyIterator(null, null);
+        Iterator<Map.Entry<Time, Double>> iter0 = ResourceA.historyIterator(null, null, true);
         assertEquals(4, StreamSupport.stream(Spliterators.spliteratorUnknownSize(iter0, Spliterator.ORDERED), false).count());
         // this one is '1' because we want it to find the entry at the end of the history as the value that will persist
-        Iterator<Map.Entry<Time, Double>> iter1 = ResourceA.historyIterator(t.add(HOUR_DURATION), t.add(DAY_DURATION));
+        Iterator<Map.Entry<Time, Double>> iter1 = ResourceA.historyIterator(t.add(HOUR_DURATION), t.add(DAY_DURATION), true);
         assertEquals(1, StreamSupport.stream(Spliterators.spliteratorUnknownSize(iter1, Spliterator.ORDERED), false).count());
 
-        Iterator<Map.Entry<Time, Double>> iter2 = ResourceA.historyIterator(t.add(SECOND_DURATION.multiply(150)), t.add(SECOND_DURATION.multiply(199)));
+        Iterator<Map.Entry<Time, Double>> iter2 = ResourceA.historyIterator(t.add(SECOND_DURATION.multiply(150)), t.add(SECOND_DURATION.multiply(199)), true);
         assertEquals(2, StreamSupport.stream(Spliterators.spliteratorUnknownSize(iter2, Spliterator.ORDERED), false).count());
     }
 

@@ -59,7 +59,7 @@ public class ConstraintInstanceList {
         allConstraintInstances.removeAll(deactivatedInstances.values());
     }
 
-    public List<Map.Entry<Time, Map.Entry<Boolean, Constraint>>> createListOfConstraintBeginAndEndTimes() {
+    public List<Map.Entry<Time, Map.Entry<Boolean, Constraint>>> createListOfConstraintBeginAndEndTimes(Time start, Time end) {
 
         ArrayList<Map.Entry<Time, Map.Entry<Boolean, Constraint>>> listOfAllBeginAndEndTimes = new ArrayList();
         for (int i = 0; i < allConstraintInstances.size(); i++) {
@@ -68,8 +68,12 @@ public class ConstraintInstanceList {
             // we need to find every violation for every different kind of constraint declared
             while (currentConstraintHistoryIterator.hasNext()) {
                 Map.Entry<Time, Time> beginAndEndOfConstraintViolation = currentConstraintHistoryIterator.next();
-                listOfAllBeginAndEndTimes.add(new SimpleImmutableEntry<>(beginAndEndOfConstraintViolation.getKey(), new SimpleImmutableEntry<>(true, currentConstraint)));
-                listOfAllBeginAndEndTimes.add(new SimpleImmutableEntry<>(beginAndEndOfConstraintViolation.getValue(), new SimpleImmutableEntry<>(false, currentConstraint)));
+                Time constraintStart = beginAndEndOfConstraintViolation.getKey();
+                Time constraintEnd = beginAndEndOfConstraintViolation.getValue();
+                if((start == null || constraintEnd.greaterThanOrEqualTo(start)) && (end == null || constraintStart.lessThan(end))) {
+                    listOfAllBeginAndEndTimes.add(new SimpleImmutableEntry<>(constraintStart, new SimpleImmutableEntry<>(true, currentConstraint)));
+                    listOfAllBeginAndEndTimes.add(new SimpleImmutableEntry<>(constraintEnd, new SimpleImmutableEntry<>(false, currentConstraint)));
+                }
             }
         }
         // now we have to sort this list since we have no idea when end times are
@@ -77,7 +81,7 @@ public class ConstraintInstanceList {
         return listOfAllBeginAndEndTimes;
     }
 
-    public List<Map.Entry<Time, Map.Entry<Boolean, Constraint>>> createListOfConstraintBeginTimes() {
+    public List<Map.Entry<Time, Map.Entry<Boolean, Constraint>>> createListOfConstraintBeginTimes(Time start, Time end) {
         ArrayList<Map.Entry<Time, Map.Entry<Boolean, Constraint>>> listOfAllBeginTimes = new ArrayList();
         for (int i = 0; i < allConstraintInstances.size(); i++) {
             Constraint currentConstraint = allConstraintInstances.get(i);
@@ -85,7 +89,11 @@ public class ConstraintInstanceList {
             // we need to find every violation for every different kind of constraint declared
             while (currentConstraintHistoryIterator.hasNext()) {
                 Map.Entry<Time, Time> beginAndEndOfConstraintViolation = currentConstraintHistoryIterator.next();
-                listOfAllBeginTimes.add(new SimpleImmutableEntry<>(beginAndEndOfConstraintViolation.getKey(), new SimpleImmutableEntry<>(true, currentConstraint)));
+                Time constraintStart = beginAndEndOfConstraintViolation.getKey();
+                Time constraintEnd = beginAndEndOfConstraintViolation.getValue();
+                if((start == null || constraintEnd.greaterThanOrEqualTo(start)) && (end == null || constraintStart.lessThan(end))) {
+                    listOfAllBeginTimes.add(new SimpleImmutableEntry<>(constraintStart, new SimpleImmutableEntry<>(true, currentConstraint)));
+                }
             }
         }
         // now we have to sort because the violations for different Constraints were added out of time order

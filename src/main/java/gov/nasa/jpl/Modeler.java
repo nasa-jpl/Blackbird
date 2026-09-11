@@ -107,7 +107,7 @@ public class Modeler {
         CommandController.issueCommand("REMODEL", "");
 
         XMLTOLWriter writer = new XMLTOLWriter();
-        writer.dumpTimelinesToFile("out.tol.xml", ActivityInstanceList.getActivityList(), ResourceList.getResourceList(), ConstraintInstanceList.getConstraintList(), null, null, "onlySetsInWindow");
+        writer.dumpTimelinesToFile("out.tol.xml", ActivityInstanceList.getActivityList(), ResourceList.getResourceList(), ConstraintInstanceList.getConstraintList(), null, null, "onlySetsInWindow", "excludeOngoingActs");
 
         CommandController.issueCommand("WRITE", "filtered_out.tol.xml START 2018-330T00:00:00 END 2018-330T13:00:00 ACTIVITIES INCLUDE (ALL) RESOURCES EXCLUDE (ResourceB) CONSTRAINTS EXCLUDE (ALL)");
 

@@ -37,6 +37,8 @@ public class RegexUtilities {
     public static final String EXCLUDE_STRING = "EXCLUDE";
     public static final String PAST_SET_STRING = "includeIncon";
     public static final String CURRENT_SET_STRING = "onlySetsInWindow";
+    public static final String INCLUDE_ONGOING_STRING = "includeOngoingActs";
+    public static final String EXCLUDE_ONGOING_STRING = "excludeOngoingActs";
 
     // regex needed for command strings
     public static final Pattern COMMAND_ACT_PARAM_PATTERN = Pattern.compile("^\\s*(?<name>[a-zA-Z_0-9\\.]+)\\s*\\((?<params>.*)\\)\\s*$");
@@ -55,7 +57,6 @@ public class RegexUtilities {
             "|" + EXCLUDE_STRING + ")\\s+\\(\\s*(?<resources>(?:[a-zA-Z0-9_\\[\\]]+\\s*?)+)\\s*\\)";
     public static final Pattern WRITE_RESOURCES_PATTERN = Pattern.compile(WRITE_RESOURCES_STRING);
 
-
     public static final String WRITE_CONSTRAINTS_STRING = "CONSTRAINTS\\s+(?<action>" + INCLUDE_STRING +
             "|" + EXCLUDE_STRING + ")\\s+\\(\\s*(?<constraints>(?:[a-zA-Z0-9_]+\\s*?)+)\\s*\\)";
     public static final Pattern WRITE_CONSTRAINTS_PATTERN = Pattern.compile(WRITE_CONSTRAINTS_STRING);
@@ -64,6 +65,10 @@ public class RegexUtilities {
             "|" + CURRENT_SET_STRING + "))";
     public static final Pattern RESOURCES_WINDOW_PATTERN = Pattern.compile(RESOURCES_WINDOW_STRING);
 
+    public static final String ONGOING_ACTS_TOGGLE_STRING = "ACTIVITIES_AT_START\\s+(?<action>(?:" + INCLUDE_ONGOING_STRING +
+            "|" + EXCLUDE_ONGOING_STRING + "))";
+    public static final Pattern ONGOING_ACTS_TOGGLE_PATTERN = Pattern.compile(ONGOING_ACTS_TOGGLE_STRING);
+
     public static final String WRITE_START_STRING = "START\\s+(?<time>" + Time.TIME_REGEX + ")";
     public static final String WRITE_END_STRING = "END\\s+(?<time>" + Time.TIME_REGEX + ")";
     public static final Pattern WRITE_START_PATTERN = Pattern.compile(WRITE_START_STRING);
@@ -71,7 +76,7 @@ public class RegexUtilities {
 
     // regex used to check that a WRITE command contains only expected options, and in expected format
     // replaceAll gets rid of all named regex groups to prevent collisions
-    public static final Pattern WRITE_COMMAND_PATTERN = Pattern.compile(("^([^\\s]+)(\\s+(((" + WRITE_START_STRING + ")|(" + WRITE_END_STRING + ")|(" + WRITE_ACTIVITIES_STRING + ")|(" + WRITE_RESOURCES_STRING + ")|(" + WRITE_CONSTRAINTS_STRING + ")|(" + RESOURCES_WINDOW_STRING + "))\\s*)*)?$").replaceAll("\\?<[a-zA-Z0-9]+>", ""));
+    public static final Pattern WRITE_COMMAND_PATTERN = Pattern.compile(("^([^\\s]+)(\\s+(((" + WRITE_START_STRING + ")|(" + WRITE_END_STRING + ")|(" + WRITE_ACTIVITIES_STRING + ")|(" + WRITE_RESOURCES_STRING + ")|(" + WRITE_CONSTRAINTS_STRING + ")|(" + RESOURCES_WINDOW_STRING + ")|(" + ONGOING_ACTS_TOGGLE_STRING + "))\\s*)*)?$").replaceAll("\\?<[a-zA-Z0-9]+>", ""));
 
     // regex used to check that a CREATE_DICTIONARY command contains only expected options, and in expected format
     // replaceAll gets rid of all named regex groups to prevent collisions
