@@ -49,7 +49,7 @@ public class ResourceDeclaration {
             try {
                 if (Class.forName(resourceDeclarationInPackage).isAssignableFrom(loadedClass) && !Class.forName(resourceDeclarationInPackage).equals(loadedClass)) {
                     Method m = loadedClass.getMethod("getFields");
-                    ResourceDeclaration dec = (ResourceDeclaration) loadedClass.newInstance();
+                    ResourceDeclaration dec = (ResourceDeclaration) loadedClass.getDeclaredConstructor().newInstance();
                     m.invoke(dec, (Object[]) null);
                 }
             }
