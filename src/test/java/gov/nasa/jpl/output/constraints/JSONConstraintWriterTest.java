@@ -4,16 +4,17 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import gov.nasa.jpl.activity.ActivityInstanceList;
+import gov.nasa.jpl.command.CommandController;
 import gov.nasa.jpl.common.BaseTest;
 import gov.nasa.jpl.constraint.Constraint;
 import gov.nasa.jpl.constraint.ConstraintInstanceList;
+import gov.nasa.jpl.constraint.ForbiddenOverlapConstraint;
+import gov.nasa.jpl.constraint.ViolationSeverity;
+import gov.nasa.jpl.engine.AdaptationException;
 import gov.nasa.jpl.engine.ModelingEngine;
-import gov.nasa.jpl.engine.Setup;
 import gov.nasa.jpl.exampleAdaptation.ActivityTwo;
 import gov.nasa.jpl.time.Duration;
 import gov.nasa.jpl.time.Time;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.Map;
 
 import static gov.nasa.jpl.output.tol.JSONConstraintWriter.getConstraintViolationsForWriting;
 import static gov.nasa.jpl.output.tol.JSONConstraintWriter.getNonDeactivatedConstraintsForWriting;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class JSONConstraintWriterTest extends BaseTest {
     @Test
@@ -77,7 +78,7 @@ public class JSONConstraintWriterTest extends BaseTest {
                 "  }\n" +
                 "}";
 
-        assertEquals(expectedOut, result);
+        assertTrue("Strings do not match!\nExpected:\n" + expectedOut + "\nActual:\n" + result, expectedOut.equals(result));
 
         // filter one out
         violations = getConstraintViolationsForWriting(cleanConList, null, t.add(Duration.HOUR_DURATION.multiply(2)));
@@ -88,5 +89,20 @@ public class JSONConstraintWriterTest extends BaseTest {
         assertEquals(false, violations.containsKey("forbidden"));
 
         Time.setDefaultOutputPrecision(6);
+    }
+
+    @Test
+    public void testConstraintOutUsingCommand(){
+        Constraint test = new ForbiddenOverlapConstraint("InitialConditionActivity", "InitialConditionActivity", "", ViolationSeverity.WARNING);
+        try{
+            ConstraintInstanceList.getConstraintList().registerConstraint(test);
+            CommandController.issueCommand("WRITE", "example.constraints.json");
+            fail();
+        }
+        catch(AdaptationException e){
+            if(!e.getMessage().contains("Constraint declared without name.")){
+                fail();
+            }
+        }
     }
 }

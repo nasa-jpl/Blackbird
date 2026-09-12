@@ -55,7 +55,7 @@ public class ConstraintDeclaration {
             try {
                 if (Class.forName(constraintDeclarationInPackage).isAssignableFrom(loadedClass) && !Class.forName(constraintDeclarationInPackage).equals(loadedClass)) {
                     Method m = loadedClass.getMethod("getFields");
-                    ConstraintDeclaration dec = (ConstraintDeclaration) loadedClass.newInstance();
+                    ConstraintDeclaration dec = (ConstraintDeclaration) loadedClass.getDeclaredConstructor().newInstance();
                     m.invoke(dec, (Object[]) null);
                 }
             }
@@ -80,7 +80,7 @@ public class ConstraintDeclaration {
             try {
                 if (Class.forName(constraintDeclarationInPackage).isAssignableFrom(loadedClass) && !Class.forName(constraintDeclarationInPackage).equals(loadedClass) && allNames.contains(loadedClass.getSimpleName())) {
                     Method m = loadedClass.getMethod("gatherNames");
-                    ConstraintDeclaration dec = (ConstraintDeclaration) loadedClass.newInstance();
+                    ConstraintDeclaration dec = (ConstraintDeclaration) loadedClass.getDeclaredConstructor().newInstance();
                     toReturn = (List<String>) m.invoke(dec, (Object[]) null);
                 }
             }
