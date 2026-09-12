@@ -16,7 +16,7 @@ import static gov.nasa.jpl.input.TypeNameConverters.bareJSONTypes;
 
 public class JSONInconWriter extends TOLWriter {
     @Override
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime) {
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
 
         // if no endTime specified
         if (endTime == null) {

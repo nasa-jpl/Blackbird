@@ -10,10 +10,16 @@ import gov.nasa.jpl.time.Duration;
 import gov.nasa.jpl.time.Time;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.fail;
 
 public class XMLTOLWriterTest extends BaseTest {
 
@@ -70,5 +76,80 @@ public class XMLTOLWriterTest extends BaseTest {
         assertEquals(new Integer(1000001), indices.get(20).get(0).getValue());
         assertEquals(new Integer(1000001), indices.get(20).get(1).getKey());
         assertEquals(new Integer(1000002), indices.get(20).get(1).getValue());
+    }
+
+    @Test
+    public void testResourcesWindowIncludesPastResources(){
+        // Create activities that will update IntegratesA resource
+        ActivityOne actOne = new ActivityOne(Time.getDefaultReferenceTime(), new Duration("00:01:00"));
+        ActivityOne actTwo = new ActivityOne(Time.getDefaultReferenceTime().add(new Duration("02:00:00")), new Duration("00:01:00"));
+
+        String fileName = "test_past_resources.tol.xml";
+        Time queryStart = Time.getDefaultReferenceTime().add(new Duration("01:00:00"));
+        CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString() + " RESOURCES_WINDOW includeIncon");
+
+        File file = new File(fileName);
+        try {
+            Scanner scanner = new Scanner(file);
+            String fileContent = scanner.useDelimiter("\\Z").next();
+            scanner.close();
+            // Should contain IntegratesA value at query start time (from before the window)
+            assertTrue("File should contain resource value at query start with includeIncon",
+                fileContent.contains("IntegratesA") && fileContent.contains(queryStart.toString()) && fileContent.contains("RES_VAL"));
+        } catch (FileNotFoundException e) {
+            fail("Output file not created");
+        }
+
+        ActivityInstanceList.getActivityList().clear();
+    }
+
+    @Test
+    public void testResourcesWindowExcludesPastResources(){
+        // Create activities that will update IntegratesA resource
+        ActivityOne actOne = new ActivityOne(Time.getDefaultReferenceTime(), new Duration("00:01:00"));
+        ActivityOne actTwo = new ActivityOne(Time.getDefaultReferenceTime().add(new Duration("02:00:00")), new Duration("00:01:00"));
+
+        String fileName = "test_no_past_resources.tol.xml";
+        Time queryStart = Time.getDefaultReferenceTime().add(new Duration("01:00:00"));
+        CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString() + " RESOURCES_WINDOW onlySetsInWindow");
+
+        File file = new File(fileName);
+        try {
+            Scanner scanner = new Scanner(file);
+            String fileContent = scanner.useDelimiter("\\Z").next();
+            scanner.close();
+            // Should NOT contain IntegratesA value at query start time with RES_VAL tag
+            assertFalse("File should NOT contain resource RES_VAL at query start with onlySetsInWindow",
+                fileContent.contains(queryStart.toString()) && fileContent.contains("IntegratesA") && fileContent.contains("RES_VAL"));
+        } catch (FileNotFoundException e) {
+            fail("Output file not created");
+        }
+
+        ActivityInstanceList.getActivityList().clear();
+    }
+
+    @Test
+    public void testResourcesWindowDefaultBehavior(){
+        // Create activities that will update IntegratesA resource
+        ActivityOne actOne = new ActivityOne(Time.getDefaultReferenceTime(), new Duration("00:01:00"));
+        ActivityOne actTwo = new ActivityOne(Time.getDefaultReferenceTime().add(new Duration("02:00:00")), new Duration("00:01:00"));
+
+        String fileName = "test_default_behavior.tol.xml";
+        Time queryStart = Time.getDefaultReferenceTime().add(new Duration("01:00:00"));
+        CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString());
+
+        File file = new File(fileName);
+        try {
+            Scanner scanner = new Scanner(file);
+            String fileContent = scanner.useDelimiter("\\Z").next();
+            scanner.close();
+            // Default behavior should not include past resources (same as onlySetsInWindow)
+            assertFalse("File should contain resource value at query start by default",
+                    fileContent.contains(queryStart.toString()) && fileContent.contains("IntegratesA") && fileContent.contains("RES_VAL"));
+        } catch (FileNotFoundException e) {
+            fail("Output file not created");
+        }
+
+        ActivityInstanceList.getActivityList().clear();
     }
 }

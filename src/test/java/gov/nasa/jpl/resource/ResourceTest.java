@@ -385,7 +385,7 @@ public class ResourceTest extends BaseTest {
             fail();
         }
         catch(Exception e){
-            if(!e.getMessage().contains("Tried to mutate frozen resource")){
+            if(!e.getMessage().contains("Tried to mutate the frozen resource")){
                 fail();
             }
         }
@@ -407,7 +407,7 @@ public class ResourceTest extends BaseTest {
             fail();
         }
         catch(Exception e){
-            if(!e.getMessage().contains("Tried to mutate frozen resource")){
+            if(!e.getMessage().contains("Tried to mutate the frozen resource")){
                 fail();
             }
         }
@@ -415,7 +415,7 @@ public class ResourceTest extends BaseTest {
             somePositionVector.get("z").get("z").set(100.0);
         }
         catch(Exception e){
-            if(!e.getMessage().contains("Tried to mutate frozen resource")){
+            if(!e.getMessage().contains("Tried to mutate the frozen resource")){
                 fail();
             }
         }

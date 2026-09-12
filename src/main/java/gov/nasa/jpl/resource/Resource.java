@@ -78,7 +78,7 @@ public abstract class Resource<V extends Comparable> implements ResourceContaine
 
     private void checkMutable() {
         if (isFrozen() && !ModelingEngine.getEngine().isCurrentlyReadingInFile()) {
-            throw new RuntimeException("Tried to mutate frozen resource");
+            throw new RuntimeException("Tried to mutate the frozen resource " + getUniqueName());
         }
     }
 
