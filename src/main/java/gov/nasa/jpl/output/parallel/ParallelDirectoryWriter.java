@@ -4,6 +4,7 @@ import gov.nasa.jpl.activity.Activity;
 import gov.nasa.jpl.activity.ActivityInstanceList;
 import gov.nasa.jpl.constraint.ConstraintInstanceList;
 import gov.nasa.jpl.output.TOLWriter;
+import gov.nasa.jpl.output.tol.JSONPlanWriter;
 import gov.nasa.jpl.resource.Resource;
 import gov.nasa.jpl.resource.ResourceList;
 import gov.nasa.jpl.time.Time;
@@ -54,11 +55,11 @@ public class ParallelDirectoryWriter extends TOLWriter {
         exec.shutdown();
     }
 
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow, String activitiesAtStart) {
         // set up Callable (Runnable) tasks to send to the parallel executor
         List<Callable<Object>> tasks = new ArrayList<>();
 
-        for(Map.Entry<String, List<Activity>> entry : sortActivitiesByType(actList, startTime, endTime).entrySet()){
+        for(Map.Entry<String, List<Activity>> entry : sortActivitiesByType(actList, startTime, endTime, activitiesAtStart).entrySet()){
             tasks.add(Executors.callable(new WriterThreadActivity(entry.getKey(), entry.getValue(), dirName)));
         }
 
@@ -103,13 +104,13 @@ public class ParallelDirectoryWriter extends TOLWriter {
         }
     }
 
-    private Map<String, List<Activity>> sortActivitiesByType(ActivityInstanceList actList, Time startTime, Time endTime){
+    private Map<String, List<Activity>> sortActivitiesByType(ActivityInstanceList actList, Time startTime, Time endTime, String activitiesAtStart){
         Map<String, List<Activity>> actsByType = new HashMap<>();
 
         for(int i = 0; i<actList.length(); i++){
             Activity act = actList.get(i);
 
-            if((startTime == null || act.getStart().greaterThanOrEqualTo(startTime)) && (endTime == null || act.getStart().lessThanOrEqualTo(endTime))) {
+            if(ActivityInstanceList.shouldIncludeActivity(act, startTime, endTime, activitiesAtStart)) {
                 if (!actsByType.containsKey(act.getType())) {
                     actsByType.put(act.getType(), new ArrayList<>());
                 }

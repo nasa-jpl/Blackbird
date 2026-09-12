@@ -23,15 +23,15 @@ public abstract class TOLWriter {
         }
     }
 
-    public abstract void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow);
+    public abstract void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow, String activitiesAtStart);
 
     public void closeFile() {
         writer.close();
     }
 
-    public void dumpTimelinesToFile(String filename, ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
+    public void dumpTimelinesToFile(String filename, ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow, String activitiesAtStart) {
         createFile(filename);
-        writeFileContents(actList, resList, conList, startTime, endTime, resourcesWindow);
+        writeFileContents(actList, resList, conList, startTime, endTime, resourcesWindow, activitiesAtStart);
         closeFile();
     }
 

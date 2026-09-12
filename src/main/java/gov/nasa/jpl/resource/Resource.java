@@ -470,8 +470,8 @@ public abstract class Resource<V extends Comparable> implements ResourceContaine
      * @param end
      * @return
      */
-    public Iterator<Map.Entry<Time, V>> historyIterator(Time begin, Time end) {
-        return getEntriesBetweenTimes(resourceHistory, begin, end, true).iterator();
+    public Iterator<Map.Entry<Time, V>> historyIterator(Time begin, Time end, boolean useEntriesAroundBounds) {
+        return getEntriesBetweenTimes(resourceHistory, begin, end, useEntriesAroundBounds).iterator();
     }
 
     private Set<Map.Entry<Time,V>> getEntriesBetweenTimes(NavigableMap<Time, V> inMap, Time start, Time end, boolean findEntriesAroundBounds){

@@ -34,6 +34,8 @@ public class WriteCommand implements Command {
     Time endTime;
     // Set whether to write the incoming value of all resources at startTime if it exists
     String resourcesWindow;
+    // Set whether to include activities that start before but end after startTime if it exists
+    String activitiesAtStart;
 
     public WriteCommand(String commandString) {
 
@@ -58,13 +60,14 @@ public class WriteCommand implements Command {
         resList = getResourceListFromString(commandString);
         constraintList = getConstraintListFromString(commandString);
         resourcesWindow = getResourcesWindowFromString(commandString);
+        activitiesAtStart = getActsAtStartFromString(commandString);
     }
 
     @Override
     public void execute() throws CommandException {
         try {
             TOLWriter writer = chooseWriterBasedOnFileType(outfile);
-            writer.dumpTimelinesToFile(outfile, actInstList, resList, constraintList, startTime, endTime, resourcesWindow);
+            writer.dumpTimelinesToFile(outfile, actInstList, resList, constraintList, startTime, endTime, resourcesWindow, activitiesAtStart);
         }
         catch (IOException e) {
             throw new CommandException("Could not find writer for specified filename: " + outfile);
@@ -247,6 +250,21 @@ public class WriteCommand implements Command {
 
         // default is the behavior which existed before this flag was added
         return RegexUtilities.CURRENT_SET_STRING;
+    }
+
+    private static String getActsAtStartFromString(String commandString){
+        Matcher actsAtStartMatch = RegexUtilities.ONGOING_ACTS_TOGGLE_PATTERN.matcher(commandString);
+
+        if(actsAtStartMatch.find()){
+            String action = actsAtStartMatch.group("action");
+            // Validate that action is one of the expected values
+            if (RegexUtilities.EXCLUDE_ONGOING_STRING.equals(action) || RegexUtilities.INCLUDE_ONGOING_STRING.equals(action)) {
+                return action;
+            }
+        }
+
+        // default is the behavior that existed before this flag was added
+        return RegexUtilities.EXCLUDE_ONGOING_STRING;
     }
 
     /**

@@ -117,8 +117,9 @@ public class ResourceList {
         allResourceInstances.put(toBeAdded.getUniqueName(), toBeAdded);
     }
 
+    // used by output writers
     public ResourcesIterator getResourcesIterator(Time queryStart, Time queryEnd) {
-        return new ResourcesIterator(getListOfAllResources(), queryStart, queryEnd);
+        return new ResourcesIterator(getListOfAllResources(), queryStart, queryEnd, false);
     }
 
     /**
