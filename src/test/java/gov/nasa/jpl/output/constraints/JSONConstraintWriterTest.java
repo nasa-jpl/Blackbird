@@ -6,7 +6,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import gov.nasa.jpl.command.CommandController;
 import gov.nasa.jpl.common.BaseTest;
+import gov.nasa.jpl.constraint.Constraint;
 import gov.nasa.jpl.constraint.ConstraintInstanceList;
+import gov.nasa.jpl.constraint.ForbiddenOverlapConstraint;
+import gov.nasa.jpl.constraint.ViolationSeverity;
 import gov.nasa.jpl.engine.AdaptationException;
 import gov.nasa.jpl.engine.ModelingEngine;
 import gov.nasa.jpl.exampleAdaptation.ActivityTwo;
@@ -90,9 +93,11 @@ public class JSONConstraintWriterTest extends BaseTest {
 
     @Test
     public void testConstraintOutUsingCommand(){
+        Constraint test = new ForbiddenOverlapConstraint("InitialConditionActivity", "InitialConditionActivity", "", ViolationSeverity.WARNING);
         try{
-            // this should fail with an AdaptationException because other tests leak unnammed Constraint objects into the global Constraint list, but that's ok because it provides a natural test
+            ConstraintInstanceList.getConstraintList().registerConstraint(test);
             CommandController.issueCommand("WRITE", "example.constraints.json");
+            fail();
         }
         catch(AdaptationException e){
             if(!e.getMessage().contains("Constraint declared without name.")){
