@@ -32,4 +32,8 @@ public interface ResourceContainer {
      */
     void update();
 
+    /**
+     * Freezes the resource or all resources in the container
+     */
+    void setFrozen(boolean frozen);
 }

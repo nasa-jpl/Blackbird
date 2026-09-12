@@ -50,10 +50,12 @@ public class JSONConstraintWriter extends TOLWriter {
         for (int i = 0; i < conList.length(); i++) {
             // 'get' only returns constraints which haven't been turned off
             Constraint cur = conList.get(i);
-            Map<String, String> conOut = new TreeMap<>();
-            conOut.put("description", cur.getMessage());
-            conOut.put("severity", cur.getSeverity().toString());
-            allConDefs.put(cur.getName(), conOut);
+            if(cur != null && cur.getName()!=null) {
+                Map<String, String> conOut = new TreeMap<>();
+                conOut.put("description", cur.getMessage());
+                conOut.put("severity", cur.getSeverity().toString());
+                allConDefs.put(cur.getName(), conOut);
+            }
         }
         return allConDefs;
     }
@@ -64,7 +66,7 @@ public class JSONConstraintWriter extends TOLWriter {
             Constraint cur = conList.get(i);
 
             if(cur.getName() == null){
-                throw new AdaptationException("Constraint declared without name. To fix this, make sure it is declared public static with a variable name in a class that extends ConstraintDeclaration. The particular instance has class " + cur.getClass() + " and message " + cur.getMessage());
+                throw new AdaptationException("Constraint declared without name. To fix this, make sure it is declared public static with a variable name in a class that extends ConstraintDeclaration. The particular instance has " + cur.getClass() + " and message \"" + cur.getMessage() + "\"");
             }
 
             Iterator<Map.Entry<Time, Time>> violations = cur.historyIterator();

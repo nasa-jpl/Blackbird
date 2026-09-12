@@ -1,6 +1,7 @@
 package gov.nasa.jpl.command;
 
 import gov.nasa.jpl.common.BaseTest;
+import gov.nasa.jpl.constraint.ConstraintInstanceList;
 import gov.nasa.jpl.exampleAdaptation.ActivityFive;
 import gov.nasa.jpl.exampleAdaptation.ActivityOne;
 import gov.nasa.jpl.resource.ResourceList;
@@ -94,7 +95,7 @@ public class WriteCommandTest extends BaseTest {
     @Test
     public void constraintExclude() {
         WriteCommand command1 = new WriteCommand("out-tol.xml CONSTRAINTS EXCLUDE (TwoBeforeOne forbidden)");
-        assertEquals(0, command1.constraintList.length());
+        assertEquals(ConstraintInstanceList.getConstraintList().length()-2, command1.constraintList.length());
     }
 
     @Test
