@@ -138,7 +138,7 @@ public class Window implements Comparable<Window>{
 
         ArrayList<Window> windows = new ArrayList<>();
         boolean inAWindow = false;
-        ResourcesIterator resHistory = new ResourcesIterator(new ArrayList(condition.getAllResourcesRecursively()), queryStart, queryEnd);
+        ResourcesIterator resHistory = new ResourcesIterator(new ArrayList(condition.getAllResourcesRecursively()), queryStart, queryEnd, true);
         Map.Entry<Resource, Map.Entry<Time, Comparable>> currentEntry; // this comes from resHistory and is for readability
         Time currentTime; // also for readability
 
@@ -220,7 +220,7 @@ public class Window implements Comparable<Window>{
         Double valueToCompareTo = (Double) condition.getThreshold();
 
         ArrayList<Window> windows = new ArrayList<>();
-        Iterator<Map.Entry<Time, Double>> thisResourceHistory = res.historyIterator(queryStart, queryEnd);
+        Iterator<Map.Entry<Time, Double>> thisResourceHistory = res.historyIterator(queryStart, queryEnd, true);
         Map.Entry<Time, Double> lastEntry = null;
         Map.Entry<Time, Double> currentEntry;
         boolean inAWindow = false;

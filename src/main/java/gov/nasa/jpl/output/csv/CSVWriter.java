@@ -29,7 +29,7 @@ public class CSVWriter extends TOLWriter {
 
         for (int i = 0; i < listOfRelevantResources.size(); i++) {
             Resource currentResource = listOfRelevantResources.get(i);
-            Iterator<Map.Entry<Time, Comparable>> thisResourceHistory = currentResource.historyIterator(startTime, endTime);
+            Iterator<Map.Entry<Time, Comparable>> thisResourceHistory = currentResource.historyIterator(startTime, endTime, false);
             if(resourcesWindow.equals(RegexUtilities.PAST_SET_STRING) && startTime!=null && !startTime.equals(currentResource.nextTimeSet(startTime, true))){
                 if(DoubleResource.class.isAssignableFrom(currentResource.getClass()) && currentResource.getInterpolation().equalsIgnoreCase("linear")) {
                     writer.println(currentResource.getName() + "," + startTime + "," + ((DoubleResource) currentResource).interpval(startTime));
