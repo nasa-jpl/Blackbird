@@ -49,10 +49,12 @@ public class FlatTOLWriter extends TOLWriter {
     static List<TOLRecord> getInconTOLRecordIterator(ResourceList resList, Time startTime){
         List<TOLRecord> toReturn = new ArrayList<>();
         for(Resource res: resList.getListOfAllResources()) {
-            if (DoubleResource.class.isAssignableFrom(res.getClass()) && res.getInterpolation().equalsIgnoreCase("linear")) {
-                toReturn.add(new TOLResourceValue(startTime, ((DoubleResource) res).interpval(startTime), res));
-            } else {
-                toReturn.add(new TOLResourceValue(startTime, res.valueAt(startTime), res));
+            if (res.resourceHistoryHasElements() && !startTime.equals(res.nextTimeSet(startTime, true))){
+                if (DoubleResource.class.isAssignableFrom(res.getClass()) && res.getInterpolation().equalsIgnoreCase("linear")) {
+                    toReturn.add(new TOLResourceValue(startTime, ((DoubleResource) res).interpval(startTime), res));
+                } else {
+                    toReturn.add(new TOLResourceValue(startTime, res.valueAt(startTime), res));
+                }
             }
         }
         return toReturn;

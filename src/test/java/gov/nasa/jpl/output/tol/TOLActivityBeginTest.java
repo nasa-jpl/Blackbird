@@ -21,7 +21,6 @@ import static org.junit.Assert.*;
 public class TOLActivityBeginTest extends BaseTest {
     @Before
     public void setUp(){
-        EpochRelativeTime.addEpoch("test", Time.getDefaultReferenceTime());
         Time.setDefaultOutputPrecision(6);
     }
 

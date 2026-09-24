@@ -42,7 +42,7 @@ public class TOLActivityBegin implements TOLRecord{
             sb.append(paramNames[i] + "=");
 
             try {
-                writeParameterValuetoString(sb, paramValues[i], true, false);
+                writeParameterValuetoString(sb, paramValues[i], true, false, false);
             }
             catch (AdaptationException e){
                 throw new AdaptationException("Parameter '" + paramNames[i] + "' for activity of type " + recordedAct.getType() + " at time " + recordedAct.getStart().toString() + " is null or has a null member when writing out to file, which is not allowed");
@@ -160,7 +160,7 @@ public class TOLActivityBegin implements TOLRecord{
                 } else {
                     // add quotes
                     sb.append("        \"value\": \"");
-                    writeParameterValuetoString(sb, paramValues[i], false, true);
+                    writeParameterValuetoString(sb, paramValues[i], false, true, true);
                     sb.append("\"\n");
                 }
             }
@@ -219,7 +219,7 @@ public class TOLActivityBegin implements TOLRecord{
         sb.append(",");
         for(int i = 0; i<paramValues.length; i++){
 
-            writeParameterValuetoString(sb, paramValues[i], true, true);
+            writeParameterValuetoString(sb, paramValues[i], true, true, false);
 
             if(i < paramValues.length - 1){
                 sb.append(",");
@@ -272,7 +272,7 @@ public class TOLActivityBegin implements TOLRecord{
         }
     }
 
-    private void writeParameterValuetoString(StringBuilder sb, Object parameter, boolean addQuotesToString, boolean useCurlyBracesForMaps){
+    private void writeParameterValuetoString(StringBuilder sb, Object parameter, boolean addQuotesToString, boolean useCurlyBracesForMaps, boolean jsonEscapeQuotes){
         String mapStartCharacter = "[";
         String mapEndCharacter = "]";
         if(useCurlyBracesForMaps){
@@ -288,7 +288,7 @@ public class TOLActivityBegin implements TOLRecord{
             sb.append("[");
             List paramList = (List) parameter;
             for(int i = 0; i < paramList.size(); i++) {
-                writeParameterValuetoString(sb, paramList.get(i), addQuotesToString, useCurlyBracesForMaps);
+                writeParameterValuetoString(sb, paramList.get(i), addQuotesToString, useCurlyBracesForMaps, jsonEscapeQuotes);
                 if(i < paramList.size() - 1){
                     sb.append(",");
                 }
@@ -300,9 +300,9 @@ public class TOLActivityBegin implements TOLRecord{
             Map<Object, Object> paramMap = (Map) parameter;
             int i = 0;
             for(Map.Entry entry: paramMap.entrySet()) {
-                writeParameterValuetoString(sb, entry.getKey(), addQuotesToString, useCurlyBracesForMaps);
+                writeParameterValuetoString(sb, entry.getKey(), addQuotesToString, useCurlyBracesForMaps, jsonEscapeQuotes);
                 sb.append("=");
-                writeParameterValuetoString(sb, entry.getValue(), addQuotesToString, useCurlyBracesForMaps);
+                writeParameterValuetoString(sb, entry.getValue(), addQuotesToString, useCurlyBracesForMaps, jsonEscapeQuotes);
                 if(i < paramMap.size() - 1){
                     sb.append(",");
                 }
@@ -320,7 +320,12 @@ public class TOLActivityBegin implements TOLRecord{
                 sb.append(et.toUTC());
             }
             else {
-                sb.append(parameter.toString());
+                if(jsonEscapeQuotes) {
+                    sb.append(parameter.toString().replaceAll("\"", "\\\\\""));
+                }
+                else{
+                    sb.append(parameter.toString());
+                }
             }
         }
     }
