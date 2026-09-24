@@ -42,6 +42,7 @@ target/
 *test.plan.json
 *.constraints.json
 *.tol.xml
+*.tol.json
 adaptation.dict.json
 *.satf
 *.sasf

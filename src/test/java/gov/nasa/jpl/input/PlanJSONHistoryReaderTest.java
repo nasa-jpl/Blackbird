@@ -31,11 +31,8 @@ import static org.junit.Assert.*;
 public class PlanJSONHistoryReaderTest extends BaseTest {
     @Before
     public void setUp(){
-        EpochRelativeTime.addEpoch("test", Time.getDefaultReferenceTime());
         EpochRelativeTime.addEpoch("a", Time.getDefaultReferenceTime());
-
         ModelingEngine.getEngine().setTime(Time.getDefaultReferenceTime());
-
         Time.setDefaultOutputPrecision(6);
     }
 

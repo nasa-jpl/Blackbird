@@ -13,13 +13,12 @@ import org.junit.Test;
 import java.io.File;
 
 import static gov.nasa.jpl.input.XMLTOLHistoryReaderTest.readInHistoryOfActivitiesAndResource;
+import static org.junit.Assert.fail;
 
 public class ParallelIOTest extends BaseTest {
     @Before
     public void setUp(){
-        EpochRelativeTime.addEpoch("test", Time.getDefaultReferenceTime());
         EpochRelativeTime.addEpoch("a", Time.getDefaultReferenceTime());
-
         ModelingEngine.getEngine().setTime(Time.getDefaultReferenceTime());
     }
 
@@ -52,5 +51,10 @@ public class ParallelIOTest extends BaseTest {
         new File("test.dir/resources").delete();
 
         CommandController.issueCommand("OPEN_FILE", "test.dir");
+    }
+
+    @Test
+    public void testIncludingInconResources(){
+        fail("test");
     }
 }
