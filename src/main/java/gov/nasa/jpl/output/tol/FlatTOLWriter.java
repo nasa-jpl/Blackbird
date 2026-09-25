@@ -20,18 +20,18 @@ import java.util.*;
  */
 public class FlatTOLWriter extends TOLWriter {
     @Override
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
-        writeTOLRecords(actList, resList, conList, startTime, endTime, resourcesWindow);
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow, String activitiesAtStart) {
+        writeTOLRecords(actList, resList, conList, startTime, endTime, resourcesWindow, activitiesAtStart);
     }
 
-    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime, String resourcesWindow){
+    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime, String resourcesWindow, String activitiesAtStart){
         List<Iterator<TOLRecord>> allTOLRecords = new ArrayList<>();
         if(resourcesWindow.equals(RegexUtilities.PAST_SET_STRING) && startTime!=null){
             allTOLRecords.add(getInconTOLRecordIterator(resList, startTime).listIterator());
         }
-        allTOLRecords.add(new TOLActivityIterator(actList.createListOfActivityBeginAndEndTimes()));
+        allTOLRecords.add(new TOLActivityIterator(actList.createListOfActivityBeginAndEndTimes(startTime, endTime, activitiesAtStart)));
         allTOLRecords.add(new TOLResourceIterator(resList.getResourcesIterator(startTime, endTime)));
-        allTOLRecords.add(new TOLConstraintIterator(constraintList.createListOfConstraintBeginAndEndTimes()));
+        allTOLRecords.add(new TOLConstraintIterator(constraintList.createListOfConstraintBeginAndEndTimes(startTime, endTime)));
 
         Iterator<TOLRecord> iteratorOverAllRecords = IteratorUtils.collatedIterator(Comparator.naturalOrder(), (Collection) allTOLRecords);
 

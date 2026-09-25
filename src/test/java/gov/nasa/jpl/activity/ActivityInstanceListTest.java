@@ -83,7 +83,7 @@ public class ActivityInstanceListTest extends BaseTest {
         green.setDuration(new Duration("00:01:57"));
         Activity cyan = new Activity(new Time("2000-001T00:00:10"));
         cyan.setDuration(new Duration("00:00:10"));
-        List<Map.Entry<Time, Map.Entry<Boolean, Activity>>> listOfAllBeginAndEndTimes = ActivityInstanceList.getActivityList().createListOfActivityBeginAndEndTimes();
+        List<Map.Entry<Time, Map.Entry<Boolean, Activity>>> listOfAllBeginAndEndTimes = ActivityInstanceList.getActivityList().createListOfActivityBeginAndEndTimes(null, null, "excludeOngoingActs");
         List<Map.Entry<Time, Map.Entry<Boolean, Activity>>> expectedValues = new ArrayList<>();
         expectedValues.add(new AbstractMap.SimpleImmutableEntry(new Time("2000-001T00:00:02"), new AbstractMap.SimpleImmutableEntry(true, null)));
         expectedValues.add(new AbstractMap.SimpleImmutableEntry(new Time("2000-001T00:00:05"), new AbstractMap.SimpleImmutableEntry(true, null)));

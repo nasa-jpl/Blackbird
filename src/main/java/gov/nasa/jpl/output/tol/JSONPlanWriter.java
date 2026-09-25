@@ -12,18 +12,18 @@ import java.util.*;
 public class JSONPlanWriter extends TOLWriter {
 
     @Override
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow, String activitiesAtStart) {
         writeJSONHeader();
-        writeTOLRecords(actList, resList, conList, startTime, endTime);
+        writeTOLRecords(actList, resList, conList, startTime, endTime, resourcesWindow, activitiesAtStart);
         writeJSONFooter();
     }
 
     /*
      * Loop through interleaved activities only to write JSON blocks - currently does not write resource values or constraint violations
      */
-    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime){
+    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime, String resourcesWindow, String activitiesAtStart){
         List<Iterator<TOLRecord>> allTOLRecords = new ArrayList<>();
-        allTOLRecords.add(new TOLActivityIterator(actList.createListOfActivityBeginTimes()));
+        allTOLRecords.add(new TOLActivityIterator(actList.createListOfActivityBeginTimes(startTime, endTime, activitiesAtStart)));
 
         Iterator<TOLRecord> iteratorOverAllRecords = IteratorUtils.collatedIterator(Comparator.naturalOrder(), (Collection) allTOLRecords);
         boolean first = true;
@@ -31,15 +31,12 @@ public class JSONPlanWriter extends TOLWriter {
         // now we walk through the whole plan in time order
         while (iteratorOverAllRecords.hasNext()) {
             TOLRecord record = iteratorOverAllRecords.next();
-            Time recordTime = record.getTime();
-            if ((startTime == null || recordTime.compareTo(startTime) >= 0) && (endTime == null || recordTime.compareTo(endTime) < 0)) {
-                if(!first) {
-                    // add extra comma and newline for all but the first entry - the footer adds the newline without the last comma
-                    writer.print(",\n");
-                }
-                writer.print(record.toPlanJSON());
-                first = false;
+            if(!first) {
+                // add extra comma and newline for all but the first entry - the footer adds the newline without the last comma
+                writer.print(",\n");
             }
+            writer.print(record.toPlanJSON());
+            first = false;
         }
     }
 
