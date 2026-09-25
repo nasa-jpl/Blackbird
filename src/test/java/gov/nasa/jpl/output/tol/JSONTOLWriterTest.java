@@ -4,13 +4,18 @@ import com.google.gson.*;
 import gov.nasa.jpl.common.BaseTest;
 import gov.nasa.jpl.time.EpochRelativeTime;
 import gov.nasa.jpl.time.Time;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 import static gov.nasa.jpl.output.tol.XMLTOLWriterTest.createSimulationAndWriteOutFile;
+import static gov.nasa.jpl.output.tol.XMLTOLWriterTest.createTinySimWithQueryResSetTimeEqual;
 import static org.junit.Assert.*;
 
 public class JSONTOLWriterTest extends BaseTest {
@@ -43,6 +48,25 @@ public class JSONTOLWriterTest extends BaseTest {
             }
         }
         assertTrue(foundRecord);
+    }
+
+    @Test
+    public void testJSONResInconDeduplicate(){
+        String fileName = "test_res_incon_collision.tol.json";
+
+        createTinySimWithQueryResSetTimeEqual(fileName);
+
+        File file = new File(fileName);
+        try {
+            Scanner scanner = new Scanner(file);
+            String fileContent = scanner.useDelimiter("\\Z").next();
+            scanner.close();
+            // three pairs: one for metadata at top, one for set at bottom, and one (and only one) for combo being set and query time
+            assertEquals(6, StringUtils.countMatches(fileContent, "ResourceA"));
+
+        } catch (FileNotFoundException e) {
+            fail("Output file not created");
+        }
     }
 
 }

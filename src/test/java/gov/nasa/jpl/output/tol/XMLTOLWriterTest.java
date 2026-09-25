@@ -154,16 +154,7 @@ public class XMLTOLWriterTest extends BaseTest {
     public void testResInconWithUseAtStart(){
         String fileName = "test_res_incon_collision.tol.xml";
 
-        Time queryStart = Time.getDefaultReferenceTime().add(new Duration("01:00:00"));
-
-        // this is just to make the modeling start off before the query, even though it doesn't set any resources
-        Activity starter = new ActivityNine(Time.getDefaultReferenceTime(), Time.getDefaultReferenceTime().add(Duration.SECOND_DURATION));
-
-        // should add '5' right at queryStart, and we want to make sure there aren't duplicate entries in the output
-        Activity act = new ActivityTwo(queryStart, 5.0);
-        CommandController.issueCommand("REMODEL", "");
-
-        CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString() + " RESOURCES_WINDOW includeIncon");
+        createTinySimWithQueryResSetTimeEqual(fileName);
 
         File file = new File(fileName);
         try {
@@ -176,6 +167,19 @@ public class XMLTOLWriterTest extends BaseTest {
         } catch (FileNotFoundException e) {
             fail("Output file not created");
         }
+    }
+
+    public static void createTinySimWithQueryResSetTimeEqual(String fileName){
+        Time queryStart = Time.getDefaultReferenceTime().add(new Duration("01:00:00"));
+
+        // this is just to make the modeling start off before the query, even though it doesn't set any resources
+        Activity starter = new ActivityNine(Time.getDefaultReferenceTime(), Time.getDefaultReferenceTime().add(Duration.SECOND_DURATION));
+
+        // should add '5' right at queryStart, and we want to make sure there aren't duplicate entries in the output
+        Activity act = new ActivityTwo(queryStart, 5.0);
+        CommandController.issueCommand("REMODEL", "");
+
+        CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString() + " RESOURCES_WINDOW includeIncon");
     }
 
     // utility for other tests, but it involves writing so it's in this class
