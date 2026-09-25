@@ -12,7 +12,7 @@ import java.util.*;
 public class JSONPlanWriter extends TOLWriter {
 
     @Override
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime) {
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
         writeJSONHeader();
         writeTOLRecords(actList, resList, conList, startTime, endTime);
         writeJSONFooter();

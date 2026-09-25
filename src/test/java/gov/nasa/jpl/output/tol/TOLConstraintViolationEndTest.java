@@ -1,6 +1,7 @@
 package gov.nasa.jpl.output.tol;
 
 import gov.nasa.jpl.common.BaseTest;
+import gov.nasa.jpl.constraint.ConstraintInstanceList;
 import gov.nasa.jpl.constraint.ForbiddenResourceConstraint;
 import gov.nasa.jpl.constraint.ViolationSeverity;
 import gov.nasa.jpl.engine.ModelingEngine;
@@ -9,6 +10,8 @@ import gov.nasa.jpl.scheduler.Condition;
 import gov.nasa.jpl.time.Time;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -32,6 +35,8 @@ public class TOLConstraintViolationEndTest extends BaseTest {
 
         Assert.assertEquals("2000-001T00:01:39.000000,RELEASE,forbiddenCond,\"END OF VIOLATION forbiddenCond message\";\n", new TOLConstraintViolationEnd(new Time("2000-001T00:01:39"), forbiddenResourceConstraint).toFlatTOL());
 
+        // cleanup
+        ConstraintInstanceList.getConstraintList().deactivateConstraints(Arrays.asList("forbiddenCond"));
     }
 
     @Test
@@ -58,6 +63,9 @@ public class TOLConstraintViolationEndTest extends BaseTest {
                 "    </TOLrecord>\n";
 
         assertEquals(expectedOutput, new TOLConstraintViolationEnd(new Time("2000-001T00:01:39"), forbiddenResourceConstraint).toXML());
+
+        // cleanup
+        ConstraintInstanceList.getConstraintList().deactivateConstraints(Arrays.asList("forbiddenCond"));
     }
 
     @Test
@@ -78,5 +86,7 @@ public class TOLConstraintViolationEndTest extends BaseTest {
 
         assertEquals("", new TOLConstraintViolationEnd(new Time("2000-001T00:01:39"), forbiddenResourceConstraint).toESJSON());
 
+        // cleanup
+        ConstraintInstanceList.getConstraintList().deactivateConstraints(Arrays.asList("forbiddenCond"));
     }
 }

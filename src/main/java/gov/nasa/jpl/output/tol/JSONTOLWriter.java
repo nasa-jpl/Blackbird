@@ -3,6 +3,7 @@ package gov.nasa.jpl.output.tol;
 import gov.nasa.jpl.activity.ActivityInstanceList;
 import gov.nasa.jpl.constraint.ConstraintInstanceList;
 import gov.nasa.jpl.engine.AdaptationException;
+import gov.nasa.jpl.input.RegexUtilities;
 import gov.nasa.jpl.output.TOLWriter;
 import gov.nasa.jpl.resource.Resource;
 import gov.nasa.jpl.resource.ResourceList;
@@ -19,11 +20,11 @@ import java.util.*;
  */
 public class JSONTOLWriter extends TOLWriter {
     @Override
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime) {
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
         writeJSONHeader();
         writeActivityMetadata(actList);
         writeResourceMetadata(resList);
-        writeTOLRecords(actList, resList, conList, startTime, endTime);
+        writeTOLRecords(actList, resList, conList, startTime, endTime, resourcesWindow);
         writeJSONFooter();
     }
 
@@ -67,8 +68,11 @@ public class JSONTOLWriter extends TOLWriter {
     /*
      * Loop through interleaved activities and resources to write JSON blocks
      */
-    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime){
+    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime, String resourcesWindow){
         List<Iterator<TOLRecord>> allTOLRecords = new ArrayList<>();
+        if(resourcesWindow.equals(RegexUtilities.PAST_SET_STRING) && startTime!=null){
+            allTOLRecords.add(FlatTOLWriter.getInconTOLRecordIterator(resList, startTime).listIterator());
+        }
         allTOLRecords.add(new TOLActivityIterator(actList.createListOfActivityBeginTimes()));
         allTOLRecords.add(new TOLResourceIterator(resList.getResourcesIterator(startTime, endTime)));
         allTOLRecords.add(new TOLConstraintIterator(constraintList.createListOfConstraintBeginTimes()));

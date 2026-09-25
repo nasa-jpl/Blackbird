@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Spice {
 
     private static boolean spiceImported = false;
+    private static String pathTried = "";
 
     static {
         /*
@@ -22,6 +23,9 @@ public class Spice {
         catch (UnsatisfiedLinkError e) {
             // do nothing for now, since spiceImported is already false
         }
+        finally {
+            pathTried = System.getProperty("java.library.path");
+        }
     }
 
     public static void loadKernel(String filename) throws SpiceErrorException, UnsatisfiedLinkError {
@@ -33,7 +37,7 @@ public class Spice {
             CSPICE.furnsh(absolutePath);
         }
         else {
-            throw new UnsatisfiedLinkError("Error using SPICE call to load kernel. Spice was not imported. Make sure that -Djava.library.path is set correctly.");
+            throw new UnsatisfiedLinkError("Error using SPICE call to load kernel. Spice was not imported. Make sure that -Djava.library.path is set correctly. Paths checked: " + pathTried);
         }
     }
 
@@ -45,7 +49,7 @@ public class Spice {
             CSPICE.unload(absolutePath);
         }
         else {
-            throw new UnsatisfiedLinkError("Error using SPICE call to unload kernel. Spice was not imported. Make sure that -Djava.library.path is set correctly.");
+            throw new UnsatisfiedLinkError("Error using SPICE call to unload kernel. Spice was not imported. Make sure that -Djava.library.path is set correctly. Paths checked: " + pathTried);
         }
     }
 
@@ -85,7 +89,7 @@ public class Spice {
             return CSPICE.clight();
         }
         else {
-            throw new UnsatisfiedLinkError("Error using SPICE call to get the speed of light. Spice was not imported. Make sure that -Djava.library.path is set correctly.");
+            throw new UnsatisfiedLinkError("Error using SPICE call to get the speed of light. Spice was not imported. Make sure that -Djava.library.path is set correctly. Paths checked: " + pathTried);
         }
     }
 }

@@ -3,6 +3,7 @@ package gov.nasa.jpl.resource;
 import gov.nasa.jpl.engine.AdaptationException;
 import gov.nasa.jpl.time.Duration;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -43,15 +44,14 @@ public abstract class ArrayedResource<V extends ResourceContainer> implements Re
             for (int i = 0; i < entries.length; i++) {
                 try {
                     // returnedClass() returns the type that is V, so this will work
-                    V resourceInstance = (V) leafResource.newInstance();
+                    V resourceInstance = (V) leafResource.getDeclaredConstructor().newInstance();
                     ((Resource) resourceInstance).setSubsystem(subsystem);
                     ((Resource) resourceInstance).setUnits(units);
                     ((Resource) resourceInstance).setInterpolation(interpolation);
 
                     individualResources.put(entries[i], resourceInstance);
-
                 }
-                catch (IllegalAccessException | InstantiationException e) {
+                catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
                     throw new AdaptationException("Could not create resource of type " + returnedClass().toString() + " during creation of ArrayedResource.");
                 }
             }
@@ -144,6 +144,13 @@ public abstract class ArrayedResource<V extends ResourceContainer> implements Re
     @Override
     public void setIndices(List<String> index) {
         this.indices = index;
+    }
+
+    @Override
+    public void setFrozen(boolean frozen){
+        for(ResourceContainer individualResource : individualResources.values()){
+            individualResource.setFrozen(frozen);
+        }
     }
 
     public String[] getEntries() {
