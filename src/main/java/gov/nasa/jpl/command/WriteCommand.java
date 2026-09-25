@@ -32,6 +32,8 @@ public class WriteCommand implements Command {
     ConstraintInstanceList constraintList;
     Time startTime;
     Time endTime;
+    // Set whether to write the incoming value of all resources at startTime if it exists
+    String resourcesWindow;
 
     public WriteCommand(String commandString) {
 
@@ -55,13 +57,14 @@ public class WriteCommand implements Command {
         actInstList = getActInstListFromString(commandString);
         resList = getResourceListFromString(commandString);
         constraintList = getConstraintListFromString(commandString);
+        resourcesWindow = getResourcesWindowFromString(commandString);
     }
 
     @Override
     public void execute() throws CommandException {
         try {
             TOLWriter writer = chooseWriterBasedOnFileType(outfile);
-            writer.dumpTimelinesToFile(outfile, actInstList, resList, constraintList, startTime, endTime);
+            writer.dumpTimelinesToFile(outfile, actInstList, resList, constraintList, startTime, endTime, resourcesWindow);
         }
         catch (IOException e) {
             throw new CommandException("Could not find writer for specified filename: " + outfile);
@@ -229,6 +232,21 @@ public class WriteCommand implements Command {
         }
 
         return filteredResourceList;
+    }
+
+    private static String getResourcesWindowFromString(String commandString){
+        Matcher resourceWindowMatch = RegexUtilities.RESOURCES_WINDOW_PATTERN.matcher(commandString);
+
+        if (resourceWindowMatch.find()) {
+            String action = resourceWindowMatch.group("action");
+            // Validate that action is one of the expected values
+            if (RegexUtilities.PAST_SET_STRING.equals(action) || RegexUtilities.CURRENT_SET_STRING.equals(action)) {
+                return action;
+            }
+        }
+
+        // default is the behavior which existed before this flag was added
+        return RegexUtilities.CURRENT_SET_STRING;
     }
 
     /**
