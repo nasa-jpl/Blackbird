@@ -12,6 +12,7 @@ import gov.nasa.jpl.resource.ResourceList;
 import gov.nasa.jpl.time.Duration;
 import gov.nasa.jpl.time.EpochRelativeTime;
 import gov.nasa.jpl.time.Time;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.io.File;
@@ -101,8 +102,6 @@ public class XMLTOLWriterTest extends BaseTest {
         } catch (FileNotFoundException e) {
             fail("Output file not created");
         }
-
-        ActivityInstanceList.getActivityList().clear();
     }
 
     @Test
@@ -126,8 +125,6 @@ public class XMLTOLWriterTest extends BaseTest {
         } catch (FileNotFoundException e) {
             fail("Output file not created");
         }
-
-        ActivityInstanceList.getActivityList().clear();
     }
 
     @Test
@@ -151,8 +148,34 @@ public class XMLTOLWriterTest extends BaseTest {
         } catch (FileNotFoundException e) {
             fail("Output file not created");
         }
+    }
 
-        ActivityInstanceList.getActivityList().clear();
+    @Test
+    public void testResInconWithUseAtStart(){
+        String fileName = "test_res_incon_collision.tol.xml";
+
+        Time queryStart = Time.getDefaultReferenceTime().add(new Duration("01:00:00"));
+
+        // this is just to make the modeling start off before the query, even though it doesn't set any resources
+        Activity starter = new ActivityNine(Time.getDefaultReferenceTime(), Time.getDefaultReferenceTime().add(Duration.SECOND_DURATION));
+
+        // should add '5' right at queryStart, and we want to make sure there aren't duplicate entries in the output
+        Activity act = new ActivityTwo(queryStart, 5.0);
+        CommandController.issueCommand("REMODEL", "");
+
+        CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString() + " RESOURCES_WINDOW includeIncon");
+
+        File file = new File(fileName);
+        try {
+            Scanner scanner = new Scanner(file);
+            String fileContent = scanner.useDelimiter("\\Z").next();
+            scanner.close();
+            // one for metadata, one for FINAL_VAL, one (and only one) for 2000-001T01:00:00 when it is set AND query time, and one for when it is set again at 2000-001T01:02:00
+            assertEquals(4, StringUtils.countMatches(fileContent, "ResourceA"));
+
+        } catch (FileNotFoundException e) {
+            fail("Output file not created");
+        }
     }
 
     // utility for other tests, but it involves writing so it's in this class
