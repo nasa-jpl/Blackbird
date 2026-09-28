@@ -36,4 +36,8 @@ public abstract class BaseTest {
         ModelingEngine.getEngine().resetEngine();
         EpochRelativeTime.addEpoch("test", Time.getDefaultReferenceTime());
     }
+
+    public static String getRegressionTestOutputDir(){
+        return REGRESSION_TEST_OUTPUT_DIR;
+    }
 }
