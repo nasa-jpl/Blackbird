@@ -38,10 +38,7 @@ public class FlatTOLWriter extends TOLWriter {
         // now we walk through the whole plan in time order
         while (iteratorOverAllRecords.hasNext()) {
             TOLRecord record = iteratorOverAllRecords.next();
-            Time recordTime = record.getTime();
-            if ((startTime == null || recordTime.compareTo(startTime) >= 0) && (endTime == null || recordTime.compareTo(endTime) < 0)) {
-                writer.print(record.toFlatTOL());
-            }
+            writer.print(record.toFlatTOL());
         }
     }
 
