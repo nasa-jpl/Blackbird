@@ -4,6 +4,7 @@ import gov.nasa.jpl.activity.ActivityInstanceList;
 import gov.nasa.jpl.constraint.ConstraintInstanceList;
 import gov.nasa.jpl.engine.ModelingEngine;
 import gov.nasa.jpl.engine.Setup;
+import gov.nasa.jpl.resource.Resource;
 import gov.nasa.jpl.resource.ResourceList;
 import gov.nasa.jpl.time.EpochRelativeTime;
 import gov.nasa.jpl.time.Time;
@@ -18,6 +19,9 @@ public abstract class BaseTest {
 
     @Before
     public void resetForTest() {
+        for(Resource r : ResourceList.getResourceList().getListOfAllResources()){
+            r.setFrozen(false);
+        }
         ResourceList.getResourceList().resetResourceHistories();
         ConstraintInstanceList.getConstraintList().resetAllConstraints();
         ActivityInstanceList.getActivityList().clear();

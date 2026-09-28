@@ -35,14 +35,14 @@ public class XMLTOLWriter extends TOLWriter {
     }
 
     @Override
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow) {
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow, String activitiesAtStart) {
         writeXMLHeader();
         writeResourceMetadata(resList);
         // if startTime is null, all resource points will be captured in what we're already writing out
         if(resourcesWindow.equals(RegexUtilities.PAST_SET_STRING) && startTime!=null){
             writeResourceBoundsAtStart(resList, startTime);
         }
-        writeTOLRecords(actList, resList, conList, startTime, endTime);
+        writeTOLRecords(actList, resList, conList, startTime, endTime, activitiesAtStart);
         writeResFinalVal(resList, endTime);
         writeXMLFooter();
     }
@@ -75,11 +75,11 @@ public class XMLTOLWriter extends TOLWriter {
     /*
      * Loop through interleaved activities to write <TOLrecord> entries
      */
-    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime) {
+    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime, String activitiesAtStart) {
         List<Iterator<TOLRecord>> allTOLRecords = new ArrayList<>();
-        allTOLRecords.add(new TOLActivityIterator(actList.createListOfActivityBeginAndEndTimes()));
+        allTOLRecords.add(new TOLActivityIterator(actList.createListOfActivityBeginAndEndTimes(startTime, endTime, activitiesAtStart)));
         allTOLRecords.add(new TOLResourceIterator(resList.getResourcesIterator(startTime, endTime)));
-        allTOLRecords.add(new TOLConstraintIterator(constraintList.createListOfConstraintBeginAndEndTimes()));
+        allTOLRecords.add(new TOLConstraintIterator(constraintList.createListOfConstraintBeginAndEndTimes(startTime, endTime)));
 
         Iterator<TOLRecord> iteratorOverAllRecords = IteratorUtils.collatedIterator(Comparator.naturalOrder(), (Collection) allTOLRecords);
         List<TOLRecord> inBoundsTOLRecords = new ArrayList<>();
@@ -87,10 +87,7 @@ public class XMLTOLWriter extends TOLWriter {
         // now we walk through the whole plan in time order and farm parts out to threads
         while (iteratorOverAllRecords.hasNext()) {
             TOLRecord record = iteratorOverAllRecords.next();
-            Time recordTime = record.getTime();
-            if ((startTime == null || recordTime.greaterThanOrEqualTo(startTime)) && (endTime == null || recordTime.lessThan(endTime))) {
-                inBoundsTOLRecords.add(record);
-            }
+            inBoundsTOLRecords.add(record);
         }
 
         List<List<Map.Entry<Integer, Integer>>> subListIndices = breakLongListIntoStartEndSublistsByBatchAndCore(inBoundsTOLRecords.size(), MAX_BATCH_SIZE, numAvailableCores);

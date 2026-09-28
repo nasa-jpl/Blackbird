@@ -1,5 +1,6 @@
 package gov.nasa.jpl.input;
 
+import gov.nasa.jpl.activity.ActivityInstanceList;
 import gov.nasa.jpl.command.CommandController;
 import gov.nasa.jpl.common.BaseTest;
 import gov.nasa.jpl.engine.ModelingEngine;
@@ -17,6 +18,8 @@ import java.util.List;
 
 import static gov.nasa.jpl.input.XMLTOLHistoryReaderTest.readInHistoryOfActivitiesAndResource;
 import static gov.nasa.jpl.output.tol.XMLTOLWriterTest.createSimulationAndWriteOutFile;
+import static gov.nasa.jpl.output.tol.XMLTOLWriterTest.createTinySimWithActivityAtStartChanges;
+import static gov.nasa.jpl.time.Duration.MINUTE_DURATION;
 import static org.junit.Assert.*;
 
 public class ParallelIOTest extends BaseTest {
@@ -91,5 +94,24 @@ public class ParallelIOTest extends BaseTest {
                 priorTime = currentTime;
             }
         }
+    }
+
+    @Test
+    public void testActivityAtStartFlag(){
+        ActivityInstanceList.getActivityList().clear();
+        String fileName = "test_include_ongoing_act.dir";
+        createTinySimWithActivityAtStartChanges(fileName, true);
+        ActivityInstanceList.getActivityList().clear();
+        CommandController.issueCommand("OPEN_FILE", fileName);
+        assertEquals(3, ActivityInstanceList.getActivityList().length());
+        assertEquals(Time.getDefaultReferenceTime().subtract(MINUTE_DURATION), ActivityInstanceList.getActivityList().get(0).getStart());
+        ActivityInstanceList.getActivityList().clear();
+
+        fileName = "test_exclude_ongoing_act.dir";
+        createTinySimWithActivityAtStartChanges(fileName, false);
+        ActivityInstanceList.getActivityList().clear();
+        CommandController.issueCommand("OPEN_FILE", fileName);
+        assertEquals(1, ActivityInstanceList.getActivityList().length());
+        assertEquals(Time.getDefaultReferenceTime(), ActivityInstanceList.getActivityList().get(0).getStart());
     }
 }
