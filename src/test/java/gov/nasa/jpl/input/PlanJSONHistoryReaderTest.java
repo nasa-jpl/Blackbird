@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static gov.nasa.jpl.input.XMLTOLHistoryReaderTest.readInHistoryOfActivitiesAndResource;
+import static gov.nasa.jpl.output.tol.XMLTOLWriterTest.createTinySimWithActivityAtStartChanges;
 import static gov.nasa.jpl.time.Duration.MINUTE_DURATION;
 import static org.junit.Assert.*;
 
@@ -323,6 +324,25 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
         CommandController.issueCommand("OPEN_FILE", filename);
 
         assertEquals(1, actList.length());
+    }
+
+    @Test
+    public void testIncludeActivitiesFlag(){
+        ActivityInstanceList.getActivityList().clear();
+        String fileName = "test_include_ongoing_act.plan.json";
+        createTinySimWithActivityAtStartChanges(fileName, true);
+        ActivityInstanceList.getActivityList().clear();
+        CommandController.issueCommand("OPEN_FILE", fileName);
+        assertEquals(3, ActivityInstanceList.getActivityList().length());
+        assertEquals(Time.getDefaultReferenceTime().subtract(MINUTE_DURATION), ActivityInstanceList.getActivityList().get(0).getStart());
+        ActivityInstanceList.getActivityList().clear();
+
+        fileName = "test_exclude_ongoing_act.plan.json";
+        createTinySimWithActivityAtStartChanges(fileName, false);
+        ActivityInstanceList.getActivityList().clear();
+        CommandController.issueCommand("OPEN_FILE", fileName);
+        assertEquals(1, ActivityInstanceList.getActivityList().length());
+        assertEquals(Time.getDefaultReferenceTime(), ActivityInstanceList.getActivityList().get(0).getStart());
     }
 
     private void writeFileWithOneActivity(String filename, String type, Time startTime, JsonArray parameterList){

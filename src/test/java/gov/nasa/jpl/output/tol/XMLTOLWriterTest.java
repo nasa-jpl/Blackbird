@@ -2,6 +2,7 @@ package gov.nasa.jpl.output.tol;
 
 import gov.nasa.jpl.activity.Activity;
 import gov.nasa.jpl.activity.ActivityInstanceList;
+import gov.nasa.jpl.activity.ActivityInstanceListTest;
 import gov.nasa.jpl.activity.InnerClassActivitySpawner;
 import gov.nasa.jpl.command.CommandController;
 import gov.nasa.jpl.common.BaseTest;
@@ -19,6 +20,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
+import static gov.nasa.jpl.time.Duration.HOUR_DURATION;
+import static gov.nasa.jpl.time.Duration.MINUTE_DURATION;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
@@ -166,6 +169,41 @@ public class XMLTOLWriterTest extends BaseTest {
 
         } catch (FileNotFoundException e) {
             fail("Output file not created");
+        }
+    }
+
+    @Test
+    public void testActivityAtStartInclusion(){
+        ActivityInstanceList.getActivityList().clear();
+        String fileName = "test_include_ongoing_act.tol.xml";
+        createTinySimWithActivityAtStartChanges(fileName, true);
+        ActivityInstanceList.getActivityList().clear();
+        CommandController.issueCommand("OPEN_FILE", fileName);
+        assertEquals(3, ActivityInstanceList.getActivityList().length());
+        assertEquals(Time.getDefaultReferenceTime().subtract(MINUTE_DURATION), ActivityInstanceList.getActivityList().get(0).getStart());
+        ActivityInstanceList.getActivityList().clear();
+
+        fileName = "test_exclude_ongoing_act.tol.xml";
+        createTinySimWithActivityAtStartChanges(fileName, false);
+        ActivityInstanceList.getActivityList().clear();
+        CommandController.issueCommand("OPEN_FILE", fileName);
+        assertEquals(1, ActivityInstanceList.getActivityList().length());
+        assertEquals(Time.getDefaultReferenceTime(), ActivityInstanceList.getActivityList().get(0).getStart());
+    }
+
+    public static void createTinySimWithActivityAtStartChanges(String fileName, boolean includeOngoingActs){
+        Time t = Time.getDefaultReferenceTime();
+        Time end = t.add(new Duration("05:00:00"));
+
+        Activity x = new ActivityOne(t.subtract(MINUTE_DURATION), HOUR_DURATION);
+        Activity y = new ActivityOne(t, HOUR_DURATION);
+        Activity z = new ActivityOne(t.subtract(MINUTE_DURATION), HOUR_DURATION.multiply(20));
+
+        if(includeOngoingActs){
+            CommandController.issueCommand("WRITE", fileName + " START " + t.toString() + " END " + end.toString() + " ACTIVITIES_AT_START includeOngoingActs");
+        }
+        else{
+            CommandController.issueCommand("WRITE", fileName + " START " + t.toString() + " END " + end.toString() + " ACTIVITIES_AT_START excludeOngoingActs");
         }
     }
 

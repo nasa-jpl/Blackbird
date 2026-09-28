@@ -168,6 +168,7 @@ public class ActivityInstanceListTest extends BaseTest {
         Time after = actStart.add(new Duration("01:30:00"));
         Time moreAfter = actStart.add(new Duration("02:00:00"));
         Time middle = actStart.add(new Duration("00:30:00"));
+        Time laterMiddle = actStart.add(new Duration("00:31:00"));
 
         Activity actOne = new ActivityOne(actStart, Duration.HOUR_DURATION);
         // if start and end are null, we always want to include the act
@@ -203,5 +204,9 @@ public class ActivityInstanceListTest extends BaseTest {
         assertFalse(shouldIncludeActivity(actOne, middle, after, "excludeOngoingActs"));
         assertTrue(shouldIncludeActivity(actOne, middle, null, "includeOngoingActs"));
         assertFalse(shouldIncludeActivity(actOne, middle, null, "excludeOngoingActs"));
+
+        // if activity starts before and ends after bounds, we include the act depending on the flat setting
+        assertTrue(shouldIncludeActivity(actOne, middle, laterMiddle, "includeOngoingActs"));
+        assertFalse(shouldIncludeActivity(actOne, middle, laterMiddle, "excludeOngoingActs"));
     }
 }
