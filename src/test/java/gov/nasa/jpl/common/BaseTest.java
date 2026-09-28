@@ -11,10 +11,18 @@ import gov.nasa.jpl.time.Time;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
+import java.io.File;
+
 public abstract class BaseTest {
+    protected static String REGRESSION_TEST_OUTPUT_DIR = "test_outputs/";
+
     @BeforeClass
     public static void setup() {
         Setup.initializeEngine();
+        File testDir = new File(REGRESSION_TEST_OUTPUT_DIR);
+        if(!testDir.exists()) {
+            testDir.mkdirs();
+        }
     }
 
     @Before

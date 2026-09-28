@@ -32,17 +32,17 @@ public class XMLTOLWriterTest extends BaseTest {
     @Test
     public void writeXMLTOL(){
         // does write succeed with nothing in it? should print a file with just ResourceMetadata in it and not crash
-        CommandController.issueCommand("WRITE", "empty.tol.xml RESOURCES EXCLUDE (IntegratesA)");
+        CommandController.issueCommand("WRITE", REGRESSION_TEST_OUTPUT_DIR + "empty.tol.xml RESOURCES EXCLUDE (IntegratesA)");
 
         // does write succeed with only one node in it? should not crash either
-        CommandController.issueCommand("WRITE", "one_entry.tol.xml");
+        CommandController.issueCommand("WRITE", REGRESSION_TEST_OUTPUT_DIR + "one_entry.tol.xml");
 
         ActivityOne actOne = new ActivityOne(Time.getDefaultReferenceTime(), new Duration("00:01:00"));
         ActivityOne actSecond = new ActivityOne(Time.getDefaultReferenceTime(), new Duration("00:01:00"));
         ActivityOne actThird = new ActivityOne(Time.getDefaultReferenceTime(), new Duration("00:01:00"));
 
         // we should have 7 TOLRecords: two for each instance (were not modeled or decomposed) and one for IntegratesA
-        String smallFileName = "small_num_entries.tol.xml";
+        String smallFileName = REGRESSION_TEST_OUTPUT_DIR + "small_num_entries.tol.xml";
         CommandController.issueCommand("WRITE", smallFileName);
         ActivityInstanceList.getActivityList().clear();
         CommandController.issueCommand("OPEN_FILE", smallFileName);
@@ -90,7 +90,7 @@ public class XMLTOLWriterTest extends BaseTest {
         ActivityOne actOne = new ActivityOne(Time.getDefaultReferenceTime(), new Duration("00:01:00"));
         ActivityOne actTwo = new ActivityOne(Time.getDefaultReferenceTime().add(new Duration("02:00:00")), new Duration("00:01:00"));
 
-        String fileName = "test_past_resources.tol.xml";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "test_past_resources.tol.xml";
         Time queryStart = Time.getDefaultReferenceTime().add(new Duration("01:00:00"));
         CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString() + " RESOURCES_WINDOW includeIncon");
 
@@ -113,7 +113,7 @@ public class XMLTOLWriterTest extends BaseTest {
         ActivityOne actOne = new ActivityOne(Time.getDefaultReferenceTime(), new Duration("00:01:00"));
         ActivityOne actTwo = new ActivityOne(Time.getDefaultReferenceTime().add(new Duration("02:00:00")), new Duration("00:01:00"));
 
-        String fileName = "test_no_past_resources.tol.xml";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "test_no_past_resources.tol.xml";
         Time queryStart = Time.getDefaultReferenceTime().add(new Duration("01:00:00"));
         CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString() + " RESOURCES_WINDOW onlySetsInWindow");
 
@@ -136,7 +136,7 @@ public class XMLTOLWriterTest extends BaseTest {
         ActivityOne actOne = new ActivityOne(Time.getDefaultReferenceTime(), new Duration("00:01:00"));
         ActivityOne actTwo = new ActivityOne(Time.getDefaultReferenceTime().add(new Duration("02:00:00")), new Duration("00:01:00"));
 
-        String fileName = "test_default_behavior.tol.xml";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "test_default_behavior.tol.xml";
         Time queryStart = Time.getDefaultReferenceTime().add(new Duration("01:00:00"));
         CommandController.issueCommand("WRITE", fileName + " START " + queryStart.toString());
 
@@ -155,7 +155,7 @@ public class XMLTOLWriterTest extends BaseTest {
 
     @Test
     public void testResInconWithUseAtStart(){
-        String fileName = "test_res_incon_collision.tol.xml";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "test_res_incon_collision.tol.xml";
 
         createTinySimWithQueryResSetTimeEqual(fileName);
 
@@ -175,7 +175,7 @@ public class XMLTOLWriterTest extends BaseTest {
     @Test
     public void testActivityAtStartInclusion(){
         ActivityInstanceList.getActivityList().clear();
-        String fileName = "test_include_ongoing_act.tol.xml";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "test_include_ongoing_act.tol.xml";
         createTinySimWithActivityAtStartChanges(fileName, true);
         ActivityInstanceList.getActivityList().clear();
         CommandController.issueCommand("OPEN_FILE", fileName);
@@ -183,7 +183,7 @@ public class XMLTOLWriterTest extends BaseTest {
         assertEquals(Time.getDefaultReferenceTime().subtract(MINUTE_DURATION), ActivityInstanceList.getActivityList().get(0).getStart());
         ActivityInstanceList.getActivityList().clear();
 
-        fileName = "test_exclude_ongoing_act.tol.xml";
+        fileName = REGRESSION_TEST_OUTPUT_DIR + "test_exclude_ongoing_act.tol.xml";
         createTinySimWithActivityAtStartChanges(fileName, false);
         ActivityInstanceList.getActivityList().clear();
         CommandController.issueCommand("OPEN_FILE", fileName);

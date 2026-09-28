@@ -32,7 +32,7 @@ public class ParallelIOTest extends BaseTest {
     @Test
     public void readInDirectoryHistory() {
         try {
-            readInHistoryOfActivitiesAndResource("history_unit_test.dir", true);
+            readInHistoryOfActivitiesAndResource(REGRESSION_TEST_OUTPUT_DIR + "history_unit_test.dir", true);
         }
         finally {
             for (Resource res: ResourceList.getResourceList().getListOfAllResources()) {
@@ -43,31 +43,33 @@ public class ParallelIOTest extends BaseTest {
 
     @Test
     public void testEmptyDirectories(){
-        new File("test.dir/activities").mkdirs();
-        new File("test.dir/resources").mkdirs();
-        CommandController.issueCommand("OPEN_FILE", "test.dir");
-        new File("test.dir/activities").delete();
-        new File("test.dir/resources").delete();
+        String testDir = REGRESSION_TEST_OUTPUT_DIR + "test.dir";
 
-        new File("test.dir/activities").mkdirs();
-        CommandController.issueCommand("OPEN_FILE", "test.dir");
-        new File("test.dir/activities").delete();
+        new File(testDir + "/activities").mkdirs();
+        new File(testDir + "/resources").mkdirs();
+        CommandController.issueCommand("OPEN_FILE", testDir);
+        new File(testDir + "/activities").delete();
+        new File(testDir + "/resources").delete();
 
-        new File("test.dir/resources").mkdirs();
-        CommandController.issueCommand("OPEN_FILE", "test.dir");
-        new File("test.dir/resources").delete();
+        new File(testDir + "/activities").mkdirs();
+        CommandController.issueCommand("OPEN_FILE", testDir);
+        new File(testDir + "/activities").delete();
 
-        CommandController.issueCommand("OPEN_FILE", "test.dir");
+        new File(testDir + "/resources").mkdirs();
+        CommandController.issueCommand("OPEN_FILE", testDir);
+        new File(testDir + "/resources").delete();
+
+        CommandController.issueCommand("OPEN_FILE", testDir);
     }
 
     @Test
     public void testIncludingInconResources(){
-        createSimulationAndWriteOutFile("history_unit_test_resource_incon.dir", true);
+        createSimulationAndWriteOutFile(REGRESSION_TEST_OUTPUT_DIR + "history_unit_test_resource_incon.dir", true);
 
         BufferedReader br = null;
         List<List<String>> contents = new ArrayList<>();
         try{
-            br = new BufferedReader(new FileReader("history_unit_test_resource_incon.dir" + File.separator + "resources" + File.separator + "PositionVector[y].csv"));
+            br = new BufferedReader(new FileReader(REGRESSION_TEST_OUTPUT_DIR + "history_unit_test_resource_incon.dir" + File.separator + "resources" + File.separator + "PositionVector[y].csv"));
             String line = br.readLine();
             while (line != null) {
                 contents.add(Arrays.asList(line.split(",")));
@@ -99,7 +101,7 @@ public class ParallelIOTest extends BaseTest {
     @Test
     public void testActivityAtStartFlag(){
         ActivityInstanceList.getActivityList().clear();
-        String fileName = "test_include_ongoing_act.dir";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "test_include_ongoing_act.dir";
         createTinySimWithActivityAtStartChanges(fileName, true);
         ActivityInstanceList.getActivityList().clear();
         CommandController.issueCommand("OPEN_FILE", fileName);
@@ -107,7 +109,7 @@ public class ParallelIOTest extends BaseTest {
         assertEquals(Time.getDefaultReferenceTime().subtract(MINUTE_DURATION), ActivityInstanceList.getActivityList().get(0).getStart());
         ActivityInstanceList.getActivityList().clear();
 
-        fileName = "test_exclude_ongoing_act.dir";
+        fileName = REGRESSION_TEST_OUTPUT_DIR + "test_exclude_ongoing_act.dir";
         createTinySimWithActivityAtStartChanges(fileName, false);
         ActivityInstanceList.getActivityList().clear();
         CommandController.issueCommand("OPEN_FILE", fileName);

@@ -60,7 +60,7 @@ public class JSONDictionaryWriterTest extends BaseTest {
 
         assertEquals(jsonExpected, jsonActual);
 
-        String testFileName = "adaptation.dict.json";
+        String testFileName = REGRESSION_TEST_OUTPUT_DIR + "adaptation.dict.json";
         CommandController.issueCommand("CREATE_DICTIONARY", testFileName);
 
         // check to make sure what we're writing out is actually valid JSON

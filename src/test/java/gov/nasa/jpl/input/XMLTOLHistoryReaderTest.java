@@ -40,7 +40,7 @@ public class XMLTOLHistoryReaderTest extends BaseTest {
 
     @Test
     public void readInXMLTOLHistory() {
-        readInHistoryOfActivitiesAndResource("history_unit_test.tol.xml", true);
+        readInHistoryOfActivitiesAndResource(REGRESSION_TEST_OUTPUT_DIR + "history_unit_test.tol.xml", true);
 
         for (Resource res: ResourceList.getResourceList().getListOfAllResources()) {
             res.setFrozen(false);
