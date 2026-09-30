@@ -26,7 +26,7 @@ public class JSONTOLWriterTest extends BaseTest {
 
     @Test
     public void writeJSONTOL(){
-        String testFileName = "history_unit_test.tol.json";
+        String testFileName = REGRESSION_TEST_OUTPUT_DIR + "history_unit_test.tol.json";
         createSimulationAndWriteOutFile(testFileName, true);
 
         JsonArray inputJSON = null;
@@ -52,7 +52,7 @@ public class JSONTOLWriterTest extends BaseTest {
 
     @Test
     public void testJSONResInconDeduplicate(){
-        String fileName = "test_res_incon_collision.tol.json";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "test_res_incon_collision.tol.json";
 
         createTinySimWithQueryResSetTimeEqual(fileName);
 

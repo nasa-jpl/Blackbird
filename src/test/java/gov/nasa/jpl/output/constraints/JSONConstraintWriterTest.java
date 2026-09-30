@@ -96,7 +96,7 @@ public class JSONConstraintWriterTest extends BaseTest {
         Constraint test = new ForbiddenOverlapConstraint("InitialConditionActivity", "InitialConditionActivity", "", ViolationSeverity.WARNING);
         try{
             ConstraintInstanceList.getConstraintList().registerConstraint(test);
-            CommandController.issueCommand("WRITE", "example.constraints.json");
+            CommandController.issueCommand("WRITE", REGRESSION_TEST_OUTPUT_DIR + "example.constraints.json");
             fail();
         }
         catch(AdaptationException e){

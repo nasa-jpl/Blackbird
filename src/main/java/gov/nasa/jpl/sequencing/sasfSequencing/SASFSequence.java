@@ -9,16 +9,20 @@ import java.util.ArrayList;
 
 public class SASFSequence extends Sequence {
     private String header;
+    private String filenameWithoutExtension;
 
     /**
      * This is the full constructor for an SASF sequence.
-     * @param seqid
-     * @param sequenceStartTime
-     * @param header
      */
-    public SASFSequence(String seqid, Time sequenceStartTime, String header) {
+    public SASFSequence(String seqid, Time sequenceStartTime, String header, String filenameWithoutExtension) {
         super(seqid, sequenceStartTime);
         this.header = header;
+        this.filenameWithoutExtension = filenameWithoutExtension;
+    }
+
+    // without specifying an explicit filename, the seqid is used in the current working directory
+    public SASFSequence(String seqid, Time sequenceStartTime, String header) {
+        this(seqid, sequenceStartTime, header, seqid);
     }
 
     @Override
@@ -48,6 +52,6 @@ public class SASFSequence extends Sequence {
 
     @Override
     public String getSequenceName() {
-        return getSeqid() + ".sasf";
+        return filenameWithoutExtension + ".sasf";
     }
 }

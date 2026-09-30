@@ -44,12 +44,12 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
 
     @Test
     public void readInPlanJSONHistory() {
-        readInHistoryOfActivitiesAndResource("history_unit_test.plan.json", false);
+        readInHistoryOfActivitiesAndResource(REGRESSION_TEST_OUTPUT_DIR + "history_unit_test.plan.json", false);
     }
 
     @Test
     public void writeReadEpochRelativeTimesAndDecompose(){
-        String fileName = "epochrelative_test.plan.json";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "epochrelative_test.plan.json";
         ActivityInstanceList actList = ActivityInstanceList.getActivityList();
 
         setupWriteReadForTesting(fileName, false, true, false);
@@ -64,7 +64,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
 
     @Test
     public void testNumberChildrenAndRebuildingHierarchy(){
-        String fileName = "decompose_test.plan.json";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "decompose_test.plan.json";
         ActivityInstanceList actList = ActivityInstanceList.getActivityList();
 
         setupWriteReadForTesting(fileName, true, false, false);
@@ -100,7 +100,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
         ResourceList.getResourceList().makeAllResourcesUseTheirProfileAtInitialTime();
         ActivityInstanceList.getActivityList().clear();
 
-        String fileName = "mixedtimes_test.plan.json";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "mixedtimes_test.plan.json";
         Time time1 = Time.getDefaultReferenceTime();
         Time time2 = new EpochRelativeTime("a+1T00:00:00");
         Time time3 = Time.getDefaultReferenceTime().add(new Duration("5T00:00:00"));
@@ -121,7 +121,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
 
     @Test
     public void readJSONWithoutOptionalArguments(){
-        String fileName = "optional_args_missing_test.plan.json";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "optional_args_missing_test.plan.json";
         ActivityInstanceList actList = ActivityInstanceList.getActivityList();
         actList.clear();
 
@@ -150,7 +150,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
         JsonArray parameterList;
         JsonObject parameter1;
 
-        filename = "negative_duration_test.plan.json";
+        filename = REGRESSION_TEST_OUTPUT_DIR + "negative_duration_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("-00:01:00"));
@@ -166,7 +166,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "type_does_not_exist_test.plan.json";
+        filename = REGRESSION_TEST_OUTPUT_DIR + "type_does_not_exist_test.plan.json";
         writeFileWithOneActivity(filename, "ShouldNotExist", Time.getDefaultReferenceTime(), parameterList);
 
         try {
@@ -178,7 +178,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "wrong_type_parameter_test.plan.json";
+        filename = REGRESSION_TEST_OUTPUT_DIR + "wrong_type_parameter_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive(5));
@@ -194,7 +194,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "null_parameter_test.plan.json";
+        filename = REGRESSION_TEST_OUTPUT_DIR + "null_parameter_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", null);
@@ -210,7 +210,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "bad_start_time_test.plan.json";
+        filename = REGRESSION_TEST_OUTPUT_DIR + "bad_start_time_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("00:01:00"));
@@ -226,7 +226,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "no_start_time_test.plan.json";
+        filename = REGRESSION_TEST_OUTPUT_DIR + "no_start_time_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("00:01:00"));
@@ -242,7 +242,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "no_type_test.plan.json";
+        filename = REGRESSION_TEST_OUTPUT_DIR + "no_type_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("00:01:00"));
@@ -258,7 +258,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "no_params_instance_test.plan.json";
+        filename = REGRESSION_TEST_OUTPUT_DIR + "no_params_instance_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("00:01:00"));
@@ -274,7 +274,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
             }
         }
 
-        filename = "only_start_time_test.plan.json";
+        filename = REGRESSION_TEST_OUTPUT_DIR + "only_start_time_test.plan.json";
         parameterList = new JsonArray();
         parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("00:01:00"));
@@ -297,7 +297,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
         ActivityInstanceList actList = ActivityInstanceList.getActivityList();
         actList.clear();
 
-        String filename = "non_DOY_format_test.plan.json";
+        String filename = REGRESSION_TEST_OUTPUT_DIR + "non_DOY_format_test.plan.json";
         JsonArray parameterList = new JsonArray();
         JsonObject parameter1 = new JsonObject();
         parameter1.add("value", new JsonPrimitive("2020 MAY 27 02:00:00"));
@@ -329,7 +329,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
     @Test
     public void testIncludeActivitiesFlag(){
         ActivityInstanceList.getActivityList().clear();
-        String fileName = "test_include_ongoing_act.plan.json";
+        String fileName = REGRESSION_TEST_OUTPUT_DIR + "test_include_ongoing_act.plan.json";
         createTinySimWithActivityAtStartChanges(fileName, true);
         ActivityInstanceList.getActivityList().clear();
         CommandController.issueCommand("OPEN_FILE", fileName);
@@ -337,7 +337,7 @@ public class PlanJSONHistoryReaderTest extends BaseTest {
         assertEquals(Time.getDefaultReferenceTime().subtract(MINUTE_DURATION), ActivityInstanceList.getActivityList().get(0).getStart());
         ActivityInstanceList.getActivityList().clear();
 
-        fileName = "test_exclude_ongoing_act.plan.json";
+        fileName = REGRESSION_TEST_OUTPUT_DIR + "test_exclude_ongoing_act.plan.json";
         createTinySimWithActivityAtStartChanges(fileName, false);
         ActivityInstanceList.getActivityList().clear();
         CommandController.issueCommand("OPEN_FILE", fileName);

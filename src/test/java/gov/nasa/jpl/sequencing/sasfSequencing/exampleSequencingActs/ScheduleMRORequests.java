@@ -1,6 +1,7 @@
 package gov.nasa.jpl.sequencing.sasfSequencing.exampleSequencingActs;
 
 import gov.nasa.jpl.activity.Activity;
+import gov.nasa.jpl.common.BaseTest;
 import gov.nasa.jpl.sequencing.sasfSequencing.SASFSequence;
 import gov.nasa.jpl.time.Duration;
 import gov.nasa.jpl.time.Time;
@@ -19,7 +20,7 @@ public class ScheduleMRORequests extends Activity {
 
     @Override
     public void sequence() {
-        new SASFSequence(seqid, getStart(), SequenceInfo.createSequenceHeader(seqid));
+        new SASFSequence(seqid, getStart(), SequenceInfo.createSequenceHeader(seqid), BaseTest.getRegressionTestOutputDir() + seqid);
     }
 
     @Override
