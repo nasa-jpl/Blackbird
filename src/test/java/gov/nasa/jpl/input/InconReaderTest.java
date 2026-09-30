@@ -26,12 +26,12 @@ import static org.junit.Assert.*;
 public class InconReaderTest extends BaseTest {
     @Test
     public void xmlReader() {
-        getInitialConditions("incon_unit_test.tol.xml");
+        getInitialConditions(REGRESSION_TEST_OUTPUT_DIR + "incon_unit_test.tol.xml");
     }
 
     @Test
     public void jsonReader() {
-        getInitialConditions("incon_unit_test.fincon.json");
+        getInitialConditions(REGRESSION_TEST_OUTPUT_DIR + "incon_unit_test.fincon.json");
     }
 
     public void getInitialConditions(String fileName) {

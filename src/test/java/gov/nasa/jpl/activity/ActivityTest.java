@@ -43,7 +43,6 @@ public class ActivityTest extends BaseTest {
         Activity red = new Activity(new Time("2000-001T00:00:15"));
         Activity blue = new Activity(new Time("2000-001T00:00:10"));
         Activity green = new Activity(new Time("2000-001T00:00:05"));
-        EpochRelativeTime.addEpoch("test", Time.getDefaultReferenceTime());
         Activity orange = new Activity(new EpochRelativeTime("test+00:00:07"));
 
         assertTrue(blue.compareTo(blue) == 0);

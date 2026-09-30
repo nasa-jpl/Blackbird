@@ -38,7 +38,7 @@ public class ConstraintInstanceListTest extends BaseTest {
 
         // we tried to at least trip the 'forbidden constraint'
         boolean didWeTrip = false;
-        for(Map.Entry<Time, Map.Entry<Boolean, Constraint>> violatedConstraint : conList.createListOfConstraintBeginTimes()){
+        for(Map.Entry<Time, Map.Entry<Boolean, Constraint>> violatedConstraint : conList.createListOfConstraintBeginTimes(null, null)){
             if(constraintsInExampleAdaptation.contains(violatedConstraint.getValue().getValue().getName())){
                 didWeTrip = true;
             }
@@ -52,7 +52,7 @@ public class ConstraintInstanceListTest extends BaseTest {
         CommandController.issueCommand("REMODEL", "");
 
         // with them deactivated, we should not see any matching violations
-        for(Map.Entry<Time, Map.Entry<Boolean, Constraint>> violatedConstraint : conList.createListOfConstraintBeginTimes()){
+        for(Map.Entry<Time, Map.Entry<Boolean, Constraint>> violatedConstraint : conList.createListOfConstraintBeginTimes(null, null)){
             if(constraintsInExampleAdaptation.contains(violatedConstraint.getValue().getValue().getName())){
                 fail();
             }
@@ -64,7 +64,7 @@ public class ConstraintInstanceListTest extends BaseTest {
 
         // with them reactivated, we should see those violations again
         didWeTrip = false;
-        for(Map.Entry<Time, Map.Entry<Boolean, Constraint>> violatedConstraint : conList.createListOfConstraintBeginTimes()){
+        for(Map.Entry<Time, Map.Entry<Boolean, Constraint>> violatedConstraint : conList.createListOfConstraintBeginTimes(null, null)){
             if(constraintsInExampleAdaptation.contains(violatedConstraint.getValue().getValue().getName())){
                 didWeTrip = true;
             }

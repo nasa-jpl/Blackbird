@@ -12,6 +12,7 @@ import gov.nasa.jpl.constraint.ConstraintInstanceList;
 import gov.nasa.jpl.engine.AdaptationException;
 import gov.nasa.jpl.input.RegexUtilities;
 import gov.nasa.jpl.output.TOLWriter;
+import gov.nasa.jpl.resource.DoubleResource;
 import gov.nasa.jpl.resource.Resource;
 import gov.nasa.jpl.resource.ResourceList;
 import gov.nasa.jpl.time.Time;
@@ -33,10 +34,15 @@ public class XMLTOLWriter extends TOLWriter {
         exec = Executors.newFixedThreadPool(numAvailableCores);
     }
 
-    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime) {
+    @Override
+    public void writeFileContents(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList conList, Time startTime, Time endTime, String resourcesWindow, String activitiesAtStart) {
         writeXMLHeader();
         writeResourceMetadata(resList);
-        writeTOLRecords(actList, resList, conList, startTime, endTime);
+        // if startTime is null, all resource points will be captured in what we're already writing out
+        if(resourcesWindow.equals(RegexUtilities.PAST_SET_STRING) && startTime!=null){
+            writeResourceBoundsAtStart(resList, startTime);
+        }
+        writeTOLRecords(actList, resList, conList, startTime, endTime, activitiesAtStart);
         writeResFinalVal(resList, endTime);
         writeXMLFooter();
     }
@@ -69,11 +75,11 @@ public class XMLTOLWriter extends TOLWriter {
     /*
      * Loop through interleaved activities to write <TOLrecord> entries
      */
-    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime) {
+    private void writeTOLRecords(ActivityInstanceList actList, ResourceList resList, ConstraintInstanceList constraintList, Time startTime, Time endTime, String activitiesAtStart) {
         List<Iterator<TOLRecord>> allTOLRecords = new ArrayList<>();
-        allTOLRecords.add(new TOLActivityIterator(actList.createListOfActivityBeginAndEndTimes()));
+        allTOLRecords.add(new TOLActivityIterator(actList.createListOfActivityBeginAndEndTimes(startTime, endTime, activitiesAtStart)));
         allTOLRecords.add(new TOLResourceIterator(resList.getResourcesIterator(startTime, endTime)));
-        allTOLRecords.add(new TOLConstraintIterator(constraintList.createListOfConstraintBeginAndEndTimes()));
+        allTOLRecords.add(new TOLConstraintIterator(constraintList.createListOfConstraintBeginAndEndTimes(startTime, endTime)));
 
         Iterator<TOLRecord> iteratorOverAllRecords = IteratorUtils.collatedIterator(Comparator.naturalOrder(), (Collection) allTOLRecords);
         List<TOLRecord> inBoundsTOLRecords = new ArrayList<>();
@@ -81,10 +87,7 @@ public class XMLTOLWriter extends TOLWriter {
         // now we walk through the whole plan in time order and farm parts out to threads
         while (iteratorOverAllRecords.hasNext()) {
             TOLRecord record = iteratorOverAllRecords.next();
-            Time recordTime = record.getTime();
-            if ((startTime == null || recordTime.greaterThanOrEqualTo(startTime)) && (endTime == null || recordTime.lessThan(endTime))) {
-                inBoundsTOLRecords.add(record);
-            }
+            inBoundsTOLRecords.add(record);
         }
 
         List<List<Map.Entry<Integer, Integer>>> subListIndices = breakLongListIntoStartEndSublistsByBatchAndCore(inBoundsTOLRecords.size(), MAX_BATCH_SIZE, numAvailableCores);
@@ -134,6 +137,20 @@ public class XMLTOLWriter extends TOLWriter {
             }
         }
         return toReturn;
+    }
+
+    private void writeResourceBoundsAtStart(ResourceList resList, Time startTime){
+        List<Resource> listOfRelevantResources = resList.getListOfAllResources();
+        for (int i = 0; i < listOfRelevantResources.size(); i++) {
+            Resource currentRes = listOfRelevantResources.get(i);
+            if (currentRes.resourceHistoryHasElements() && !startTime.equals(currentRes.nextTimeSet(startTime, true))){
+                Comparable startVal = currentRes.valueAt(startTime);
+                if(DoubleResource.class.isAssignableFrom(currentRes.getClass()) && currentRes.getInterpolation().equalsIgnoreCase("linear")){
+                    startVal = ((DoubleResource) currentRes).interpval(startTime);
+                }
+                writer.print(TOLResourceValue.writeResValBlock(startTime, startVal, currentRes, "RES_VAL"));
+            }
+        }
     }
 
     private void writeResFinalVal(ResourceList resList, Time endTime) {

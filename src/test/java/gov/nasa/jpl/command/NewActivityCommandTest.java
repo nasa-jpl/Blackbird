@@ -74,7 +74,6 @@ public class NewActivityCommandTest extends BaseTest {
         assertEquals(true, newActTestStatus7);
 
         // NewActivity test 8 - epoch relative time
-        EpochRelativeTime.addEpoch("test", Time.getDefaultReferenceTime());
         Boolean newActTestStatus8 = CommandController.issueCommand(
                 "NEW_ACTIVITY",
                 "ActivityOne (test+00:05:00, 00:01:00)"

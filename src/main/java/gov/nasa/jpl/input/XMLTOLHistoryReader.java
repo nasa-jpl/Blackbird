@@ -36,6 +36,8 @@ public class XMLTOLHistoryReader implements HistoryReader {
         try {
             inputStream = new FileInputStream(initialFile);
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+            inputFactory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
+            inputFactory.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
             reader = inputFactory.createXMLStreamReader(inputStream);
 
             ModelingEngine.getEngine().setCurrentlyReadingInFile(true);
