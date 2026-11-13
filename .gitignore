@@ -37,11 +37,13 @@ hs_err_pid*
 .vscode/
 out/
 target/
+test_outputs/
 *.dir
 *.fincon.json
 *test.plan.json
 *.constraints.json
 *.tol.xml
+*.tol.json
 adaptation.dict.json
 *.satf
 *.sasf

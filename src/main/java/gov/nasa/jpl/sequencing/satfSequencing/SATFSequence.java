@@ -14,6 +14,7 @@ public class SATFSequence extends Sequence {
     private String sequenceTimeType;
     private List<String> flags;
     private String header;
+    private String filenameWithoutExtension;
 
     /**
      * This is the full constructor for an SATF sequence.
@@ -23,11 +24,17 @@ public class SATFSequence extends Sequence {
      * @param flags
      * @param header
      */
-    public SATFSequence(String seqid, Time sequenceStartTime, String sequenceTimeType, List<String> flags, String header) {
+    public SATFSequence(String seqid, Time sequenceStartTime, String sequenceTimeType, List<String> flags, String header, String filenameWithoutExtension) {
         super(seqid, sequenceStartTime);
         this.sequenceTimeType = sequenceTimeType;
         this.flags = flags;
         this.header = header;
+        this.filenameWithoutExtension = filenameWithoutExtension;
+    }
+
+    // without specifying an explicit filename, the seqid is used in the current working directory
+    public SATFSequence(String seqid, Time sequenceStartTime, String sequenceTimeType, List<String> flags, String header) {
+        this(seqid, sequenceStartTime, sequenceTimeType, flags, header, seqid);
     }
 
     /**
@@ -38,7 +45,7 @@ public class SATFSequence extends Sequence {
      * @param header
      */
     public SATFSequence(String seqid, Time sequenceStartTime, String sequenceTimeType, String header) {
-        this(seqid, sequenceStartTime, sequenceTimeType, new ArrayList<String>(), header);
+        this(seqid, sequenceStartTime, sequenceTimeType, new ArrayList<>(), header);
     }
 
     @Override
@@ -92,6 +99,6 @@ public class SATFSequence extends Sequence {
 
     @Override
     public String getSequenceName() {
-        return getSeqid() + ".satf";
+        return filenameWithoutExtension + ".satf";
     }
 }

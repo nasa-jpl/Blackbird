@@ -18,14 +18,14 @@ public class ResourcesIterator<V extends Comparable>{
     private ArrayList<Entry<Time, V>> allNextEntries;
     private ArrayList allIterators;
 
-    public ResourcesIterator(List<Resource> resList, Time beginTime, Time endTime) {
+    public ResourcesIterator(List<Resource> resList, Time beginTime, Time endTime, boolean useEntriesAroundBounds) {
         this.resList = resList;
 
         // set up list to store next entry of each resource
         this.allNextEntries = new ArrayList<Entry<Time, V>>();
         this.allIterators = new ArrayList<Iterator<Entry<Time, V>>>();
         for (int i = 0; i < resList.size(); i++) {
-            this.allIterators.add(resList.get(i).historyIterator(beginTime, endTime));
+            this.allIterators.add(resList.get(i).historyIterator(beginTime, endTime, useEntriesAroundBounds));
             if (((Iterator<Entry<Time, V>>) this.allIterators.get(i)).hasNext()) {
                 this.allNextEntries.add(((Iterator<Entry<Time, V>>) this.allIterators.get(i)).next());
             }

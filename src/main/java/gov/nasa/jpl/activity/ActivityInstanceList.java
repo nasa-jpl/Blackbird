@@ -3,7 +3,10 @@ package gov.nasa.jpl.activity;
 import java.util.*;
 import java.util.AbstractMap.SimpleImmutableEntry;
 
+import gov.nasa.jpl.output.tol.JSONPlanWriter;
 import gov.nasa.jpl.time.Time;
+
+import static gov.nasa.jpl.input.RegexUtilities.EXCLUDE_ONGOING_STRING;
 
 /**
  * A list of Activity objects. The main engine holds a semi-singleton instance, but other instances can be used for IO.
@@ -225,38 +228,52 @@ public class ActivityInstanceList {
      * is true if the activity is a start and false if it is an end, and the activity
      * is the one that either starts or ends at that time
      */
-    public List<Map.Entry<Time, Map.Entry<Boolean, Activity>>> createListOfActivityBeginAndEndTimes() {
+    public List<Map.Entry<Time, Map.Entry<Boolean, Activity>>> createListOfActivityBeginAndEndTimes(Time start, Time end, String activitiesAtStart) {
         ArrayList<Map.Entry<Time, Map.Entry<Boolean, Activity>>> listOfAllBeginAndEndTimes = new ArrayList();
         for (int i = 0; i < allActivities.size(); i++) {
             Activity ofInterest = allActivities.get(i);
-            listOfAllBeginAndEndTimes.add(new SimpleImmutableEntry<>(ofInterest.getStart(), new SimpleImmutableEntry<>(true, ofInterest)));
-            listOfAllBeginAndEndTimes.add(new SimpleImmutableEntry<>(ofInterest.getEnd(), new SimpleImmutableEntry<>(false, ofInterest)));
+            if(shouldIncludeActivity(ofInterest, start, end, activitiesAtStart)) {
+                listOfAllBeginAndEndTimes.add(new SimpleImmutableEntry<>(ofInterest.getStart(), new SimpleImmutableEntry<>(true, ofInterest)));
+                listOfAllBeginAndEndTimes.add(new SimpleImmutableEntry<>(ofInterest.getEnd(), new SimpleImmutableEntry<>(false, ofInterest)));
+            }
         }
         // now we have to sort this list since we have no idea when end times are
         Collections.sort(listOfAllBeginAndEndTimes, Map.Entry.comparingByKey());
         return listOfAllBeginAndEndTimes;
     }
 
-    public List<Map.Entry<Time, Map.Entry<Boolean, Activity>>> createListOfActivityBeginTimes() {
+    /*
+     * Same logic as above, except only the begin times are put into output entries, since some formats only want to see activity info at act start
+     */
+    public List<Map.Entry<Time, Map.Entry<Boolean, Activity>>> createListOfActivityBeginTimes(Time start, Time end, String activitiesAtStart) {
         ArrayList<Map.Entry<Time, Map.Entry<Boolean, Activity>>> listOfAllBeginTimes = new ArrayList();
         for (int i = 0; i < allActivities.size(); i++) {
             Activity ofInterest = allActivities.get(i);
             // we only have start times in this list, so unlike beginAndEndTimes we always put 'true' as the Boolean
-            listOfAllBeginTimes.add(new SimpleImmutableEntry<>(ofInterest.getStart(), new SimpleImmutableEntry<>(true, ofInterest)));
+            if(shouldIncludeActivity(ofInterest, start, end, activitiesAtStart)) {
+                listOfAllBeginTimes.add(new SimpleImmutableEntry<>(ofInterest.getStart(), new SimpleImmutableEntry<>(true, ofInterest)));
+            }
         }
         // we should sort this because activities could have gotten added during modeling
         Collections.sort(listOfAllBeginTimes, Map.Entry.comparingByKey());
         return listOfAllBeginTimes;
     }
 
-    private boolean isSorted() {
-        for (int i = 1; i < allActivities.size(); i++) {
-            if (allActivities.get(i - 1).compareTo(allActivities.get(i)) > 0) {
-                return false;
-            }
+    /**
+     * Activity time filter that admits activities between start and end, if they're defined
+     * @param act The activity in question
+     * @param startTime Filter start - if null, not compared against
+     * @param endTime Filter end - if null, not compared against
+     * @param activitiesAtStart If "excludeOngoingActs", the filter only admits activities whose start time falls between startTime and endTime. If "includeOngoingActs", filter additionally admits activities that end between startTime and endTime
+     * @return whether the activity is accepted by the filter or not
+     */
+    public static boolean shouldIncludeActivity(Activity act, Time startTime, Time endTime, String activitiesAtStart){
+        if(activitiesAtStart.equals(EXCLUDE_ONGOING_STRING)){
+            return (startTime == null || act.getStart().greaterThanOrEqualTo(startTime)) && (endTime == null || act.getStart().lessThanOrEqualTo(endTime));
         }
-
-        return true;
+        else{
+            return (startTime == null || act.getEnd().greaterThanOrEqualTo(startTime)) && (endTime == null || act.getStart().lessThanOrEqualTo(endTime));
+        }
     }
 
     private boolean isInstanceInTypes(Class[] types, Activity instance){

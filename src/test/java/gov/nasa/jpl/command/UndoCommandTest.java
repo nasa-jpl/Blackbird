@@ -72,7 +72,6 @@ public class UndoCommandTest extends BaseTest {
         Activity newBlue3 = actList.findActivityByID(activityID);
         assertEquals(expectedTime, ((List) newBlue3.getParameterObjects()[1]).get(0)); // check new value
 
-        EpochRelativeTime.addEpoch("test", Time.getDefaultReferenceTime());
         List<Time> relativeTimeList = new ArrayList<>();
         relativeTimeList.add(new EpochRelativeTime("test+00:10:00"));
         relativeTimeList.add(new EpochRelativeTime("test+20:00:00"));

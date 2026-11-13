@@ -1,6 +1,7 @@
 package gov.nasa.jpl.sequencing.satfSequencing.exampleSequencingActs;
 
 import gov.nasa.jpl.activity.Activity;
+import gov.nasa.jpl.common.BaseTest;
 import gov.nasa.jpl.sequencing.satfSequencing.SATFSequence;
 import gov.nasa.jpl.time.Duration;
 import gov.nasa.jpl.time.Time;
@@ -21,7 +22,7 @@ public class MASTER extends Activity {
     }
 
     public void sequence() {
-        new SATFSequence(seqid, getStart(), SequenceInfo.masterSequenceType, SequenceInfo.flags, SequenceInfo.createSequenceHeader(seqid));
+        new SATFSequence(seqid, getStart(), SequenceInfo.masterSequenceType, SequenceInfo.flags, SequenceInfo.createSequenceHeader(seqid), BaseTest.getRegressionTestOutputDir() + seqid);
     }
 
     public void decompose() {

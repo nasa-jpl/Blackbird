@@ -14,10 +14,6 @@ import static gov.nasa.jpl.input.RegexUtilities.UUID_REGEX_STRING;
 import static org.junit.Assert.*;
 
 public class TOLResourceValueTest extends BaseTest {
-    @Before
-    public void setUp(){
-        EpochRelativeTime.addEpoch("test", Time.getDefaultReferenceTime());
-    }
 
     @Test
     public void toFlatTOL() {

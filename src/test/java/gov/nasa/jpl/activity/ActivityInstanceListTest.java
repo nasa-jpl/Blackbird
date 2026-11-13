@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static gov.nasa.jpl.activity.ActivityInstanceList.shouldIncludeActivity;
 import static org.junit.Assert.*;
 
 public class ActivityInstanceListTest extends BaseTest {
@@ -83,7 +84,7 @@ public class ActivityInstanceListTest extends BaseTest {
         green.setDuration(new Duration("00:01:57"));
         Activity cyan = new Activity(new Time("2000-001T00:00:10"));
         cyan.setDuration(new Duration("00:00:10"));
-        List<Map.Entry<Time, Map.Entry<Boolean, Activity>>> listOfAllBeginAndEndTimes = ActivityInstanceList.getActivityList().createListOfActivityBeginAndEndTimes();
+        List<Map.Entry<Time, Map.Entry<Boolean, Activity>>> listOfAllBeginAndEndTimes = ActivityInstanceList.getActivityList().createListOfActivityBeginAndEndTimes(null, null, "excludeOngoingActs");
         List<Map.Entry<Time, Map.Entry<Boolean, Activity>>> expectedValues = new ArrayList<>();
         expectedValues.add(new AbstractMap.SimpleImmutableEntry(new Time("2000-001T00:00:02"), new AbstractMap.SimpleImmutableEntry(true, null)));
         expectedValues.add(new AbstractMap.SimpleImmutableEntry(new Time("2000-001T00:00:05"), new AbstractMap.SimpleImmutableEntry(true, null)));
@@ -156,5 +157,56 @@ public class ActivityInstanceListTest extends BaseTest {
 
         List<String> types = ActivityTypeList.getActivityList().getNamesOfAllTypesWithSubsystem("testSubsystem2");
         assertEquals(1, types.size());
+    }
+
+    @Test
+    public void includeExcludeForWriteout(){
+        Time t = Time.getDefaultReferenceTime();
+        Time actStart = t.add(Duration.MINUTE_DURATION);
+        Time moreBefore = actStart.subtract(Duration.HOUR_DURATION);
+        Time before = actStart.subtract(new Duration("00:10:00"));
+        Time after = actStart.add(new Duration("01:30:00"));
+        Time moreAfter = actStart.add(new Duration("02:00:00"));
+        Time middle = actStart.add(new Duration("00:30:00"));
+        Time laterMiddle = actStart.add(new Duration("00:31:00"));
+
+        Activity actOne = new ActivityOne(actStart, Duration.HOUR_DURATION);
+        // if start and end are null, we always want to include the act
+        assertTrue(shouldIncludeActivity(actOne, null, null, "excludeOngoingActs"));
+        assertTrue(shouldIncludeActivity(actOne, null, null, "includeOngoingActs"));
+
+        // if start is within bounds, we always want to include the act
+        assertTrue(shouldIncludeActivity(actOne, before, null, "excludeOngoingActs"));
+        assertTrue(shouldIncludeActivity(actOne, before, null, "includeOngoingActs"));
+        assertTrue(shouldIncludeActivity(actOne, null, after, "excludeOngoingActs"));
+        assertTrue(shouldIncludeActivity(actOne, null, after, "includeOngoingActs"));
+        assertTrue(shouldIncludeActivity(actOne, null, middle, "excludeOngoingActs"));
+        assertTrue(shouldIncludeActivity(actOne, null, middle, "includeOngoingActs"));
+        assertTrue(shouldIncludeActivity(actOne, before, after, "excludeOngoingActs"));
+        assertTrue(shouldIncludeActivity(actOne, before, after, "includeOngoingActs"));
+        assertTrue(shouldIncludeActivity(actOne, before, middle, "excludeOngoingActs"));
+        assertTrue(shouldIncludeActivity(actOne, before, middle, "includeOngoingActs"));
+
+        // if start is after bounds, we always want to exclude the act
+        assertFalse(shouldIncludeActivity(actOne, null, before, "includeOngoingActs"));
+        assertFalse(shouldIncludeActivity(actOne, null, before, "excludeOngoingActs"));
+        assertFalse(shouldIncludeActivity(actOne, moreBefore, before, "includeOngoingActs"));
+        assertFalse(shouldIncludeActivity(actOne, moreBefore, before, "excludeOngoingActs"));
+
+        // if start and end is before bounds, we always want to exclude the act
+        assertFalse(shouldIncludeActivity(actOne, after, null, "includeOngoingActs"));
+        assertFalse(shouldIncludeActivity(actOne, after, null, "excludeOngoingActs"));
+        assertFalse(shouldIncludeActivity(actOne, after, moreAfter, "includeOngoingActs"));
+        assertFalse(shouldIncludeActivity(actOne, after, moreAfter, "excludeOngoingActs"));
+
+        // if start is before bounds but end is in bounds, we include the act depending on the flag setting
+        assertTrue(shouldIncludeActivity(actOne, middle, after, "includeOngoingActs"));
+        assertFalse(shouldIncludeActivity(actOne, middle, after, "excludeOngoingActs"));
+        assertTrue(shouldIncludeActivity(actOne, middle, null, "includeOngoingActs"));
+        assertFalse(shouldIncludeActivity(actOne, middle, null, "excludeOngoingActs"));
+
+        // if activity starts before and ends after bounds, we include the act depending on the flat setting
+        assertTrue(shouldIncludeActivity(actOne, middle, laterMiddle, "includeOngoingActs"));
+        assertFalse(shouldIncludeActivity(actOne, middle, laterMiddle, "excludeOngoingActs"));
     }
 }

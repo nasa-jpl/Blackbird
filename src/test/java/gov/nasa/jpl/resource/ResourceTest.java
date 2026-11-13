@@ -214,13 +214,13 @@ public class ResourceTest extends BaseTest {
         myEngine.setTime(t.add(SECOND_DURATION.multiply(240)));
         ResourceA.set(300.0);
 
-        Iterator<Map.Entry<Time, Double>> iter0 = ResourceA.historyIterator(null, null);
+        Iterator<Map.Entry<Time, Double>> iter0 = ResourceA.historyIterator(null, null, true);
         assertEquals(4, StreamSupport.stream(Spliterators.spliteratorUnknownSize(iter0, Spliterator.ORDERED), false).count());
         // this one is '1' because we want it to find the entry at the end of the history as the value that will persist
-        Iterator<Map.Entry<Time, Double>> iter1 = ResourceA.historyIterator(t.add(HOUR_DURATION), t.add(DAY_DURATION));
+        Iterator<Map.Entry<Time, Double>> iter1 = ResourceA.historyIterator(t.add(HOUR_DURATION), t.add(DAY_DURATION), true);
         assertEquals(1, StreamSupport.stream(Spliterators.spliteratorUnknownSize(iter1, Spliterator.ORDERED), false).count());
 
-        Iterator<Map.Entry<Time, Double>> iter2 = ResourceA.historyIterator(t.add(SECOND_DURATION.multiply(150)), t.add(SECOND_DURATION.multiply(199)));
+        Iterator<Map.Entry<Time, Double>> iter2 = ResourceA.historyIterator(t.add(SECOND_DURATION.multiply(150)), t.add(SECOND_DURATION.multiply(199)), true);
         assertEquals(2, StreamSupport.stream(Spliterators.spliteratorUnknownSize(iter2, Spliterator.ORDERED), false).count());
     }
 
@@ -368,5 +368,62 @@ public class ResourceTest extends BaseTest {
         assert(somePositionVector.containsIndex("y"));
         assert(somePositionVector.containsIndex("z"));
         assert(!somePositionVector.containsIndex("w"));
+    }
+
+    @Test
+    public void testSetFrozen(){
+        Time t = Time.getDefaultReferenceTime();
+        ModelingEngine myEngine = ModelingEngine.getEngine();
+        myEngine.setTime(t);
+
+        IntegerResource ResourceA = new IntegerResource(0, "subsystem1", "");
+        ResourceA.set(98);
+        ResourceA.setFrozen(true);
+        assertEquals(98, (int) ResourceA.currentval());
+        try {
+            ResourceA.set(100);
+            fail();
+        }
+        catch(Exception e){
+            if(!e.getMessage().contains("Tried to mutate the frozen resource")){
+                fail();
+            }
+        }
+        ResourceA.setFrozen(false);
+        myEngine.setTime(t.add(MINUTE_DURATION));
+        ResourceA.set(100);
+        assertEquals(100, (int) ResourceA.currentval());
+
+        myEngine.setTime(t);
+        ArrayedResource<ArrayedResource<DoubleResource>> somePositionVector = new ArrayedResource<ArrayedResource<DoubleResource>>(vectorComponents, vectorComponents){};
+        somePositionVector.get("x").get("x").set(98.7);
+        somePositionVector.get("z").get("z").set(98.7);
+        somePositionVector.setFrozen(true);
+        assertEquals(98.7, somePositionVector.get("x").get("x").currentval(), 1e-9);
+        assertEquals(98.7, somePositionVector.get("z").get("z").currentval(), 1e-9);
+
+        try {
+            somePositionVector.get("x").get("x").set(100.0);
+            fail();
+        }
+        catch(Exception e){
+            if(!e.getMessage().contains("Tried to mutate the frozen resource")){
+                fail();
+            }
+        }
+        try{
+            somePositionVector.get("z").get("z").set(100.0);
+        }
+        catch(Exception e){
+            if(!e.getMessage().contains("Tried to mutate the frozen resource")){
+                fail();
+            }
+        }
+
+        somePositionVector.setFrozen(false);
+        myEngine.setTime(t.add(MINUTE_DURATION));
+
+        somePositionVector.get("z").get("z").set(100.0);
+        assertEquals(100.0, somePositionVector.get("z").get("z").currentval(), 1e-9);
     }
 }
